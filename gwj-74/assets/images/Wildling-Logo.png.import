@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bknxcsfelsbsh"
-path="res://.godot/imported/GWJ-Logo.png-3584b93db0294e0dcf79eded6fb14058.ctex"
+uid="uid://ctfgw0idqdukc"
+path="res://.godot/imported/Wildling-Logo.png-b29f2aaecf0e75cdb871c79442e59119.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/GWJ-Logo.png"
-dest_files=["res://.godot/imported/GWJ-Logo.png-3584b93db0294e0dcf79eded6fb14058.ctex"]
+source_file="res://assets/images/Wildling-Logo.png"
+dest_files=["res://.godot/imported/Wildling-Logo.png-b29f2aaecf0e75cdb871c79442e59119.ctex"]
 
 [params]
 
