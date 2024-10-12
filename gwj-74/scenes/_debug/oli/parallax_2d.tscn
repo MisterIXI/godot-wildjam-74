@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwuonfq6jgil"]
+[gd_scene load_steps=3 format=3 uid="uid://bwuonfq6jgil"]
 
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/station-background-tile-2.png" id="1_imyi7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp3y3"]
+size = Vector2(349, 62)
 
 [node name="Parallax2D" type="Parallax2D"]
 repeat_size = Vector2(348, 0)
@@ -9,3 +12,15 @@ repeat_times = 10
 [node name="Station-background-tile" type="Sprite2D" parent="."]
 position = Vector2(175, -34)
 texture = ExtResource("1_imyi7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Station-background-tile"]
+position = Vector2(-0.5, 222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Station-background-tile/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_pp3y3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Station-background-tile"]
+position = Vector2(-1, -405)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Station-background-tile/StaticBody2D"]
+shape = SubResource("RectangleShape2D_pp3y3")
