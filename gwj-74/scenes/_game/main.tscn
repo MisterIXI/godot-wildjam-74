@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="Texture2D" uid="uid://cwbgpql3ywo82" path="res://assets/images/temp/statoin-background.png" id="1_w5gu2"]
+[ext_resource type="Texture2D" uid="uid://62q467oadr6y" path="res://assets/images/temp/statoin-background-v2.png" id="1_wp1ea"]
 [ext_resource type="Texture2D" uid="uid://cklxe8xelska1" path="res://assets/images/temp/tain-background-outside.png" id="2_lcknn"]
 [ext_resource type="Script" path="res://scenes/_debug/oli/test_character.gd" id="3_m06xj"]
 [ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="4_6up0j"]
@@ -17,9 +17,9 @@ offset_right = 5826.0
 offset_bottom = 2911.0
 color = Color(0, 0, 0, 1)
 
-[node name="Statoin-background" type="Sprite2D" parent="."]
-position = Vector2(647, -101)
-texture = ExtResource("1_w5gu2")
+[node name="Statoin-background-v2" type="Sprite2D" parent="."]
+position = Vector2(643, -202)
+texture = ExtResource("1_wp1ea")
 
 [node name="Tain-background-outside" type="Sprite2D" parent="."]
 position = Vector2(634, 614)
@@ -31,6 +31,7 @@ motion_mode = 1
 script = ExtResource("3_m06xj")
 
 [node name="Character-front" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_6up0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
