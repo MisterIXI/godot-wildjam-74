@@ -7,7 +7,7 @@ offset_left = 227.0
 offset_top = 141.0
 offset_right = 417.0
 offset_bottom = 233.0
-color = Color(0.262745, 1, 1, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect"]
 layout_mode = 0
