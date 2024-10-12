@@ -1,29 +1,42 @@
-[gd_scene format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=6 format=3 uid="uid://cbgdr3g22ejqs"]
+
+[ext_resource type="Texture2D" uid="uid://cwbgpql3ywo82" path="res://assets/images/temp/statoin-background.png" id="1_w5gu2"]
+[ext_resource type="Texture2D" uid="uid://cklxe8xelska1" path="res://assets/images/temp/tain-background-outside.png" id="2_lcknn"]
+[ext_resource type="Script" path="res://scenes/_debug/oli/test_character.gd" id="3_m06xj"]
+[ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="4_6up0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kc3y"]
+size = Vector2(90, 197)
 
 [node name="Main" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 224.0
-offset_top = 141.0
-offset_right = 314.0
-offset_bottom = 174.0
-color = Color(0.122, 0.122, 0.122, 1)
-metadata/_edit_use_anchors_ = true
+[node name="background" type="ColorRect" parent="."]
+offset_left = -4290.0
+offset_top = -2563.0
+offset_right = 5826.0
+offset_bottom = 2911.0
+color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = 535.0
-offset_top = 1.0
-offset_right = 725.0
-offset_bottom = 93.0
-color = Color(0.262745, 1, 1, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Statoin-background" type="Sprite2D" parent="."]
+position = Vector2(647, -101)
+texture = ExtResource("1_w5gu2")
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 271.0
-offset_right = 730.0
-offset_bottom = 363.0
-color = Color(0.924308, 0.473719, 1, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Tain-background-outside" type="Sprite2D" parent="."]
+position = Vector2(634, 614)
+texture = ExtResource("2_lcknn")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(631, 603)
+motion_mode = 1
+script = ExtResource("3_m06xj")
+
+[node name="Character-front" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("4_6up0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-3, -0.5)
+shape = SubResource("RectangleShape2D_2kc3y")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
