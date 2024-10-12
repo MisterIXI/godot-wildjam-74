@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwuonfq6jgil"]
 
-[ext_resource type="Texture2D" uid="uid://g3su4qyi3lrk" path="res://assets/images/temp/station-background-tile.png" id="1_ai4u8"]
+[ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/station-background-tile-2.png" id="1_imyi7"]
 
 [node name="Parallax2D" type="Parallax2D"]
 repeat_size = Vector2(348, 0)
@@ -8,4 +8,4 @@ repeat_times = 10
 
 [node name="Station-background-tile" type="Sprite2D" parent="."]
 position = Vector2(175, -34)
-texture = ExtResource("1_ai4u8")
+texture = ExtResource("1_imyi7")

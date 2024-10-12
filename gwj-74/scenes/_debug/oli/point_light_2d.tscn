@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://1qqldykxx3mf"]
+
+[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/light.png" id="1_h6nch"]
+
+[node name="PointLight2D" type="PointLight2D"]
+energy = 0.6
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("1_h6nch")
+texture_scale = 3.0
