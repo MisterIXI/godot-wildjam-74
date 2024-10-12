@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwuonfq6jgil"]
 
-[ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/station-background-tile-2.png" id="1_imyi7"]
+[ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_imyi7"]
 
 [node name="Parallax2D" type="Parallax2D"]
 repeat_size = Vector2(348, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwbgpql3ywo82"
-path="res://.godot/imported/statoin-background.png-7a52289dd5afa027e1977424cf29d800.ctex"
+uid="uid://btramk5skiu08"
+path="res://.godot/imported/station-base-tile.png-1ef63d14c48e2431ddb11c9a38d70683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/temp/statoin-background.png"
-dest_files=["res://.godot/imported/statoin-background.png-7a52289dd5afa027e1977424cf29d800.ctex"]
+source_file="res://assets/images/backgrounds/station-base-tile.png"
+dest_files=["res://.godot/imported/station-base-tile.png-1ef63d14c48e2431ddb11c9a38d70683.ctex"]
 
 [params]
 
