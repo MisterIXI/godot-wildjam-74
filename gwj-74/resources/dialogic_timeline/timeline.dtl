@@ -1,0 +1,5 @@
+if {GameState.test_checked} == false:
+	This is a test dialogue!
+	set {GameState.test_checked} = true
+else:
+	I've already check this!

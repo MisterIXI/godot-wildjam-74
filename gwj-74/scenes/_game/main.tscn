@@ -1,12 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=12 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="Texture2D" uid="uid://62q467oadr6y" path="res://assets/images/temp/statoin-background-v2.png" id="1_wp1ea"]
-[ext_resource type="Texture2D" uid="uid://cklxe8xelska1" path="res://assets/images/temp/tain-background-outside.png" id="2_lcknn"]
-[ext_resource type="Script" path="res://scenes/_debug/oli/test_character.gd" id="3_m06xj"]
-[ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="4_6up0j"]
+[ext_resource type="PackedScene" uid="uid://bwuonfq6jgil" path="res://scenes/_debug/oli/parallax_2d.tscn" id="2_wshir"]
+[ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
+[ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
+[ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
+[ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]
+[ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/canvas_modulate.tscn" id="9_k12pi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kc3y"]
-size = Vector2(90, 197)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pgkp"]
+size = Vector2(128, 64)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lywev"]
+a = Vector2(-64, 0)
+b = Vector2(64, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuwtl"]
+size = Vector2(144, 20)
 
 [node name="Main" type="Node2D"]
 
@@ -16,28 +27,66 @@ offset_top = -2563.0
 offset_right = 5826.0
 offset_bottom = 2911.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
-[node name="Statoin-background-v2" type="Sprite2D" parent="."]
-position = Vector2(643, -202)
-texture = ExtResource("1_wp1ea")
+[node name="Parallax2D" parent="." instance=ExtResource("2_wshir")]
+scroll_offset = Vector2(-184, 32)
 
-[node name="Tain-background-outside" type="Sprite2D" parent="."]
-position = Vector2(634, 614)
-texture = ExtResource("2_lcknn")
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(631, 603)
-motion_mode = 1
-script = ExtResource("3_m06xj")
+[node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
 
-[node name="Character-front" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_6up0j")
+[node name="PointLight2D" parent="YSort/CharacterBody2D" instance=ExtResource("4_526yj")]
+process_physics_priority = 1
+shadow_filter = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-3, -0.5)
-shape = SubResource("RectangleShape2D_2kc3y")
+[node name="Testbox" type="StaticBody2D" parent="YSort"]
+position = Vector2(528, -120)
+script = ExtResource("4_dyppo")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+[node name="DebugTile" type="Sprite2D" parent="YSort/Testbox"]
+texture = ExtResource("4_f2ddw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_7pgkp")
+
+[node name="Interactable" parent="YSort/Testbox" instance=ExtResource("5_wsy6l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox/Interactable"]
+position = Vector2(0, 56)
+shape = SubResource("SegmentShape2D_lywev")
+debug_color = Color(0.877058, 0.000403528, 0.831181, 0.42)
+
+[node name="InteractionBlocker" parent="YSort/Testbox" instance=ExtResource("6_fj48v")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox/InteractionBlocker"]
+shape = SubResource("RectangleShape2D_vuwtl")
+debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
+
+[node name="Testbox2" type="StaticBody2D" parent="YSort"]
+position = Vector2(696, -120)
+script = ExtResource("4_dyppo")
+
+[node name="DebugTile" type="Sprite2D" parent="YSort/Testbox2"]
+texture = ExtResource("4_f2ddw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_7pgkp")
+
+[node name="Interactable" parent="YSort/Testbox2" instance=ExtResource("5_wsy6l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/Interactable"]
+position = Vector2(0, 56)
+shape = SubResource("SegmentShape2D_lywev")
+debug_color = Color(0.877058, 0.000403528, 0.831181, 0.42)
+
+[node name="InteractionBlocker" parent="YSort/Testbox2" instance=ExtResource("6_fj48v")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/InteractionBlocker"]
+shape = SubResource("RectangleShape2D_vuwtl")
+debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
+
+[node name="CanvasModulate" parent="." instance=ExtResource("9_k12pi")]

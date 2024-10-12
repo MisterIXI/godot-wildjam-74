@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dkwq6cws8n33t"]
+
+[node name="InteractionBlocker" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
