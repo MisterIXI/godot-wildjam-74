@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs7clik7kr8gr"]
+
+[ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_7cn2n"]
+[ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="2_q7nfw"]
+[ext_resource type="Script" path="res://scenes/_debug/Yannik/teleporter.gd" id="3_5im71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imkpv"]
+size = Vector2(30, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcknj"]
+size = Vector2(30, 1500)
+
+[node name="Teleport_test" type="Node2D"]
+
+[node name="center3" type="Node2D" parent="."]
+position = Vector2(2088, 0)
+
+[node name="Station-base-tile" type="Sprite2D" parent="center3"]
+position = Vector2(0, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile2" type="Sprite2D" parent="center3"]
+position = Vector2(348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile3" type="Sprite2D" parent="center3"]
+position = Vector2(696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile6" type="Sprite2D" parent="center3"]
+position = Vector2(-348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile7" type="Sprite2D" parent="center3"]
+position = Vector2(-696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="center2" type="Node2D" parent="."]
+position = Vector2(-2088, 0)
+
+[node name="Station-base-tile" type="Sprite2D" parent="center2"]
+position = Vector2(0, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile2" type="Sprite2D" parent="center2"]
+position = Vector2(348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile3" type="Sprite2D" parent="center2"]
+position = Vector2(696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile6" type="Sprite2D" parent="center2"]
+position = Vector2(-348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile7" type="Sprite2D" parent="center2"]
+position = Vector2(-696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="center" type="Node2D" parent="."]
+
+[node name="Station-base-tile" type="Sprite2D" parent="center"]
+position = Vector2(0, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile2" type="Sprite2D" parent="center"]
+position = Vector2(348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile3" type="Sprite2D" parent="center"]
+position = Vector2(696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile6" type="Sprite2D" parent="center"]
+position = Vector2(-348, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile7" type="Sprite2D" parent="center"]
+position = Vector2(-696, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile4" type="Sprite2D" parent="."]
+position = Vector2(1044, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile5" type="Sprite2D" parent="."]
+position = Vector2(1392, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile8" type="Sprite2D" parent="."]
+position = Vector2(-1044, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="Station-base-tile9" type="Sprite2D" parent="."]
+position = Vector2(-1392, -11)
+texture = ExtResource("1_7cn2n")
+
+[node name="player" parent="." instance=ExtResource("2_q7nfw")]
+position = Vector2(209, 30)
+speed = 300.0
+
+[node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
+script = ExtResource("3_5im71")
+threshold_left = NodePath("Threshhold_left")
+threshold_right = NodePath("Threshhold_right")
+
+[node name="Threshhold_left" type="Area2D" parent="Teleporter"]
+position = Vector2(-1218, 0)
+
+[node name="ColShapeTeleporterLeft" type="CollisionShape2D" parent="Teleporter/Threshhold_left"]
+position = Vector2(-35, 0)
+shape = SubResource("RectangleShape2D_imkpv")
+
+[node name="Threshhold_right" type="Area2D" parent="Teleporter"]
+position = Vector2(1218, 0)
+
+[node name="ColShapeTeleporterRight" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_bcknj")
+
+[connection signal="body_entered" from="Teleporter/Threshhold_left" to="Teleporter" method="on_body_entered_from_direction" binds= [true]]
+[connection signal="body_entered" from="Teleporter/Threshhold_right" to="Teleporter" method="on_body_entered_from_direction" binds= [false]]
