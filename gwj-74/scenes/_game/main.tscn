@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dfnd8kxfwy83n" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" uid="uid://1qqldykxx3mf" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
 [ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]

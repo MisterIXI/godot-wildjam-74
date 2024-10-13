@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfnd8kxfwy83n"]
 
-[ext_resource type="PackedScene" uid="uid://dys405cgln3a6" path="res://scenes/_debug/oli/canvas_modulate.tscn" id="1_krc4e"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/canvas_modulate.tscn" id="1_krc4e"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
 [ext_resource type="Texture2D" uid="uid://ctdnwmm7hjw4m" path="res://assets/images/backgrounds/train-outside-wagons.png" id="3_m5755"]
 [ext_resource type="Texture2D" uid="uid://bt53nq8hywnp1" path="res://assets/images/backgrounds/train-outside-entrances.png" id="4_vpnti"]
@@ -29,7 +29,6 @@ texture = ExtResource("1_xfqj8")
 
 [node name="Train-outside" type="Parallax2D" parent="."]
 repeat_size = Vector2(6400, 0)
-autoscroll = Vector2(-500, 0)
 repeat_times = 2
 
 [node name="Train-outside-wagons" type="Sprite2D" parent="Train-outside"]
@@ -37,6 +36,5 @@ position = Vector2(0, 368)
 texture = ExtResource("3_m5755")
 
 [node name="Train-outside-entrances" type="Sprite2D" parent="Train-outside"]
-visible = false
 position = Vector2(0, 368)
 texture = ExtResource("4_vpnti")

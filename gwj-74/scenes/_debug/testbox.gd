@@ -9,6 +9,4 @@ func _ready() -> void:
 			break
 	
 func on_interacted():
-	Dialogic.start('timeline')
-	get_viewport().set_input_as_handled()
 	print(GameState.test_checked)
