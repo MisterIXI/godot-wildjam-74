@@ -1,4 +1,4 @@
-extends Parallax2D
+extends Node2D
 class_name TrainController
 
 @export var area : Area2D = null
@@ -52,7 +52,7 @@ func _on_body_exited(body: Node) -> void:
 		inside.modulate.a = 1
 		inside.visible = true
 		inside_tween.tween_property(inside, "modulate:a", 0, animation_duration)
-		outside_tween.tween_callback(inside.hide)
+		inside_tween.tween_callback(inside.hide)
 
 		if outside_tween != null:
 			outside_tween.kill()

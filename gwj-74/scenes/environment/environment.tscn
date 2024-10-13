@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfnd8kxfwy83n"]
+[gd_scene load_steps=12 format=3 uid="uid://dfnd8kxfwy83n"]
 
 [ext_resource type="PackedScene" uid="uid://dys405cgln3a6" path="res://scenes/_debug/oli/canvas_modulate.tscn" id="1_krc4e"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -7,9 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://c7gs8tg80slw7" path="res://assets/images/backgrounds/train-entrances-front.png" id="4_mstmm"]
 [ext_resource type="Texture2D" uid="uid://1yhwf3m3suj6" path="res://assets/images/backgrounds/train-wagons.png" id="5_6epiq"]
 [ext_resource type="Texture2D" uid="uid://wtvehf56xbmb" path="res://assets/images/backgrounds/Train-inside.png" id="6_jssr1"]
+[ext_resource type="Script" path="res://scenes/_debug/Yannik/teleporter.gd" id="8_msauh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q510r"]
 size = Vector2(3278, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4rw"]
+size = Vector2(30, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fllbt"]
+size = Vector2(30, 1500)
 
 [node name="Environment" type="Node2D"]
 
@@ -33,9 +40,7 @@ repeat_times = 10
 position = Vector2(175, -34)
 texture = ExtResource("1_xfqj8")
 
-[node name="Train" type="Parallax2D" parent="." node_paths=PackedStringArray("area", "inside", "outside", "entrance_front", "entrance_back")]
-repeat_size = Vector2(6400, 0)
-repeat_times = 2
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("area", "inside", "outside", "entrance_front", "entrance_back")]
 script = ExtResource("3_lwge3")
 area = NodePath("Area2d")
 inside = NodePath("Inside")
@@ -60,15 +65,8 @@ texture = ExtResource("5_6epiq")
 [node name="Inside" type="Node2D" parent="Train"]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="Train/Inside"]
-offset_left = -2060.0
-offset_top = -752.0
-offset_right = 2052.0
-offset_bottom = 1274.0
-color = Color(0, 0, 0, 1)
-
 [node name="Train-inside" type="Sprite2D" parent="Train/Inside"]
-position = Vector2(40, 352)
+position = Vector2(-377, 489)
 texture = ExtResource("6_jssr1")
 
 [node name="Area2d" type="Area2D" parent="Train"]
@@ -78,3 +76,25 @@ collision_mask = 65535
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/Area2d"]
 position = Vector2(51, 418)
 shape = SubResource("RectangleShape2D_q510r")
+
+[node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
+script = ExtResource("8_msauh")
+threshold_left = NodePath("Threshhold_left")
+threshold_right = NodePath("Threshhold_right")
+
+[node name="Threshhold_left" type="Area2D" parent="Teleporter"]
+position = Vector2(-2958, 0)
+
+[node name="ColShapeTeleporterLeft" type="CollisionShape2D" parent="Teleporter/Threshhold_left"]
+position = Vector2(-35, 0)
+shape = SubResource("RectangleShape2D_xh4rw")
+
+[node name="Threshhold_right" type="Area2D" parent="Teleporter"]
+position = Vector2(2958, 0)
+
+[node name="ColShapeTeleporterRight" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_fllbt")
+
+[connection signal="body_entered" from="Teleporter/Threshhold_left" to="Teleporter" method="on_body_entered_from_direction" binds= [true]]
+[connection signal="body_entered" from="Teleporter/Threshhold_right" to="Teleporter" method="on_body_entered_from_direction" binds= [false]]
