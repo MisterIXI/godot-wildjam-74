@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctdnwmm7hjw4m"
-path="res://.godot/imported/train-outside-wagons.png-a9f898b39c87a1f27a7cfe469cd1d2e6.ctex"
+uid="uid://d1ryvv8qv8t7s"
+path="res://.godot/imported/train-entrances-back.png-1abf3dbecff73e4173e809824a3be1d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backgrounds/train-outside-wagons.png"
-dest_files=["res://.godot/imported/train-outside-wagons.png-a9f898b39c87a1f27a7cfe469cd1d2e6.ctex"]
+source_file="res://assets/images/backgrounds/train-entrances-back.png"
+dest_files=["res://.godot/imported/train-entrances-back.png-1abf3dbecff73e4173e809824a3be1d7.ctex"]
 
 [params]
 
