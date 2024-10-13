@@ -14,12 +14,6 @@ else:
 
 => END
 
-~ testanim
-
-do player.test_anim()
-
-=> END
-
 ~ intro
 
 You're on your way home from work sitting in your usual subway line.
