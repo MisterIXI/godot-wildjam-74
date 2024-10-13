@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://bayfj2ww07ml3"]
+[gd_scene load_steps=12 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="PackedScene" uid="uid://dfnd8kxfwy83n" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" uid="uid://1qqldykxx3mf" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
 [ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]
 [ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
+[ext_resource type="PackedScene" uid="uid://doh5gjxn33303" path="res://scenes/components/cutscene_trigger.tscn" id="8_cfkuf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pgkp"]
 size = Vector2(128, 64)
@@ -26,6 +27,9 @@ size = Vector2(144, 20)
 y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
+speed = 225.0
+acceleration = 0.2
+friction = 0.2
 
 [node name="PointLight2D" parent="YSort/CharacterBody2D" instance=ExtResource("4_526yj")]
 process_physics_priority = 1
@@ -67,6 +71,7 @@ position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_7pgkp")
 
 [node name="Interactable" parent="YSort/Testbox2" instance=ExtResource("5_wsy6l")]
+dialogue_start = "testbox"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/Interactable"]
 position = Vector2(0, 56)
@@ -78,3 +83,5 @@ debug_color = Color(0.877058, 0.000403528, 0.831181, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/InteractionBlocker"]
 shape = SubResource("RectangleShape2D_vuwtl")
 debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
+
+[node name="CutSceneTrigger" parent="." instance=ExtResource("8_cfkuf")]
