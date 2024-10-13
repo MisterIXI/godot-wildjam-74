@@ -13,7 +13,6 @@ var direction: Vector2
 
 @onready var character_sprite: Sprite2D = %CharacterSprite
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
-@onready var cutscene_trigger_finder: Area2D = %CutsceneTriggerFinder
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -58,11 +57,3 @@ func get_input():
 	var vertical = Input.get_axis("up", "down")
 	return Vector2(horizontal, vertical)
 	
-
-	
-func test_anim():
-	print("anim here")
-
-
-func _on_cutscene_trigger_finder_area_entered(area: Area2D) -> void:
-	area.action()
