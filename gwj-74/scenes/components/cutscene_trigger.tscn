@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://doh5gjxn33303"]
+
+[ext_resource type="Script" path="res://scenes/components/cutscene_trigger.gd" id="1_bjv4i"]
+[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="2_hhmt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iyiw"]
+size = Vector2(20, 2000)
+
+[node name="CutSceneTrigger" type="Area2D"]
+position = Vector2(800, 0)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_bjv4i")
+dialogue_resource = ExtResource("2_hhmt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6iyiw")

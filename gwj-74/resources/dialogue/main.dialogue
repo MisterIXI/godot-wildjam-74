@@ -1,0 +1,17 @@
+~ default
+
+This is a test dialogue!
+
+=> END
+
+~ testbox
+
+if test_checked == false:
+	This is a testbox!
+	set test_checked = true
+else:
+	I've already checked it!
+	
+~ testanim
+
+do player.test_anim()
