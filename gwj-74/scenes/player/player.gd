@@ -9,17 +9,24 @@ var sprite_front = preload("res://assets/images/temp/character-front.png")
 var sprite_back = preload("res://assets/images/temp/character-back.png")
 var sprite_left = preload("res://assets/images/temp/character-left.png")
 
+var direction: Vector2
+
 @onready var character_sprite: Sprite2D = %CharacterSprite
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
 
 
-
+func _unhandled_input(event: InputEvent) -> void:
+	
+	# Handle input
+	direction = get_input()
+	
+	# Handle Interaction collision
+	if interaction_ray_cast.is_colliding() and Input.is_action_just_pressed("Interact"):
+		if interaction_ray_cast.get_collider().is_in_group("Interactable"):
+			interaction_ray_cast.get_collider().interact()
 
 
 func _physics_process(delta: float) -> void:
-	
-	# Handle input
-	var direction: Vector2 = get_input()
 	
 	# Handle character direction
 	if direction.y < 0 and direction.x == 0:
@@ -37,17 +44,13 @@ func _physics_process(delta: float) -> void:
 		character_sprite.flip_h = true
 		interaction_ray_cast.rotation = 1.5 * PI
 	
-	# Handle Interaction collision
-	if interaction_ray_cast.is_colliding() and Input.is_action_just_pressed("Interact"):
-		if interaction_ray_cast.get_collider().is_in_group("Interactable"):
-			interaction_ray_cast.get_collider().interact()
-	
 	# Handle character movement
 	if direction.length() > 0:
 		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	move_and_slide()
+
 
 func get_input():
 	var horizontal = Input.get_axis("left", "right")

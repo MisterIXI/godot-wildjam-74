@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://6l5oml43sq0d"]
+[gd_scene load_steps=3 format=3 uid="uid://6l5oml43sq0d"]
 
 [ext_resource type="Script" path="res://scenes/components/interactable.gd" id="1_yd2a6"]
+[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="2_ngp3n"]
 
 [node name="Interactable" type="StaticBody2D" groups=["Interactable"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yd2a6")
+dialogue_resource = ExtResource("2_ngp3n")
