@@ -1,8 +1,8 @@
 extends Node2D
+class_name Clock
 
 @export var minute_hand : Sprite2D = null
 @export var hour_hand : Sprite2D = null
-@export var player : Node2D
 var hour: int = 0
 var minute: float = 0
 
@@ -26,7 +26,7 @@ func update_clock() -> void:
 	hour_hand.rotation_degrees = hour_angle
 
 func _physics_process(_delta):
-	minute += _delta * 6
+	# minute += _delta * 6
 	update_clock()
 
 func get_time() -> String:

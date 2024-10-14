@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1qqldykxx3mf"]
 
-[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/light.png" id="1_h6nch"]
+[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="1_h6nch"]
 
 [node name="PointLight2D" type="PointLight2D"]
 energy = 0.6

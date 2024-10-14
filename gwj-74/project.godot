@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GameState="*res://global/game_state.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+CustomTweener="*res://global/CustomTweener/custom_tweener.tscn"
 
 [dialogic]
 

@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs7clik7kr8gr"]
+[gd_scene load_steps=7 format=3 uid="uid://bs7clik7kr8gr"]
 
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_7cn2n"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="2_q7nfw"]
-[ext_resource type="Script" path="res://scenes/_debug/Yannik/teleporter.gd" id="3_5im71"]
-[ext_resource type="Script" path="res://scenes/_debug/Yannik/clock.gd" id="4_etwp3"]
-[ext_resource type="Texture2D" uid="uid://ddblefci1psfl" path="res://assets/images/objects/clock_background.svg" id="5_4eog5"]
-[ext_resource type="Texture2D" uid="uid://cg6ibeko7re6m" path="res://assets/images/objects/clock_minute_hand.svg" id="6_rrj5n"]
-[ext_resource type="Texture2D" uid="uid://d3fbbmhctipyp" path="res://assets/images/objects/hour_hand.svg" id="7_1xg68"]
+[ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="3_5im71"]
+[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="4_t1rwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imkpv"]
 size = Vector2(30, 1500)
@@ -123,25 +120,7 @@ position = Vector2(1218, 0)
 position = Vector2(15, 0)
 shape = SubResource("RectangleShape2D_bcknj")
 
-[node name="Clock" type="Node2D" parent="." node_paths=PackedStringArray("minute_hand", "hour_hand", "player")]
-position = Vector2(190, -527)
-script = ExtResource("4_etwp3")
-minute_hand = NodePath("MinuteHand")
-hour_hand = NodePath("HourHand")
-player = NodePath("../player")
-
-[node name="Clock" type="Sprite2D" parent="Clock"]
-texture = ExtResource("5_4eog5")
-offset = Vector2(0, 2)
-
-[node name="MinuteHand" type="Sprite2D" parent="Clock"]
-texture = ExtResource("6_rrj5n")
-offset = Vector2(0, -14)
-
-[node name="HourHand" type="Sprite2D" parent="Clock"]
-scale = Vector2(1, 1.64)
-texture = ExtResource("7_1xg68")
-offset = Vector2(0, -6)
+[node name="Clock" parent="." instance=ExtResource("4_t1rwk")]
 
 [connection signal="body_entered" from="Teleporter/Threshhold_left" to="Teleporter" method="on_body_entered_from_direction" binds= [true]]
 [connection signal="body_entered" from="Teleporter/Threshhold_right" to="Teleporter" method="on_body_entered_from_direction" binds= [false]]

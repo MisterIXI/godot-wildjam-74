@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_cglt2"]
 [ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="2_1mpv4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kc3y"]
-size = Vector2(40, 20)
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2j3l"]
+radius = 14.3
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -18,7 +18,7 @@ texture = ExtResource("2_1mpv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.425)
-shape = SubResource("RectangleShape2D_2kc3y")
+shape = SubResource("CircleShape2D_q2j3l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0

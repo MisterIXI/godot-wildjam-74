@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfnd8kxfwy83n"]
+
+[ext_resource type="PackedScene" uid="uid://dys405cgln3a6" path="res://scenes/_debug/oli/canvas_modulate.tscn" id="1_krc4e"]
+[ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
+[ext_resource type="Script" path="res://scenes/_debug/train_controller_old.gd" id="3_lwge3"]
+[ext_resource type="Texture2D" uid="uid://d1ryvv8qv8t7s" path="res://assets/images/backgrounds/train-entrances-back.png" id="3_rfcum"]
+[ext_resource type="Texture2D" uid="uid://c7gs8tg80slw7" path="res://assets/images/backgrounds/train-entrances-front.png" id="4_mstmm"]
+[ext_resource type="Texture2D" uid="uid://1yhwf3m3suj6" path="res://assets/images/backgrounds/train-wagons.png" id="5_6epiq"]
+[ext_resource type="Texture2D" uid="uid://wtvehf56xbmb" path="res://assets/images/backgrounds/Train-inside.png" id="6_jssr1"]
+[ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="8_msauh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q510r"]
+size = Vector2(3278, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4rw"]
+size = Vector2(30, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fllbt"]
+size = Vector2(30, 1500)
+
+[node name="Environment" type="Node2D"]
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -4290.0
+offset_top = -2563.0
+offset_right = 5826.0
+offset_bottom = 2911.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" parent="." instance=ExtResource("1_krc4e")]
+metadata/_edit_lock_ = true
+
+[node name="Platform" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-184, 32)
+repeat_size = Vector2(348, 0)
+repeat_times = 10
+
+[node name="Station-background-tile" type="Sprite2D" parent="Platform"]
+position = Vector2(175, -34)
+texture = ExtResource("1_xfqj8")
+
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("area", "inside", "outside", "entrance_front", "entrance_back")]
+script = ExtResource("3_lwge3")
+area = NodePath("Area2d")
+inside = NodePath("Inside")
+outside = NodePath("Outside")
+entrance_front = NodePath("Outside/Train-entrances-front")
+entrance_back = NodePath("Outside/Train-entrances-back")
+
+[node name="Outside" type="Node2D" parent="Train"]
+
+[node name="Train-entrances-back" type="Sprite2D" parent="Train/Outside"]
+position = Vector2(-1, 357)
+texture = ExtResource("3_rfcum")
+
+[node name="Train-entrances-front" type="Sprite2D" parent="Train/Outside"]
+position = Vector2(-1, 359)
+texture = ExtResource("4_mstmm")
+
+[node name="Train-outside" type="Sprite2D" parent="Train/Outside"]
+position = Vector2(-1, 346)
+texture = ExtResource("5_6epiq")
+
+[node name="Inside" type="Node2D" parent="Train"]
+visible = false
+
+[node name="Train-inside" type="Sprite2D" parent="Train/Inside"]
+position = Vector2(-377, 489)
+texture = ExtResource("6_jssr1")
+
+[node name="Area2d" type="Area2D" parent="Train"]
+collision_layer = 65535
+collision_mask = 65535
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/Area2d"]
+position = Vector2(51, 418)
+shape = SubResource("RectangleShape2D_q510r")
+
+[node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
+script = ExtResource("8_msauh")
+threshold_left = NodePath("Threshhold_left")
+threshold_right = NodePath("Threshhold_right")
+
+[node name="Threshhold_left" type="Area2D" parent="Teleporter"]
+position = Vector2(-2958, 0)
+
+[node name="ColShapeTeleporterLeft" type="CollisionShape2D" parent="Teleporter/Threshhold_left"]
+position = Vector2(-35, 0)
+shape = SubResource("RectangleShape2D_xh4rw")
+
+[node name="Threshhold_right" type="Area2D" parent="Teleporter"]
+position = Vector2(2958, 0)
+
+[node name="ColShapeTeleporterRight" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_fllbt")
+
+[connection signal="body_entered" from="Teleporter/Threshhold_left" to="Teleporter" method="on_body_entered_from_direction" binds= [true]]
+[connection signal="body_entered" from="Teleporter/Threshhold_right" to="Teleporter" method="on_body_entered_from_direction" binds= [false]]
