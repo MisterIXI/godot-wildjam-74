@@ -5,7 +5,7 @@
 
 [node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("clock_text", "clock_button", "walls_left_check", "walls_right_check", "train_front_check", "train_back_check", "train_inside_check", "counter_door_check", "counter_man_check")]
 script = ExtResource("1_xat5f")
-clock_text = NodePath("ColorRect/VBoxContainer/ClockTime/TextEdit")
+clock_text = NodePath("ColorRect/VBoxContainer/ClockTime/TextEdit2")
 clock_button = NodePath("ColorRect/VBoxContainer/ClockTime/Button")
 walls_left_check = NodePath("ColorRect/VBoxContainer/Walls/LeftCheck")
 walls_right_check = NodePath("ColorRect/VBoxContainer/Walls/RightCheck")
@@ -40,10 +40,9 @@ text = "Clock Time"
 label_settings = ExtResource("2_r181d")
 vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="ColorRect/VBoxContainer/ClockTime"]
+[node name="TextEdit2" type="TextEdit" parent="ColorRect/VBoxContainer/ClockTime"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
 placeholder_text = "hour:minute"
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/ClockTime"]

@@ -45,10 +45,15 @@ func _ready() -> void:
 
 
 func _on_clock_button_pressed() -> void:
+	if clock_text.text.find(":") == -1:
+		clock_text.text = ""
+		clock_text.release_focus()
+		return
 	var hour = clock_text.text.split(":")[0].to_int()
 	var minute = clock_text.text.split(":")[1].to_int()
 	environment.clock.set_time(hour, minute)
 	clock_text.text = ""
+	clock_text.release_focus()
 
 
 func _on_walls_left_check_pressed(value : bool) -> void:
