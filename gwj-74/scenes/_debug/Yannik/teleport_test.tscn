@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_7cn2n"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="2_q7nfw"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="3_5im71"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="4_t1rwk"]
+[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="4_t1rwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imkpv"]
 size = Vector2(30, 1500)
