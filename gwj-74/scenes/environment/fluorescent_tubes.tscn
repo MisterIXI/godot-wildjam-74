@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd3atetchfge"]
+
+[ext_resource type="Texture2D" uid="uid://dr7usxy6yx2ha" path="res://assets/images/objects/fluorescent tube.png" id="1_7brlc"]
+[ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_yqvew"]
+
+[node name="FluorescentTubes" type="Node2D"]
+
+[node name="FluorescentTube" type="Sprite2D" parent="."]
+position = Vector2(-696, -512)
+texture = ExtResource("1_7brlc")
+
+[node name="leuchtmittel" type="PointLight2D" parent="FluorescentTube"]
+position = Vector2(7.50004, 89)
+scale = Vector2(1.74023, 1.28906)
+color = Color(1, 0.940169, 0.633895, 1)
+energy = 0.54
+texture = ExtResource("2_yqvew")
+
+[node name="FluorescentTube3" type="Sprite2D" parent="."]
+position = Vector2(-2088, -512)
+texture = ExtResource("1_7brlc")
+
+[node name="leuchtmittel" type="PointLight2D" parent="FluorescentTube3"]
+position = Vector2(7.50004, 89)
+scale = Vector2(1.74023, 1.28906)
+color = Color(1, 0.940169, 0.633895, 1)
+energy = 0.54
+texture = ExtResource("2_yqvew")
+
+[node name="FluorescentTube5" type="Sprite2D" parent="."]
+position = Vector2(696, -512)
+texture = ExtResource("1_7brlc")
+
+[node name="leuchtmittel" type="PointLight2D" parent="FluorescentTube5"]
+position = Vector2(7.50004, 89)
+scale = Vector2(1.74023, 1.28906)
+color = Color(1, 0.940169, 0.633895, 1)
+energy = 0.54
+texture = ExtResource("2_yqvew")
+
+[node name="FluorescentTube6" type="Sprite2D" parent="."]
+position = Vector2(1914, -512)
+texture = ExtResource("1_7brlc")
+
+[node name="leuchtmittel" type="PointLight2D" parent="FluorescentTube6"]
+position = Vector2(7.50004, 89)
+scale = Vector2(1.74023, 1.28906)
+color = Color(1, 0.940169, 0.633895, 1)
+energy = 0.54
+texture = ExtResource("2_yqvew")
