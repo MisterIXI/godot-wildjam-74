@@ -1,7 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=52 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
+[ext_resource type="Shader" path="res://scenes/shader/grain_shader.gdshader" id="2_f6wvl"]
+[ext_resource type="Shader" path="res://scenes/shader/vhs_shader.gdshader" id="3_1w0ut"]
 [ext_resource type="Script" path="res://scenes/environment/walls.gd" id="3_3nthg"]
 [ext_resource type="Script" path="res://scenes/environment/train.gd" id="3_co6w8"]
 [ext_resource type="Texture2D" uid="uid://inawu6qalkfu" path="res://assets/images/backgrounds/station-wall-tile.png" id="3_lcb08"]
@@ -15,8 +17,20 @@
 [ext_resource type="Texture2D" uid="uid://6nvb2g66lbs8" path="res://assets/images/lights/flash_light.png" id="8_a42q5"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
+shader = ExtResource("2_f6wvl")
+shader_parameter/strength = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwcqi"]
+shader = ExtResource("3_1w0ut")
+shader_parameter/shake = 0.5
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.0
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.17
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifasf"]
 size = Vector2(177.913, 1256)
@@ -117,11 +131,35 @@ teleporter = NodePath("Teleporter")
 walls = NodePath("Walls")
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -8327.0
-offset_top = -4561.0
-offset_right = 8376.0
-offset_bottom = 4548.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="Grain" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_gjaqw")
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VHS" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_gwcqi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.144531, 0.144531, 0.144531, 1)

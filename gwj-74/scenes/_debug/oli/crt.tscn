@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ipsdj200p6hw"]
+
+[ext_resource type="Shader" path="res://scenes/_debug/oli/crt_shader_test.gdshader" id="1_1s4ln"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7580"]
+shader = ExtResource("1_1s4ln")
+
+[node name="CRT" type="ColorRect"]
+visible = false
+material = SubResource("ShaderMaterial_j7580")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

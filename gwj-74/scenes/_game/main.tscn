@@ -1,39 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=12 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="PackedScene" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
+[ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
-[ext_resource type="Shader" path="res://scenes/_debug/oli/vhs_shader_test.gdshader" id="2_gts8d"]
-[ext_resource type="Shader" path="res://scenes/_debug/oli/crt_shader_test.gdshader" id="3_3dbf5"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
-[ext_resource type="Shader" path="res://scenes/_debug/oli/grain_shader_test.gdshader" id="4_mbl5c"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]
-[ext_resource type="Shader" path="res://scenes/_debug/oli/floyd_shader_test.gdshader" id="5_wxx1g"]
 [ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
-[ext_resource type="Shader" path="res://scenes/_debug/oli/bayer_shader_test.gdshader" id="6_pw2n0"]
 [ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="9_tw8f7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwcqi"]
-shader = ExtResource("2_gts8d")
-shader_parameter/shake = 0.5
-shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.0
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.3
+[sub_resource type="GDScript" id="GDScript_533ns"]
+script/source = "extends StaticBody2D
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7580"]
-shader = ExtResource("3_3dbf5")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
-shader = ExtResource("4_mbl5c")
-shader_parameter/strength = 54.42
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vai3r"]
-shader = ExtResource("5_wxx1g")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdenl"]
-shader = ExtResource("6_pw2n0")
+#func _ready() -> void:
+	#for child in get_children():
+		#if child is Interactable:
+			#child.interacted.connect(on_interacted)
+			#break
+	#
+#func on_interacted():
+	#print(GameState.test_checked)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pgkp"]
 size = Vector2(128, 64)
@@ -49,70 +37,6 @@ size = Vector2(144, 20)
 
 [node name="DebugMenu" parent="." node_paths=PackedStringArray("environment") instance=ExtResource("1_pv4gp")]
 environment = NodePath("../Environment")
-
-[node name="ShaderTests" type="Control" parent="DebugMenu"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="VHS" type="ColorRect" parent="DebugMenu/ShaderTests"]
-material = SubResource("ShaderMaterial_gwcqi")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CRT" type="ColorRect" parent="DebugMenu/ShaderTests"]
-visible = false
-material = SubResource("ShaderMaterial_j7580")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Grain" type="ColorRect" parent="DebugMenu/ShaderTests"]
-material = SubResource("ShaderMaterial_gjaqw")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Floyd" type="ColorRect" parent="DebugMenu/ShaderTests"]
-visible = false
-material = SubResource("ShaderMaterial_vai3r")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Bayer" type="ColorRect" parent="DebugMenu/ShaderTests"]
-visible = false
-material = SubResource("ShaderMaterial_qdenl")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Environment" parent="." instance=ExtResource("1_yuk8r")]
 
@@ -133,7 +57,7 @@ texture_scale = 3.0
 [node name="Testbox" type="StaticBody2D" parent="YSort"]
 visible = false
 position = Vector2(528, -120)
-script = ExtResource("4_dyppo")
+script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox"]
 texture = ExtResource("4_f2ddw")
@@ -158,7 +82,7 @@ debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
 [node name="Testbox2" type="StaticBody2D" parent="YSort"]
 visible = false
 position = Vector2(696, -120)
-script = ExtResource("4_dyppo")
+script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox2"]
 texture = ExtResource("4_f2ddw")
