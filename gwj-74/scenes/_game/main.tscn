@@ -1,12 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://bayfj2ww07ml3"]
+[gd_scene load_steps=12 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="PackedScene" uid="uid://dfnd8kxfwy83n" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
+[ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
+[ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
-[ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]
 [ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
+[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="9_tw8f7"]
+
+[sub_resource type="GDScript" id="GDScript_533ns"]
+script/source = "extends StaticBody2D
+
+
+
+#func _ready() -> void:
+	#for child in get_children():
+		#if child is Interactable:
+			#child.interacted.connect(on_interacted)
+			#break
+	#
+#func on_interacted():
+	#print(GameState.test_checked)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pgkp"]
 size = Vector2(128, 64)
@@ -20,21 +35,29 @@ size = Vector2(144, 20)
 
 [node name="Main" type="Node2D"]
 
+[node name="DebugMenu" parent="." node_paths=PackedStringArray("environment", "player") instance=ExtResource("1_pv4gp")]
+environment = NodePath("../Environment")
+player = NodePath("../YSort/CharacterBody2D")
+
 [node name="Environment" parent="." instance=ExtResource("1_yuk8r")]
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="player" parent="YSort" instance=ExtResource("3_o03rn")]
-speed = 225.0
+[node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
 
-[node name="PointLight2D" parent="YSort/player" instance=ExtResource("4_526yj")]
+[node name="PointLight2D" type="PointLight2D" parent="YSort/CharacterBody2D"]
 process_physics_priority = 1
+energy = 0.4
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
+texture = ExtResource("9_tw8f7")
+texture_scale = 3.0
 
 [node name="Testbox" type="StaticBody2D" parent="YSort"]
 position = Vector2(528, -120)
-script = ExtResource("4_dyppo")
+script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox"]
 texture = ExtResource("4_f2ddw")
@@ -58,7 +81,7 @@ debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
 
 [node name="Testbox2" type="StaticBody2D" parent="YSort"]
 position = Vector2(696, -120)
-script = ExtResource("4_dyppo")
+script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox2"]
 texture = ExtResource("4_f2ddw")
@@ -68,7 +91,6 @@ position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_7pgkp")
 
 [node name="Interactable" parent="YSort/Testbox2" instance=ExtResource("5_wsy6l")]
-dialogue_start = "testbox"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/Interactable"]
 position = Vector2(0, 56)

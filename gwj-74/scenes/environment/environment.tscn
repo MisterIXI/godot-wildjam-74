@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://6nvb2g66lbs8" path="res://assets/images/lights/flash_light.png" id="8_a42q5"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
