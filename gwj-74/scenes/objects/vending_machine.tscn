@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxjtlmlg0kxb"]
+
+[ext_resource type="Texture2D" uid="uid://c01a7643olouw" path="res://assets/images/objects/Vending Machine.png" id="1_tq2x2"]
+[ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_6c08c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw4sq"]
+size = Vector2(145, 36)
+
+[node name="VendingMachine" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="VendingMachine" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -69)
+texture = ExtResource("1_tq2x2")
+
+[node name="PointLight2D" type="PointLight2D" parent="VendingMachine"]
+position = Vector2(-5.99998, 31)
+scale = Vector2(0.566406, 0.624512)
+color = Color(0.671782, 1, 0.992539, 1)
+energy = 0.47
+texture = ExtResource("2_6c08c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 18)
+shape = SubResource("RectangleShape2D_xw4sq")

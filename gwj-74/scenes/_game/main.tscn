@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=13 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_wsy6l"]
 [ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
+[ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="8_l753l"]
 [ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="9_tw8f7"]
 
 [sub_resource type="GDScript" id="GDScript_533ns"]
@@ -56,7 +57,7 @@ texture = ExtResource("9_tw8f7")
 texture_scale = 3.0
 
 [node name="Testbox" type="StaticBody2D" parent="YSort"]
-position = Vector2(528, -120)
+position = Vector2(1445, -142)
 script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox"]
@@ -80,7 +81,7 @@ shape = SubResource("RectangleShape2D_vuwtl")
 debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
 
 [node name="Testbox2" type="StaticBody2D" parent="YSort"]
-position = Vector2(696, -120)
+position = Vector2(1613, -142)
 script = SubResource("GDScript_533ns")
 
 [node name="DebugTile" type="Sprite2D" parent="YSort/Testbox2"]
@@ -102,3 +103,7 @@ debug_color = Color(0.877058, 0.000403528, 0.831181, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Testbox2/InteractionBlocker"]
 shape = SubResource("RectangleShape2D_vuwtl")
 debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
+
+[node name="VendingMachine" parent="YSort" instance=ExtResource("8_l753l")]
+y_sort_enabled = false
+position = Vector2(532, -190)
