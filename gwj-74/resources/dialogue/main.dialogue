@@ -20,3 +20,21 @@ You're on your way home from work sitting in your usual subway line.
 As you listen to the rhythmic rattling of the rails and the mumbling of the other busy passengers,
 	your eyes grow heavier and heavier and you drift off into a deep slumber...
 
+=> END
+
+~ beginning
+
+Huh?
+Damn, I must've dow
+	And where is everybody else?
+Is this the terminal station?
+
+=> END
+
+~ outside
+
+if was_outside == false:
+	Man, this place looks deserted..,
+	Is anyone even here?
+	was_outside = true
+	
