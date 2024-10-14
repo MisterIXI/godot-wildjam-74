@@ -131,14 +131,20 @@ teleporter = NodePath("Teleporter")
 walls = NodePath("Walls")
 
 [node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(47.26, 71.465)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -23984.0
+offset_top = -9036.0
+offset_right = 23984.0
+offset_bottom = 9036.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Shader" type="CanvasLayer" parent="."]
 
