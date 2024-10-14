@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=56 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="PackedScene" uid="uid://dd3atetchfge" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
 [ext_resource type="PackedScene" uid="uid://bxcutxc36q38w" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
+[ext_resource type="Texture2D" uid="uid://l6d3du7bba3w" path="res://assets/images/backgrounds/Sign.png" id="22_f88se"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
 shader = ExtResource("2_f6wvl")
@@ -905,3 +906,7 @@ shape = SubResource("RectangleShape2D_2w8kq")
 [node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
 
 [node name="Toilette" parent="." instance=ExtResource("21_4m6i5")]
+
+[node name="Sign" type="Sprite2D" parent="."]
+position = Vector2(-1381, -533)
+texture = ExtResource("22_f88se")
