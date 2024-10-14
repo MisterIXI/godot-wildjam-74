@@ -5,7 +5,6 @@
 [ext_resource type="Shader" path="res://scenes/_debug/oli/vhs_shader_test.gdshader" id="2_gts8d"]
 [ext_resource type="Shader" path="res://scenes/_debug/oli/crt_shader_test.gdshader" id="3_3dbf5"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" uid="uid://1qqldykxx3mf" path="res://scenes/_debug/oli/point_light_2d.tscn" id="4_526yj"]
 [ext_resource type="Script" path="res://scenes/_debug/testbox.gd" id="4_dyppo"]
 [ext_resource type="Texture2D" uid="uid://dw3m2u8mvprol" path="res://assets/images/temp/debug_tile.png" id="4_f2ddw"]
 [ext_resource type="Shader" path="res://scenes/_debug/oli/grain_shader_test.gdshader" id="4_mbl5c"]
@@ -13,6 +12,7 @@
 [ext_resource type="Shader" path="res://scenes/_debug/oli/floyd_shader_test.gdshader" id="5_wxx1g"]
 [ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="6_fj48v"]
 [ext_resource type="Shader" path="res://scenes/_debug/oli/bayer_shader_test.gdshader" id="6_pw2n0"]
+[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="9_tw8f7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gwcqi"]
 shader = ExtResource("2_gts8d")
@@ -121,10 +121,14 @@ y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
 
-[node name="PointLight2D" parent="YSort/CharacterBody2D" instance=ExtResource("4_526yj")]
+[node name="PointLight2D" type="PointLight2D" parent="YSort/CharacterBody2D"]
 process_physics_priority = 1
 energy = 0.4
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
+texture = ExtResource("9_tw8f7")
+texture_scale = 3.0
 
 [node name="Testbox" type="StaticBody2D" parent="YSort"]
 visible = false
