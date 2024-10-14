@@ -218,6 +218,7 @@ position = Vector2(-2872.04, -1.52588e-05)
 shape = SubResource("RectangleShape2D_ifasf")
 
 [node name="StationWallRight" type="StaticBody2D" parent="Walls"]
+visible = false
 position = Vector2(1043, 0)
 
 [node name="Station-wall-tile" type="Sprite2D" parent="Walls/StationWallRight"]

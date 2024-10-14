@@ -24,7 +24,7 @@ y_sort_enabled = false
 position = Vector2(1297, -371)
 
 [node name="Trashcan2" parent="YSort" instance=ExtResource("9_iux46")]
-position = Vector2(-1367, -83)
+position = Vector2(-1381, -81)
 
 [node name="Trashcan3" parent="YSort" instance=ExtResource("9_iux46")]
 position = Vector2(-2458, -82)
