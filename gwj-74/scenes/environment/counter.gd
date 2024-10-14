@@ -5,6 +5,8 @@ class_name Counter
 @export var counter_man : Node2D = null
 @export var counter_outside : Node2D = null
 @export var counter_inside : Node2D = null
+@export var lights_outside : Array[Node2D] = []
+@export var lights_inside : Array[Node2D] = []
 @export var counter_door_collider : CollisionShape2D = null
 @export_range(0, 2) var animation_duration : float = 0.3
 @export var man_flicker_pause_range : Vector2 = Vector2(0.1, 1)
@@ -36,12 +38,24 @@ func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
 	CustomTweener.tween_visibility(counter_inside, _tween_inside, counter_outside, _tween_outside, animation_duration)
+	if !lights_outside.is_empty():
+		for light in lights_outside:
+			light.visible = false
+	if !lights_inside.is_empty():
+		for light in lights_inside:
+			light.visible = true
 
 
 func _on_body_exited(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
 	CustomTweener.tween_visibility(counter_outside, _tween_outside, counter_inside, _tween_inside, animation_duration)
+	if !lights_outside.is_empty():
+		for light in lights_outside:
+			light.visible = true
+	if !lights_inside.is_empty():
+		for light in lights_inside:
+			light.visible = false
 
 
 func set_door(open : bool) -> void:

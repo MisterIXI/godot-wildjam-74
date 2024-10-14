@@ -802,12 +802,13 @@ modulate = Color(0.662452, 0.662452, 0.662452, 1)
 position = Vector2(-280, -557)
 scale = Vector2(0.7, 0.7)
 
-[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "counter_door_collider")]
+[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "counter_door_collider")]
 script = ExtResource("7_15l0w")
 counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
 counter_outside = NodePath("Counter-outside")
 counter_inside = NodePath("CounterInside")
+lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
