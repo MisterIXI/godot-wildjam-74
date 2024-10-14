@@ -56,7 +56,6 @@ texture = ExtResource("9_tw8f7")
 texture_scale = 3.0
 
 [node name="Testbox" type="StaticBody2D" parent="YSort"]
-visible = false
 position = Vector2(528, -120)
 script = SubResource("GDScript_533ns")
 
@@ -81,7 +80,6 @@ shape = SubResource("RectangleShape2D_vuwtl")
 debug_color = Color(0.85453, 0.000787612, 0.889131, 0.42)
 
 [node name="Testbox2" type="StaticBody2D" parent="YSort"]
-visible = false
 position = Vector2(696, -120)
 script = SubResource("GDScript_533ns")
 
