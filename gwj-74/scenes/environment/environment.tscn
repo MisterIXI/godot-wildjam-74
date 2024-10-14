@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://6nvb2g66lbs8" path="res://assets/images/lights/flash_light.png" id="8_a42q5"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifasf"]
@@ -140,7 +140,7 @@ wall_right = NodePath("StationWallRight")
 
 [node name="StationWallLeft" type="StaticBody2D" parent="Walls"]
 visible = false
-position = Vector2(-347, 0)
+position = Vector2(-1043, 0)
 
 [node name="StationWallLeftSprite" type="Sprite2D" parent="Walls/StationWallLeft"]
 position = Vector2(-2784, 0)
@@ -159,7 +159,7 @@ shape = SubResource("RectangleShape2D_ifasf")
 
 [node name="StationWallRight" type="StaticBody2D" parent="Walls"]
 visible = false
-position = Vector2(347, 0)
+position = Vector2(1043, 0)
 
 [node name="Station-wall-tile" type="Sprite2D" parent="Walls/StationWallRight"]
 position = Vector2(2784, 0)
@@ -832,13 +832,13 @@ threshold_left = NodePath("Threshhold_left")
 threshold_right = NodePath("Threshhold_right")
 
 [node name="Threshhold_left" type="Area2D" parent="Teleporter"]
+position = Vector2(-4176, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Threshhold_left"]
-position = Vector2(-3828, 0)
 shape = SubResource("RectangleShape2D_2w8kq")
 
 [node name="Threshhold_right" type="Area2D" parent="Teleporter"]
+position = Vector2(4176, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
-position = Vector2(3828, 0)
 shape = SubResource("RectangleShape2D_2w8kq")

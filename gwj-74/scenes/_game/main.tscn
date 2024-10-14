@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="Shader" path="res://scenes/_debug/oli/vhs_shader_test.gdshader" id="2_gts8d"]
 [ext_resource type="Shader" path="res://scenes/_debug/oli/crt_shader_test.gdshader" id="3_3dbf5"]
