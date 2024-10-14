@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=53 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -31,6 +31,16 @@ shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0
 shader_parameter/colorOffsetIntensity = 0.17
+
+[sub_resource type="Environment" id="Environment_r0l3c"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.14
+glow_bloom = 0.16
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifasf"]
 size = Vector2(177.913, 1256)
@@ -166,6 +176,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r0l3c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.144531, 0.144531, 0.144531, 1)
