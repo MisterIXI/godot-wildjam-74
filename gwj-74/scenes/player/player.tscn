@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6tip7fbowjjb"]
+[gd_scene load_steps=5 format=3 uid="uid://c6tip7fbowjjb"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_cglt2"]
 [ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="2_1mpv4"]
+[ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="3_xcmmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2j3l"]
 radius = 14.3
@@ -29,3 +30,12 @@ position_smoothing_speed = 15.0
 position = Vector2(0, -0.425)
 target_position = Vector2(0, 100)
 collision_mask = 4
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+process_physics_priority = 1
+energy = 0.4
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = ExtResource("3_xcmmw")
+texture_scale = 3.0
