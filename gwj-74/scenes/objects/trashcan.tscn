@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2abl68q2umsk"]
+
+[ext_resource type="Texture2D" uid="uid://csmg7g1g8pix5" path="res://assets/images/objects/Trahsbin.png" id="1_ckt1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwavh"]
+size = Vector2(116, 19)
+
+[node name="Trashcan" type="StaticBody2D"]
+position = Vector2(-529, -108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 10.5)
+shape = SubResource("RectangleShape2D_uwavh")
+
+[node name="Trahsbin" type="Sprite2D" parent="."]
+position = Vector2(3, -23)
+texture = ExtResource("1_ckt1f")
