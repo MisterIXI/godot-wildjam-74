@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt53nq8hywnp1"
-path="res://.godot/imported/train-outside-entrances.png-417dce203986cb786a0e4875f786378a.ctex"
+uid="uid://bpgc8g73davi8"
+path="res://.godot/imported/circle_light.png-ffb6a1ff8a82a7699c9e7ec3730741f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backgrounds/train-outside-entrances.png"
-dest_files=["res://.godot/imported/train-outside-entrances.png-417dce203986cb786a0e4875f786378a.ctex"]
+source_file="res://assets/images/lights/circle_light.png"
+dest_files=["res://.godot/imported/circle_light.png-ffb6a1ff8a82a7699c9e7ec3730741f9.ctex"]
 
 [params]
 

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @export var speed = 200.0
 @export var acceleration = 0.2
@@ -15,7 +15,7 @@ var direction: Vector2
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	
 	# Handle input
 	direction = get_input()
@@ -26,7 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			interaction_ray_cast.get_collider().interact()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	# Handle character direction
 	if direction.y < 0 and direction.x == 0:
