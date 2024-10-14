@@ -56,7 +56,6 @@ func _on_body_exited(body: Node) -> void:
 
 
 func set_door(open : bool, wagon_id : int) -> void:
-	print("set_door: ", open, wagon_id)
 	if wagon_id == 0:
 		for child in train_door_front_static_body.get_children():
 			child.disabled = open
