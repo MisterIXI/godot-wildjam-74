@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://scenes/_debug/oli/debug_menu.gd" id="1_xat5f"]
 [ext_resource type="LabelSettings" uid="uid://dvryradd777of" path="res://resources/_debug/debug_label_font.tres" id="2_r181d"]
 
-[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("clock_text", "clock_button", "walls_left_check", "walls_right_check", "train_front_check", "train_back_check", "train_inside_check", "counter_door_check", "counter_man_check")]
+[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("player_text", "player_button", "clock_text", "clock_button", "walls_left_check", "walls_right_check", "train_front_check", "train_back_check", "train_inside_check", "counter_door_check", "counter_man_check")]
 script = ExtResource("1_xat5f")
+player_text = NodePath("ColorRect/VBoxContainer/Player/TextEdit2")
+player_button = NodePath("ColorRect/VBoxContainer/Player/Button")
 clock_text = NodePath("ColorRect/VBoxContainer/ClockTime/TextEdit2")
 clock_button = NodePath("ColorRect/VBoxContainer/ClockTime/Button")
 walls_left_check = NodePath("ColorRect/VBoxContainer/Walls/LeftCheck")
@@ -27,6 +29,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Player" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Player Speed"
+label_settings = ExtResource("2_r181d")
+vertical_alignment = 1
+
+[node name="TextEdit2" type="TextEdit" parent="ColorRect/VBoxContainer/Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "float"
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Player"]
+layout_mode = 2
+focus_mode = 0
+text = "set"
 
 [node name="ClockTime" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2

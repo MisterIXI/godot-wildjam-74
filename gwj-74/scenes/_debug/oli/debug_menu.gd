@@ -1,7 +1,10 @@
 extends CanvasLayer
 
 @export var environment : xXxEnvironmentxXx = null
+@export var player : Player = null
 
+@export var player_text : TextEdit = null
+@export var player_button : Button = null
 @export var clock_text : TextEdit = null
 @export var clock_button : Button = null
 @export var walls_left_check : CheckButton = null
@@ -15,6 +18,9 @@ extends CanvasLayer
 
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
+
+	player_button.pressed.connect(_on_player_button_pressed)
+
 	clock_button.pressed.connect(_on_clock_button_pressed)
 
 	walls_left_check.toggled.connect(_on_walls_left_check_pressed)
@@ -42,6 +48,13 @@ func _ready() -> void:
 		counter_man_check.button_pressed = true
 
 
+func _on_player_button_pressed() -> void:
+	if player_text.text == "":
+		clock_text.release_focus()
+		return
+	player.speed = player_text.text.to_float()
+	player_text.text = ""
+	player_text.release_focus()
 
 
 func _on_clock_button_pressed() -> void:

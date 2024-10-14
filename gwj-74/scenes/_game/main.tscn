@@ -35,8 +35,9 @@ size = Vector2(144, 20)
 
 [node name="Main" type="Node2D"]
 
-[node name="DebugMenu" parent="." node_paths=PackedStringArray("environment") instance=ExtResource("1_pv4gp")]
+[node name="DebugMenu" parent="." node_paths=PackedStringArray("environment", "player") instance=ExtResource("1_pv4gp")]
 environment = NodePath("../Environment")
+player = NodePath("../YSort/CharacterBody2D")
 
 [node name="Environment" parent="." instance=ExtResource("1_yuk8r")]
 
