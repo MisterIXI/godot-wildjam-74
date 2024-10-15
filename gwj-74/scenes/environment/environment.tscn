@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=56 format=3 uid="uid://5y3y8neopnpa"]
+=======
+[gd_scene load_steps=65 format=3 uid="uid://5y3y8neopnpa"]
+>>>>>>> decals
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -10,18 +14,35 @@
 [ext_resource type="Texture2D" uid="uid://d1ryvv8qv8t7s" path="res://assets/images/backgrounds/train-entrances-back.png" id="3_rfcum"]
 [ext_resource type="Texture2D" uid="uid://c7gs8tg80slw7" path="res://assets/images/backgrounds/train-entrances-front.png" id="4_mstmm"]
 [ext_resource type="Texture2D" uid="uid://1yhwf3m3suj6" path="res://assets/images/backgrounds/train-wagons.png" id="5_6epiq"]
+[ext_resource type="Texture2D" uid="uid://didi41fmpq5m2" path="res://assets/images/decals/puddle.png" id="5_lshov"]
+[ext_resource type="Material" uid="uid://cblj45dv2vt77" path="res://resources/materials/m_subtract.tres" id="5_xunpx"]
 [ext_resource type="Texture2D" uid="uid://wtvehf56xbmb" path="res://assets/images/backgrounds/Train-inside.png" id="6_jssr1"]
 [ext_resource type="Script" path="res://scenes/environment/counter.gd" id="7_15l0w"]
+[ext_resource type="Texture2D" uid="uid://c3qvv75tbelq8" path="res://assets/images/decals/1_puddle.png" id="7_224ru"]
 [ext_resource type="Texture2D" uid="uid://byn0plyqfjq5j" path="res://assets/images/backgrounds/counter-outside.png" id="7_b6g6a"]
 [ext_resource type="Texture2D" uid="uid://bfedghi2iqsja" path="res://assets/images/backgrounds/counter-outside-on.png" id="8_7i31v"]
 [ext_resource type="Texture2D" uid="uid://6nvb2g66lbs8" path="res://assets/images/lights/flash_light.png" id="8_a42q5"]
+[ext_resource type="Texture2D" uid="uid://damyrah02oqcc" path="res://assets/images/decals/2_puddle.png" id="8_cvff4"]
+[ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="PackedScene" uid="uid://dd3atetchfge" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
 [ext_resource type="PackedScene" uid="uid://bxcutxc36q38w" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
 [ext_resource type="Texture2D" uid="uid://l6d3du7bba3w" path="res://assets/images/backgrounds/Sign.png" id="22_f88se"]
+=======
+[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
+[ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
+[ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
+[ext_resource type="Texture2D" uid="uid://dexw8m7bxhume" path="res://assets/images/decals/4_stain.png" id="12_0g0cb"]
+[ext_resource type="Texture2D" uid="uid://b4k4n3s7nxjl5" path="res://assets/images/decals/5_stain.png" id="13_w45yx"]
+[ext_resource type="Texture2D" uid="uid://i0oyf0tyokd3" path="res://assets/images/decals/1newspaper.png" id="14_47ih5"]
+[ext_resource type="Texture2D" uid="uid://b3e2iwtyaccnr" path="res://assets/images/decals/2newspaper.png" id="15_xrcdc"]
+[ext_resource type="Texture2D" uid="uid://bgtrbmcl8k8m8" path="res://assets/images/decals/3newspaper.png" id="16_pla76"]
+>>>>>>> decals
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
 shader = ExtResource("2_f6wvl")
@@ -184,6 +205,7 @@ mouse_filter = 2
 environment = SubResource("Environment_r0l3c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -192,6 +214,361 @@ repeat_times = 21
 
 [node name="StationSprite" type="Sprite2D" parent="StationParallax"]
 texture = ExtResource("1_xfqj8")
+
+[node name="Decals" type="Node2D" parent="."]
+
+[node name="1Newspaper" type="Sprite2D" parent="Decals"]
+modulate = Color(0.366595, 0.366595, 0.366594, 1)
+position = Vector2(788, -112)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="2Newspaper" type="Sprite2D" parent="Decals"]
+modulate = Color(0.385493, 0.385493, 0.385492, 1)
+position = Vector2(789.631, -91)
+rotation = 0.772119
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="3Newspaper" type="Sprite2D" parent="Decals"]
+modulate = Color(0.419813, 0.419813, 0.419813, 1)
+position = Vector2(768, -91)
+rotation = 1.03524
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper3" type="Sprite2D" parent="Decals"]
+modulate = Color(0.356, 0.381667, 0.4, 1)
+position = Vector2(2658, -172)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="1Newspaper5" type="Sprite2D" parent="Decals"]
+modulate = Color(0.419746, 0.447912, 0.468041, 1)
+position = Vector2(1572, -233)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="2Newspaper3" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(2659, -156)
+rotation = 0.772119
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="3Newspaper3" type="Sprite2D" parent="Decals"]
+modulate = Color(0.396889, 0.396889, 0.396889, 1)
+position = Vector2(2153, 67.9999)
+rotation = 1.03524
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper6" type="Sprite2D" parent="Decals"]
+modulate = Color(0.419746, 0.447912, 0.468041, 1)
+position = Vector2(1220.64, 403.708)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="3Newspaper6" type="Sprite2D" parent="Decals"]
+modulate = Color(0.396889, 0.396889, 0.396889, 1)
+position = Vector2(1364.28, 508.416)
+rotation = 1.03524
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="3Newspaper4" type="Sprite2D" parent="Decals"]
+modulate = Color(0.414576, 0.447094, 0.446683, 1)
+position = Vector2(3544, 88.9998)
+rotation = 0.360454
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="3Newspaper7" type="Sprite2D" parent="Decals"]
+modulate = Color(0.414576, 0.447094, 0.446683, 1)
+position = Vector2(3008, 504)
+rotation = 0.360454
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper7" type="Sprite2D" parent="Decals"]
+modulate = Color(0.419746, 0.447912, 0.468041, 1)
+position = Vector2(-3033.85, 413.708)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="3Newspaper8" type="Sprite2D" parent="Decals"]
+modulate = Color(0.481789, 0.48179, 0.481789, 1)
+position = Vector2(-3206, 319)
+rotation = 1.60266
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="3Newspaper9" type="Sprite2D" parent="Decals"]
+modulate = Color(0.414576, 0.447094, 0.446683, 1)
+position = Vector2(-1660, 400)
+rotation = 0.360454
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper2" type="Sprite2D" parent="Decals"]
+modulate = Color(0.44, 0.4312, 0.4048, 1)
+position = Vector2(-1414, -204)
+rotation = -0.598451
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="2Newspaper2" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(-1644, -169)
+rotation = -2.3688
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="2Newspaper4" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(-2735, -312)
+rotation = -1.32168
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="3Newspaper2" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(-1133, 53)
+rotation = 0.353426
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper4" type="Sprite2D" parent="Decals"]
+modulate = Color(0.44, 0.4312, 0.4048, 1)
+position = Vector2(-2543.02, 59.0856)
+rotation = -0.598451
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="3Newspaper5" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(-2525, 40)
+rotation = 0.353426
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="Puddle" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-760, -168)
+scale = Vector2(0.525072, 0.427778)
+texture = ExtResource("5_lshov")
+
+[node name="Puddle2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(496, -312)
+scale = Vector2(0.46884, 0.506944)
+texture = ExtResource("5_lshov")
+
+[node name="Puddle3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-1797.45, 72)
+rotation = 3.14159
+scale = Vector2(0.46599, 0.322917)
+texture = ExtResource("5_lshov")
+
+[node name="1Puddle" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-296, 56)
+scale = Vector2(0.412162, 0.412162)
+texture = ExtResource("7_224ru")
+
+[node name="1Puddle3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(1848, -128)
+scale = Vector2(0.412162, 0.412162)
+texture = ExtResource("7_224ru")
+
+[node name="2Puddle" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-1589.75, -236.5)
+scale = Vector2(0.539312, 0.541237)
+texture = ExtResource("8_cvff4")
+
+[node name="2Puddle4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(2256, 64)
+rotation = 3.14159
+scale = Vector2(0.51812, 0.465206)
+texture = ExtResource("8_cvff4")
+
+[node name="2Puddle3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-3304, -288)
+scale = Vector2(0.446561, 0.494845)
+texture = ExtResource("8_cvff4")
+
+[node name="1Puddle2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(1130.82, 75.75)
+scale = Vector2(0.455344, 0.483108)
+texture = ExtResource("7_224ru")
+
+[node name="Puddle4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(3056, 80)
+scale = Vector2(0.46884, 0.506944)
+texture = ExtResource("5_lshov")
+
+[node name="1Puddle4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(3808, -280)
+scale = Vector2(0.455344, 0.483108)
+texture = ExtResource("7_224ru")
+
+[node name="2Puddle2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(2032, -123.304)
+rotation = 3.14159
+scale = Vector2(-0.528, 0.470057)
+texture = ExtResource("8_cvff4")
+
+[node name="1Stain" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-1024, -416)
+scale = Vector2(0.425926, 0.425926)
+texture = ExtResource("9_1v85k")
+
+[node name="1Stain4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-2768, -416)
+scale = Vector2(0.425926, 0.425926)
+texture = ExtResource("9_1v85k")
+
+[node name="1Stain2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(760, -416)
+scale = Vector2(0.425926, 0.425926)
+texture = ExtResource("9_1v85k")
+
+[node name="2Stain" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(1054.25, -408)
+scale = Vector2(0.539801, 0.5)
+texture = ExtResource("10_b2dm3")
+
+[node name="2Stain3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(2761.8, -412)
+scale = Vector2(0.709654, 0.53125)
+texture = ExtResource("10_b2dm3")
+
+[node name="1Stain3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-1900.38, -420.5)
+scale = Vector2(-0.515, 0.509)
+texture = ExtResource("9_1v85k")
+
+[node name="2Stain2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-1586.13, -408)
+scale = Vector2(0.539801, 0.5)
+texture = ExtResource("10_b2dm3")
+
+[node name="2Stain4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-872, -408)
+scale = Vector2(-0.54, 0.5)
+texture = ExtResource("10_b2dm3")
+
+[node name="3Stain" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(1336, -408)
+scale = Vector2(0.653846, 0.653846)
+texture = ExtResource("11_ae0lp")
+
+[node name="3Stain3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-2320, -408)
+scale = Vector2(0.845142, 0.548077)
+texture = ExtResource("11_ae0lp")
+
+[node name="3Stain4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-1312, -406)
+scale = Vector2(0.668162, 0.427884)
+texture = ExtResource("11_ae0lp")
+
+[node name="3Stain2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(2487, -408.25)
+scale = Vector2(0.677295, 0.528847)
+texture = ExtResource("11_ae0lp")
+
+[node name="4Stain" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(2246.76, -424.875)
+scale = Vector2(0.654884, 0.592857)
+texture = ExtResource("12_0g0cb")
+
+[node name="5Stain" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(1892.62, -419.5)
+scale = Vector2(0.695122, 0.695122)
+texture = ExtResource("13_w45yx")
+
+[node name="4Stain2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-472, -424)
+scale = Vector2(-0.655, 0.593)
+texture = ExtResource("12_0g0cb")
+
+[node name="4Stain3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(3272, -424)
+scale = Vector2(-0.655, 0.593)
+texture = ExtResource("12_0g0cb")
+
+[node name="5Stain2" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-3472, -424)
+scale = Vector2(0.695122, 0.695122)
+texture = ExtResource("13_w45yx")
+
+[node name="5Stain3" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(3816, -424)
+scale = Vector2(0.695122, 0.695122)
+texture = ExtResource("13_w45yx")
 
 [node name="Walls" type="Node2D" parent="." node_paths=PackedStringArray("wall_left", "wall_right")]
 script = ExtResource("3_3nthg")
@@ -268,6 +645,7 @@ position = Vector2(4246.75, 217)
 shape = SubResource("RectangleShape2D_yv0w0")
 
 [node name="WallCollider" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="WallLeft" type="CollisionShape2D" parent="WallCollider"]
 position = Vector2(-3092.25, -395.75)
