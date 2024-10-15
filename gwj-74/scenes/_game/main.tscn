@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=7 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
+[ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="6_11yuq"]
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="8_l753l"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
 
@@ -34,3 +35,15 @@ position = Vector2(1110, -378)
 
 [node name="Trashcan5" parent="YSort" instance=ExtResource("9_iux46")]
 position = Vector2(2319, -82)
+
+[node name="Bench" parent="YSort" instance=ExtResource("6_11yuq")]
+position = Vector2(-698, -378)
+
+[node name="Bench2" parent="YSort" instance=ExtResource("6_11yuq")]
+position = Vector2(-2089, -385)
+
+[node name="Bench3" parent="YSort" instance=ExtResource("6_11yuq")]
+position = Vector2(694, -383)
+
+[node name="Bench4" parent="YSort" instance=ExtResource("6_11yuq")]
+position = Vector2(1914, -382)
