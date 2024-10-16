@@ -13,17 +13,20 @@ var direction: Vector2
 
 @onready var character_sprite: Sprite2D = %CharacterSprite
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
+@onready var interact_bubble: Node2D = %InteractBubble
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	
 	# Handle input
 	direction = get_input()
 	
 	# Handle Interaction collision
-	if interaction_ray_cast.is_colliding() and Input.is_action_just_pressed("Interact"):
-		if interaction_ray_cast.get_collider().is_in_group("Interactable"):
+	if interaction_ray_cast.is_colliding() and interaction_ray_cast.get_collider().is_in_group("Interactable"):
+		interact_bubble.bubble_appear()
+		if Input.is_action_just_pressed("Interact"):
 			interaction_ray_cast.get_collider().interact()
+	else:
+		interact_bubble.bubble_disappear()
 
 
 func _physics_process(_delta: float) -> void:

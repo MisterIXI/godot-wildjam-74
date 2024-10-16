@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://ir7658lr1ygt"]
+
+[ext_resource type="Texture2D" uid="uid://c48l6tg6nye4d" path="res://assets/images/ui/bubble_sheet.png" id="1_e2q0d"]
+[ext_resource type="Script" path="res://scenes/ui/interact_bubble.gd" id="1_h3fed"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6mk5"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh8wq"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s50j8"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5h12"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3arsu"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j87rt"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27cbr"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7a81"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cpwh"]
+atlas = ExtResource("1_e2q0d")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ima8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6mk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh8wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s50j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5h12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3arsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j87rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27cbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7a81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cpwh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="InteractBubble" type="Node2D"]
+script = ExtResource("1_h3fed")
+
+[node name="JigglePivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JigglePivot"]
+position = Vector2(34, -35)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ima8y")
+autoplay = "default"
+frame_progress = 0.0273673

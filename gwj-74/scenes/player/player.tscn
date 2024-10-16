@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6tip7fbowjjb"]
+[gd_scene load_steps=6 format=3 uid="uid://c6tip7fbowjjb"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_cglt2"]
 [ext_resource type="Texture2D" uid="uid://81p2i1865jpq" path="res://assets/images/temp/character-front.png" id="2_1mpv4"]
 [ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="3_xcmmw"]
+[ext_resource type="PackedScene" uid="uid://ir7658lr1ygt" path="res://scenes/ui/interact_bubble.tscn" id="4_8cw75"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2j3l"]
 radius = 14.3
@@ -39,3 +40,8 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 texture = ExtResource("3_xcmmw")
 texture_scale = 3.0
+
+[node name="InteractBubble" parent="." instance=ExtResource("4_8cw75")]
+unique_name_in_owner = true
+position = Vector2(30, -115)
+scale = Vector2(0.2, 0.2)
