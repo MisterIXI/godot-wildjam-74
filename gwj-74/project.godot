@@ -75,7 +75,9 @@ folder_colors={
 "res://components/": "green",
 "res://global/": "yellow",
 "res://resources/": "orange",
-"res://scenes/": "blue"
+"res://scenes/": "blue",
+"res://scenes/_debug/": "pink",
+"res://scenes/_game/": "teal"
 }
 
 [global_group]
