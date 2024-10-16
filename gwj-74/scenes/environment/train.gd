@@ -11,6 +11,7 @@ class_name Train
 @export var train_door_back : Node2D = null
 @export var train_door_back_static_body : StaticBody2D = null
 @export var train_door_inside_collider : CollisionShape2D = null
+@export var train_door_inside : CanvasItem = null
 @export_range(0, 2) var animation_duration : float = 0.3
 @export_range(0, 2) var door_animation_duration : float = 0.3
 
@@ -24,6 +25,7 @@ var _tween_outside : Tween = null
 var _tween_inside : Tween = null
 var _tween_door_front : Tween = null
 var _tween_door_back : Tween = null
+var _tween_door_inside : Tween = null
 
 
 func _ready():
@@ -73,4 +75,5 @@ func set_door(open : bool, wagon_id : int) -> void:
 
 func set_door_inside(open : bool) -> void:
 	train_door_inside_collider.disabled = open
+	CustomTweener.set_visibility(open, train_door_inside, _tween_door_inside, door_animation_duration)
 	door_inside_open = open

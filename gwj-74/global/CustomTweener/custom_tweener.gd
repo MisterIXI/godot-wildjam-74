@@ -31,7 +31,6 @@ func set_visibility(value: bool, item: CanvasItem, tween: Tween, duration: float
 	if value:
 		item.visible = true
 		tween.tween_property(item, "modulate:a", 1, duration)
-		tween.tween_property(item, "modulate:a", 1, duration)
 	else:
 		tween.tween_property(item, "modulate:a", 0, duration)
 		tween.tween_callback(item.hide)

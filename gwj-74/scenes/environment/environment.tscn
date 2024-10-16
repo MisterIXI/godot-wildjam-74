@@ -92,6 +92,9 @@ size = Vector2(5833.5, 42.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1lkh"]
 size = Vector2(6678.75, 42.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl22c"]
+size = Vector2(100.5, 21.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hp67"]
 size = Vector2(49.5, 321)
 
@@ -127,9 +130,6 @@ size = Vector2(23, 156.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dct7d"]
 size = Vector2(3262.5, 388)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl22c"]
-size = Vector2(100.5, 21.5)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_502dn"]
 load_path = "res://.godot/imported/full_round_light.png-d66a5b1f3ca8510c6c3423ad59cea976.ctex"
@@ -828,7 +828,68 @@ shape = SubResource("RectangleShape2D_amooh")
 position = Vector2(3667.63, -396)
 shape = SubResource("RectangleShape2D_d1lkh")
 
-[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider")]
+[node name="Train-entrances-front-collider" type="StaticBody2D" parent="."]
+
+[node name="Train-entrance-front-1" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+position = Vector2(-1343, 202)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Train-entrance-front-2" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+position = Vector2(-723, 202.25)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Train-entrance-front-3" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+position = Vector2(-157, 202)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Train-entrances-back-collider" type="StaticBody2D" parent="."]
+
+[node name="Train-entrance-back-1" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+position = Vector2(254, 202)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Train-entrance-back-2" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+position = Vector2(814, 203)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Train-entrance-back-3" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+position = Vector2(1448, 202)
+shape = SubResource("RectangleShape2D_vl22c")
+
+[node name="Clock" parent="." instance=ExtResource("10_860w5")]
+modulate = Color(0.662452, 0.662452, 0.662452, 1)
+position = Vector2(-280, -557)
+scale = Vector2(0.7, 0.7)
+
+[node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
+position = Vector2(47, 2)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="VendingMachine" parent="Objects" instance=ExtResource("31_c5q8h")]
+y_sort_enabled = false
+position = Vector2(1339, -379)
+
+[node name="Bench" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(-647, -380)
+
+[node name="Bench2" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(-2045, -387)
+
+[node name="Bench3" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(741, -385)
+
+[node name="Bench4" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(1962, -383)
+
+[node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
+position = Vector2(1165, -374)
+
+[node name="Sign" type="Sprite2D" parent="."]
+position = Vector2(-1346, -532)
+texture = ExtResource("22_f88se")
+
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
 script = ExtResource("3_co6w8")
 train_area = NodePath("TrainArea")
 train_outside = NodePath("TrainOutside")
@@ -840,6 +901,7 @@ train_door_front_static_body = NodePath("../Train-entrances-front-collider")
 train_door_back = NodePath("TrainOutside/Train-entrances-back")
 train_door_back_static_body = NodePath("../Train-entrances-back-collider")
 train_door_inside_collider = NodePath("Train-inside/WagonConnector/CollisionShape2D")
+train_door_inside = NodePath("Train-inside/WagonConnector/OpenDoor")
 
 [node name="TrainOutside" type="Sprite2D" parent="Train"]
 position = Vector2(-6, 361)
@@ -1168,6 +1230,14 @@ shape = SubResource("RectangleShape2D_so1ij")
 position = Vector2(372, -116.25)
 shape = SubResource("RectangleShape2D_8hvtk")
 
+[node name="OpenDoor" type="ColorRect" parent="Train/Train-inside/WagonConnector"]
+visible = false
+offset_left = 349.0
+offset_top = -164.0
+offset_right = 395.0
+offset_bottom = -67.0
+color = Color(0.329, 0.329, 0.329, 1)
+
 [node name="Lights-inside" type="Node2D" parent="Train/Train-inside"]
 
 [node name="PointLight2D22" type="PointLight2D" parent="Train/Train-inside/Lights-inside"]
@@ -1335,67 +1405,6 @@ texture = ExtResource("10_khwxr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea"]
 position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
-
-[node name="Train-entrances-front-collider" type="StaticBody2D" parent="."]
-
-[node name="Train-entrance-front-1" type="CollisionShape2D" parent="Train-entrances-front-collider"]
-position = Vector2(-1343, 202)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Train-entrance-front-2" type="CollisionShape2D" parent="Train-entrances-front-collider"]
-position = Vector2(-723, 202.25)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Train-entrance-front-3" type="CollisionShape2D" parent="Train-entrances-front-collider"]
-position = Vector2(-157, 202)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Train-entrances-back-collider" type="StaticBody2D" parent="."]
-
-[node name="Train-entrance-back-1" type="CollisionShape2D" parent="Train-entrances-back-collider"]
-position = Vector2(254, 202)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Train-entrance-back-2" type="CollisionShape2D" parent="Train-entrances-back-collider"]
-position = Vector2(814, 203)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Train-entrance-back-3" type="CollisionShape2D" parent="Train-entrances-back-collider"]
-position = Vector2(1448, 202)
-shape = SubResource("RectangleShape2D_vl22c")
-
-[node name="Clock" parent="." instance=ExtResource("10_860w5")]
-modulate = Color(0.662452, 0.662452, 0.662452, 1)
-position = Vector2(-280, -557)
-scale = Vector2(0.7, 0.7)
-
-[node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
-position = Vector2(47, 2)
-
-[node name="Objects" type="Node2D" parent="."]
-
-[node name="VendingMachine" parent="Objects" instance=ExtResource("31_c5q8h")]
-y_sort_enabled = false
-position = Vector2(1339, -379)
-
-[node name="Bench" parent="Objects" instance=ExtResource("32_8yww6")]
-position = Vector2(-647, -380)
-
-[node name="Bench2" parent="Objects" instance=ExtResource("32_8yww6")]
-position = Vector2(-2045, -387)
-
-[node name="Bench3" parent="Objects" instance=ExtResource("32_8yww6")]
-position = Vector2(741, -385)
-
-[node name="Bench4" parent="Objects" instance=ExtResource("32_8yww6")]
-position = Vector2(1962, -383)
-
-[node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
-position = Vector2(1165, -374)
-
-[node name="Sign" type="Sprite2D" parent="."]
-position = Vector2(-1346, -532)
-texture = ExtResource("22_f88se")
 
 [node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "counter_door_collider")]
 script = ExtResource("7_15l0w")
