@@ -19,7 +19,6 @@ player = NodePath("../YSort/CharacterBody2D")
 y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
-speed = 800.0
 
 [node name="VendingMachine" parent="YSort" instance=ExtResource("8_l753l")]
 y_sort_enabled = false
