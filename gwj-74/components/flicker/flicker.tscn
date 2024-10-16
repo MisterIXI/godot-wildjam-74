@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ba3dqmaewe3"]
+
+[ext_resource type="Script" path="res://components/flicker/flicker.gd" id="1_ooqe4"]
+
+[node name="flicker" type="Node"]
+script = ExtResource("1_ooqe4")

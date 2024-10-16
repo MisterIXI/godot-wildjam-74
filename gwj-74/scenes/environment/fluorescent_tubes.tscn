@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd3atetchfge"]
+[gd_scene load_steps=5 format=3 uid="uid://dd3atetchfge"]
 
 [ext_resource type="Texture2D" uid="uid://dr7usxy6yx2ha" path="res://assets/images/objects/fluorescent tube.png" id="1_7brlc"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_yqvew"]
+[ext_resource type="Script" path="res://components/flicker/flicker.gd" id="3_red12"]
+[ext_resource type="PackedScene" uid="uid://5ba3dqmaewe3" path="res://components/flicker/flicker.tscn" id="4_iwvjg"]
 
 [node name="FluorescentTubes" type="Node2D"]
 
@@ -16,6 +18,10 @@ color = Color(1, 0.940169, 0.633895, 1)
 energy = 0.54
 texture = ExtResource("2_yqvew")
 
+[node name="flicker" type="Node" parent="FluorescentTube/leuchtmittel"]
+script = ExtResource("3_red12")
+offset_range = Vector2(10, 20)
+
 [node name="FluorescentTube3" type="Sprite2D" parent="."]
 position = Vector2(-2088, -512)
 texture = ExtResource("1_7brlc")
@@ -26,6 +32,10 @@ scale = Vector2(1.74023, 1.28906)
 color = Color(1, 0.940169, 0.633895, 1)
 energy = 0.54
 texture = ExtResource("2_yqvew")
+
+[node name="flicker" type="Node" parent="FluorescentTube3/leuchtmittel"]
+script = ExtResource("3_red12")
+offset_range = Vector2(10, 20)
 
 [node name="FluorescentTube5" type="Sprite2D" parent="."]
 position = Vector2(696, -512)
@@ -38,6 +48,10 @@ color = Color(1, 0.940169, 0.633895, 1)
 energy = 0.54
 texture = ExtResource("2_yqvew")
 
+[node name="flicker" type="Node" parent="FluorescentTube5/leuchtmittel"]
+script = ExtResource("3_red12")
+offset_range = Vector2(10, 20)
+
 [node name="FluorescentTube6" type="Sprite2D" parent="."]
 position = Vector2(1914, -512)
 texture = ExtResource("1_7brlc")
@@ -48,3 +62,6 @@ scale = Vector2(1.74023, 1.28906)
 color = Color(1, 0.940169, 0.633895, 1)
 energy = 0.54
 texture = ExtResource("2_yqvew")
+
+[node name="flicker" parent="FluorescentTube6/leuchtmittel" instance=ExtResource("4_iwvjg")]
+offset_range = Vector2(10, 20)

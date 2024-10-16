@@ -9,8 +9,11 @@ class_name Counter
 @export var lights_inside : Array[Node2D] = []
 @export var counter_door_collider : CollisionShape2D = null
 @export_range(0, 2) var animation_duration : float = 0.3
-@export var man_flicker_pause_range : Vector2 = Vector2(0.1, 1)
-@export_range(0, 2) var man_flicker_duration : float = 0.1
+
+
+@export var man_flicker_pause_range : Vector2 = Vector2(3, 5)
+@export var man_flicker_count_range : Vector2i = Vector2i(1, 3)
+@export_range(0, 2) var man_flicker_duration : float = 0.05
 
 
 var door_open : bool = true
@@ -84,6 +87,8 @@ func _man_flicker() -> void:
 		_tween_man.kill()
 	_tween_man = get_tree().create_tween()
 
-	_tween_man.tween_property(counter_man, "modulate:a", 0.5, man_flicker_duration)
-	_tween_man.tween_property(counter_man, "modulate:a", 1, man_flicker_duration)
+	var _count = randi_range(man_flicker_count_range.x, man_flicker_count_range.y)
+	for i in range(_count):
+		_tween_man.tween_property(counter_man, "modulate:a", 0.5, man_flicker_duration)
+		_tween_man.tween_property(counter_man, "modulate:a", 1, man_flicker_duration)
 	_tween_man.tween_callback(_man_flicker)
