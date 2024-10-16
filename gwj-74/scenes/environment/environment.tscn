@@ -43,6 +43,16 @@
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 
+[sub_resource type="Environment" id="Environment_r0l3c"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.14
+glow_bloom = 0.16
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
 shader = ExtResource("2_f6wvl")
 shader_parameter/strength = 50.0
@@ -54,16 +64,6 @@ shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0
 shader_parameter/colorOffsetIntensity = 0.17
-
-[sub_resource type="Environment" id="Environment_r0l3c"]
-background_mode = 3
-tonemap_mode = 3
-glow_enabled = true
-glow_normalized = true
-glow_strength = 1.14
-glow_bloom = 0.16
-glow_blend_mode = 0
-fog_light_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7hah"]
 size = Vector2(4543, 50)
@@ -162,7 +162,7 @@ font_size = 33
 script = ExtResource("1_fo1js")
 counter = NodePath("Counter")
 train = NodePath("Train")
-clock = NodePath("Clock")
+clock = NodePath("Objects/Clock")
 teleporter = NodePath("Teleporter")
 walls = NodePath("Walls")
 
@@ -182,9 +182,14 @@ size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Shader" type="CanvasLayer" parent="."]
+[node name="Shading" type="Node" parent="."]
 
-[node name="Grain" type="ColorRect" parent="Shader"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Shading"]
+environment = SubResource("Environment_r0l3c")
+
+[node name="Shader" type="CanvasLayer" parent="Shading"]
+
+[node name="Grain" type="ColorRect" parent="Shading/Shader"]
 material = SubResource("ShaderMaterial_gjaqw")
 custom_minimum_size = Vector2(1280, 720)
 anchors_preset = 15
@@ -194,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VHS" type="ColorRect" parent="Shader"]
+[node name="VHS" type="ColorRect" parent="Shading/Shader"]
 material = SubResource("ShaderMaterial_gwcqi")
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,10 +208,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_r0l3c")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -216,162 +218,162 @@ repeat_times = 28
 [node name="StationSprite" type="Sprite2D" parent="StationParallax"]
 texture = ExtResource("1_xfqj8")
 
-[node name="crack_decals" type="Node2D" parent="."]
+[node name="Decals" type="Node2D" parent="."]
+
+[node name="crack_decals" type="Node2D" parent="Decals"]
 position = Vector2(0.00012207, -1.52588e-05)
 
-[node name="crackA" type="Sprite2D" parent="crack_decals"]
+[node name="crackA" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(1380, -120)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="crackA7" type="Sprite2D" parent="crack_decals"]
+[node name="crackA7" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(2275, -225)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="CrackB" type="Sprite2D" parent="crack_decals"]
+[node name="CrackB" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(1210, -125)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("6_k812c")
 
-[node name="CrackC" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(1250, -92)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="CrackC6" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC6" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(3299, 89)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="CrackD" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(1534, 108)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="crackA2" type="Sprite2D" parent="crack_decals"]
+[node name="crackA2" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(1031, -147)
 rotation = 3.14159
 scale = Vector2(-0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="CrackB2" type="Sprite2D" parent="crack_decals"]
+[node name="CrackB2" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(2792, -256)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("6_k812c")
 
-[node name="CrackC2" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC2" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(937, -212)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="CrackD2" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD2" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(590, 57)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="crackA3" type="Sprite2D" parent="crack_decals"]
+[node name="crackA3" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(-236, 62)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="crackA4" type="Sprite2D" parent="crack_decals"]
+[node name="crackA4" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(-62.0001, -173)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="CrackC3" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC3" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(66.9999, -118)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="crackA5" type="Sprite2D" parent="crack_decals"]
+[node name="crackA5" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(-1927, -278)
 rotation = 3.14159
 scale = Vector2(-0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="CrackC4" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC4" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-555, -316)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="CrackC5" type="Sprite2D" parent="crack_decals"]
+[node name="CrackC5" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-2453, -133)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("7_h535r")
 
-[node name="crackA6" type="Sprite2D" parent="crack_decals"]
+[node name="crackA6" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
 position = Vector2(-1453.4, 35)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_naid6")
 
-[node name="CrackD3" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD3" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(266.125, -74)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="CrackB3" type="Sprite2D" parent="crack_decals"]
+[node name="CrackB3" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-265.875, -282)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("6_k812c")
 
-[node name="CrackD4" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD4" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-503.875, 57)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="CrackD5" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD5" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-2827, -361)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="CrackB4" type="Sprite2D" parent="crack_decals"]
+[node name="CrackB4" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-936.875, -256.5)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("6_k812c")
 
-[node name="CrackD6" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD6" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-1174.88, 82.5001)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="CrackD7" type="Sprite2D" parent="crack_decals"]
+[node name="CrackD7" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(4481, -361)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("8_saglc")
 
-[node name="CrackB5" type="Sprite2D" parent="crack_decals"]
+[node name="CrackB5" type="Sprite2D" parent="Decals/crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-4516, -256)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("6_k812c")
-
-[node name="Decals" type="Node2D" parent="."]
 
 [node name="1Newspaper" type="Sprite2D" parent="Decals"]
 modulate = Color(0.366595, 0.366595, 0.366594, 1)
@@ -858,15 +860,19 @@ shape = SubResource("RectangleShape2D_vl22c")
 position = Vector2(1448, 202)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Clock" parent="." instance=ExtResource("10_860w5")]
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Clock" parent="Objects" instance=ExtResource("10_860w5")]
 modulate = Color(0.662452, 0.662452, 0.662452, 1)
 position = Vector2(-280, -557)
 scale = Vector2(0.7, 0.7)
 
-[node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
+[node name="FluorescentTubes" parent="Objects" instance=ExtResource("20_172kl")]
 position = Vector2(47, 2)
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Sign" type="Sprite2D" parent="Objects"]
+position = Vector2(-1346, -532)
+texture = ExtResource("22_f88se")
 
 [node name="VendingMachine" parent="Objects" instance=ExtResource("31_c5q8h")]
 y_sort_enabled = false
@@ -886,10 +892,6 @@ position = Vector2(1962, -383)
 
 [node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
 position = Vector2(1165, -374)
-
-[node name="Sign" type="Sprite2D" parent="."]
-position = Vector2(-1346, -532)
-texture = ExtResource("22_f88se")
 
 [node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
 script = ExtResource("3_co6w8")
@@ -1414,7 +1416,7 @@ counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
 counter_outside = NodePath("Counter-outside")
 counter_inside = NodePath("CounterInside")
-lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D"), NodePath("../FluorescentTubes")]
+lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D"), NodePath("../Objects/FluorescentTubes")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
@@ -1476,7 +1478,7 @@ shape = SubResource("RectangleShape2D_720fm")
 position = Vector2(-3.5, -705.5)
 shape = SubResource("RectangleShape2D_do4ga")
 
-[node name="Toilette" parent="." instance=ExtResource("21_4m6i5")]
+[node name="Hallway" parent="." instance=ExtResource("21_4m6i5")]
 
 [node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
 position = Vector2(0, -87)

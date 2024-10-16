@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="1_4wqyu"]
 
-[node name="Toilette" type="Node2D"]
+[node name="Hallway" type="Node2D"]
 
-[node name="Toilette-door" type="Sprite2D" parent="."]
+[node name="Hallway-exit-door" type="Sprite2D" parent="."]
 position = Vector2(1502, -472)
 texture = ExtResource("1_4wqyu")
