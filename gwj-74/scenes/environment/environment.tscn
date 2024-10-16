@@ -788,71 +788,73 @@ position = Vector2(-4546.2, -412)
 scale = Vector2(0.709654, 0.53125)
 texture = ExtResource("10_b2dm3")
 
-[node name="TracksCollider" type="StaticBody2D" parent="."]
+[node name="Collider" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TracksCollider"]
+[node name="TracksCollider" type="StaticBody2D" parent="Collider"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(-3664.5, 216)
 shape = SubResource("RectangleShape2D_f7hah")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(-1032.5, 216)
 shape = SubResource("RectangleShape2D_8wbon")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(-439, 216.25)
 shape = SubResource("RectangleShape2D_pge0f")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(49, 216)
 shape = SubResource("RectangleShape2D_kj4ej")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(534, 216)
 shape = SubResource("RectangleShape2D_jgllc")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(1131, 216.5)
 shape = SubResource("RectangleShape2D_px8xs")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="TracksCollider"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Collider/TracksCollider"]
 position = Vector2(4246.75, 217)
 shape = SubResource("RectangleShape2D_yv0w0")
 
-[node name="WallCollider" type="StaticBody2D" parent="."]
+[node name="WallCollider" type="StaticBody2D" parent="Collider"]
 
-[node name="WallLeft" type="CollisionShape2D" parent="WallCollider"]
+[node name="WallLeft" type="CollisionShape2D" parent="Collider/WallCollider"]
 position = Vector2(-3092.25, -395.75)
 shape = SubResource("RectangleShape2D_amooh")
 
-[node name="WallRigth" type="CollisionShape2D" parent="WallCollider"]
+[node name="WallRigth" type="CollisionShape2D" parent="Collider/WallCollider"]
 position = Vector2(3667.63, -396)
 shape = SubResource("RectangleShape2D_d1lkh")
 
-[node name="Train-entrances-front-collider" type="StaticBody2D" parent="."]
+[node name="Train-entrances-front-collider" type="StaticBody2D" parent="Collider"]
 
-[node name="Train-entrance-front-1" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+[node name="Train-entrance-front-1" type="CollisionShape2D" parent="Collider/Train-entrances-front-collider"]
 position = Vector2(-1343, 202)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Train-entrance-front-2" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+[node name="Train-entrance-front-2" type="CollisionShape2D" parent="Collider/Train-entrances-front-collider"]
 position = Vector2(-723, 202.25)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Train-entrance-front-3" type="CollisionShape2D" parent="Train-entrances-front-collider"]
+[node name="Train-entrance-front-3" type="CollisionShape2D" parent="Collider/Train-entrances-front-collider"]
 position = Vector2(-157, 202)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Train-entrances-back-collider" type="StaticBody2D" parent="."]
+[node name="Train-entrances-back-collider" type="StaticBody2D" parent="Collider"]
 
-[node name="Train-entrance-back-1" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+[node name="Train-entrance-back-1" type="CollisionShape2D" parent="Collider/Train-entrances-back-collider"]
 position = Vector2(254, 202)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Train-entrance-back-2" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+[node name="Train-entrance-back-2" type="CollisionShape2D" parent="Collider/Train-entrances-back-collider"]
 position = Vector2(814, 203)
 shape = SubResource("RectangleShape2D_vl22c")
 
-[node name="Train-entrance-back-3" type="CollisionShape2D" parent="Train-entrances-back-collider"]
+[node name="Train-entrance-back-3" type="CollisionShape2D" parent="Collider/Train-entrances-back-collider"]
 position = Vector2(1448, 202)
 shape = SubResource("RectangleShape2D_vl22c")
 
@@ -897,9 +899,9 @@ train_inside = NodePath("Train-inside")
 lights_outside = NodePath("TrainOutside/Lights-outside")
 lights_inside = NodePath("Train-inside/Lights-inside")
 train_door_front = NodePath("TrainOutside/Train-entrances-front")
-train_door_front_static_body = NodePath("../Train-entrances-front-collider")
+train_door_front_static_body = NodePath("../Collider/Train-entrances-front-collider")
 train_door_back = NodePath("TrainOutside/Train-entrances-back")
-train_door_back_static_body = NodePath("../Train-entrances-back-collider")
+train_door_back_static_body = NodePath("../Collider/Train-entrances-back-collider")
 train_door_inside_collider = NodePath("Train-inside/WagonConnector/CollisionShape2D")
 train_door_inside = NodePath("Train-inside/WagonConnector/OpenDoor")
 
@@ -1412,7 +1414,7 @@ counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
 counter_outside = NodePath("Counter-outside")
 counter_inside = NodePath("CounterInside")
-lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D")]
+lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D"), NodePath("../FluorescentTubes")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
