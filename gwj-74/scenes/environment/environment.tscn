@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b5sxwci3e2ghi"]
+[gd_scene load_steps=73 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -35,9 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://i0oyf0tyokd3" path="res://assets/images/decals/1newspaper.png" id="14_47ih5"]
 [ext_resource type="Texture2D" uid="uid://b3e2iwtyaccnr" path="res://assets/images/decals/2newspaper.png" id="15_xrcdc"]
 [ext_resource type="Texture2D" uid="uid://bgtrbmcl8k8m8" path="res://assets/images/decals/3newspaper.png" id="16_pla76"]
-[ext_resource type="PackedScene" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
-[ext_resource type="PackedScene" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
+[ext_resource type="PackedScene" uid="uid://dd3atetchfge" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
+[ext_resource type="PackedScene" uid="uid://bxcutxc36q38w" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
 [ext_resource type="Texture2D" uid="uid://l6d3du7bba3w" path="res://assets/images/backgrounds/Sign.png" id="22_f88se"]
+[ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
 shader = ExtResource("2_f6wvl")
@@ -205,14 +206,13 @@ color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
 repeat_size = Vector2(348, 0)
-repeat_times = 21
+repeat_times = 34
 
 [node name="StationSprite" type="Sprite2D" parent="StationParallax"]
 texture = ExtResource("1_xfqj8")
 
 [node name="crack_decals" type="Node2D" parent="."]
 position = Vector2(0.00012207, -1.52588e-05)
-scale = Vector2(1, 1)
 
 [node name="crackA" type="Sprite2D" parent="crack_decals"]
 modulate = Color(0.93845, 0.93845, 0.93845, 1)
@@ -377,26 +377,12 @@ rotation = 1.03524
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("16_pla76")
 
-[node name="1Newspaper3" type="Sprite2D" parent="Decals"]
-modulate = Color(0.356, 0.381667, 0.4, 1)
-position = Vector2(2658, -172)
-rotation = 0.886344
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("14_47ih5")
-
 [node name="1Newspaper5" type="Sprite2D" parent="Decals"]
 modulate = Color(0.419746, 0.447912, 0.468041, 1)
 position = Vector2(1572, -233)
 rotation = 0.886344
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("14_47ih5")
-
-[node name="2Newspaper3" type="Sprite2D" parent="Decals"]
-modulate = Color(0.439049, 0.439049, 0.439049, 1)
-position = Vector2(2659, -156)
-rotation = 0.772119
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("15_xrcdc")
 
 [node name="3Newspaper3" type="Sprite2D" parent="Decals"]
 modulate = Color(0.396889, 0.396889, 0.396889, 1)
@@ -470,7 +456,7 @@ texture = ExtResource("15_xrcdc")
 
 [node name="2Newspaper4" type="Sprite2D" parent="Decals"]
 modulate = Color(0.439049, 0.439049, 0.439049, 1)
-position = Vector2(-2735, -312)
+position = Vector2(-2710, -302)
 rotation = -1.32168
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("15_xrcdc")
@@ -484,14 +470,14 @@ texture = ExtResource("16_pla76")
 
 [node name="1Newspaper4" type="Sprite2D" parent="Decals"]
 modulate = Color(0.44, 0.4312, 0.4048, 1)
-position = Vector2(-2543.02, 59.0856)
+position = Vector2(-2476.29, 83.6501)
 rotation = -0.598451
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("14_47ih5")
 
 [node name="3Newspaper5" type="Sprite2D" parent="Decals"]
 modulate = Color(0.439049, 0.439049, 0.439049, 1)
-position = Vector2(-2525, 40)
+position = Vector2(-2458.27, 64.5645)
 rotation = 0.353426
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("16_pla76")
@@ -567,13 +553,6 @@ material = ExtResource("5_xunpx")
 position = Vector2(3056, 80)
 scale = Vector2(0.46884, 0.506944)
 texture = ExtResource("5_lshov")
-
-[node name="1Puddle4" type="Sprite2D" parent="Decals"]
-modulate = Color(1, 1, 1, 0.0352941)
-material = ExtResource("5_xunpx")
-position = Vector2(3808, -280)
-scale = Vector2(0.455344, 0.483108)
-texture = ExtResource("7_224ru")
 
 [node name="2Puddle2" type="Sprite2D" parent="Decals"]
 modulate = Color(1, 1, 1, 0.0352941)
@@ -660,13 +639,6 @@ position = Vector2(-1312, -406)
 scale = Vector2(0.668162, 0.427884)
 texture = ExtResource("11_ae0lp")
 
-[node name="3Stain2" type="Sprite2D" parent="Decals"]
-modulate = Color(1, 1, 1, 0.0392157)
-material = ExtResource("5_xunpx")
-position = Vector2(2487, -408.25)
-scale = Vector2(0.677295, 0.528847)
-texture = ExtResource("11_ae0lp")
-
 [node name="4Stain" type="Sprite2D" parent="Decals"]
 modulate = Color(1, 1, 1, 0.0392157)
 material = ExtResource("5_xunpx")
@@ -691,7 +663,7 @@ texture = ExtResource("12_0g0cb")
 [node name="4Stain3" type="Sprite2D" parent="Decals"]
 modulate = Color(1, 1, 1, 0.0392157)
 material = ExtResource("5_xunpx")
-position = Vector2(3272, -424)
+position = Vector2(3027, -426)
 scale = Vector2(-0.655, 0.593)
 texture = ExtResource("12_0g0cb")
 
@@ -708,6 +680,37 @@ material = ExtResource("5_xunpx")
 position = Vector2(3816, -424)
 scale = Vector2(0.695122, 0.695122)
 texture = ExtResource("13_w45yx")
+
+[node name="paper pair" type="Node2D" parent="Decals"]
+position = Vector2(2658, -163)
+
+[node name="1Newspaper3" type="Sprite2D" parent="Decals/paper pair"]
+modulate = Color(0.356, 0.381667, 0.4, 1)
+position = Vector2(0, -9)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="2Newspaper3" type="Sprite2D" parent="Decals/paper pair"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(1, 7)
+rotation = 0.772119
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="2Puddle5" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(4000, -288)
+scale = Vector2(0.446561, 0.494845)
+texture = ExtResource("8_cvff4")
+
+[node name="2Newspaper6" type="Sprite2D" parent="Decals"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(4450, -302)
+rotation = -1.32168
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
 
 [node name="Walls" type="Node2D" parent="." node_paths=PackedStringArray("wall_left", "wall_right")]
 script = ExtResource("3_3nthg")
@@ -784,7 +787,6 @@ position = Vector2(4246.75, 217)
 shape = SubResource("RectangleShape2D_yv0w0")
 
 [node name="WallCollider" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="WallLeft" type="CollisionShape2D" parent="WallCollider"]
 position = Vector2(-3092.25, -395.75)
@@ -1428,3 +1430,47 @@ shape = SubResource("RectangleShape2D_2w8kq")
 [node name="Sign" type="Sprite2D" parent="."]
 position = Vector2(-1381, -533)
 texture = ExtResource("22_f88se")
+
+[node name="Debug Lines" type="Node2D" parent="."]
+
+[node name="InvisibleOnReady" parent="Debug Lines" instance=ExtResource("39_yhbdv")]
+
+[node name="greenScreen" type="ColorRect" parent="Debug Lines"]
+offset_left = 2522.0
+offset_top = -728.0
+offset_right = 3813.0
+offset_bottom = 192.0
+color = Color(0.027451, 0.156863, 0, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="greenScreen2" type="ColorRect" parent="Debug Lines"]
+offset_left = -4799.0
+offset_top = -731.0
+offset_right = -3508.0
+offset_bottom = 189.0
+color = Color(0.027451, 0.156863, 0, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="blueWall" type="ColorRect" parent="Debug Lines"]
+offset_left = 3307.0
+offset_top = -728.0
+offset_right = 3479.0
+offset_bottom = 192.0
+color = Color(0, 0.0473438, 0.269531, 0.258824)
+metadata/_edit_lock_ = true
+
+[node name="redScreen" type="ColorRect" parent="Debug Lines"]
+offset_left = -3785.0
+offset_top = -729.0
+offset_right = -2500.0
+offset_bottom = 249.0
+color = Color(0.164063, 0.0499321, 0.0199728, 0.25098)
+metadata/_edit_lock_ = true
+
+[node name="redScreen2" type="ColorRect" parent="Debug Lines"]
+offset_left = 3515.0
+offset_top = -729.0
+offset_right = 4800.0
+offset_bottom = 190.0
+color = Color(0.164063, 0.0499321, 0.0199728, 0.25098)
+metadata/_edit_lock_ = true
