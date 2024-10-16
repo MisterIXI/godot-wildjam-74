@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=77 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -38,6 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://dd3atetchfge" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
 [ext_resource type="PackedScene" uid="uid://bxcutxc36q38w" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
 [ext_resource type="Texture2D" uid="uid://l6d3du7bba3w" path="res://assets/images/backgrounds/Sign.png" id="22_f88se"]
+[ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
+[ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
+[ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gjaqw"]
@@ -204,7 +207,6 @@ mouse_filter = 2
 environment = SubResource("Environment_r0l3c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -311,7 +313,7 @@ texture = ExtResource("7_h535r")
 
 [node name="CrackC5" type="Sprite2D" parent="crack_decals"]
 modulate = Color(0.94, 0.94, 0.94, 1)
-position = Vector2(-2503, -133)
+position = Vector2(-2453, -133)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("7_h535r")
 
@@ -356,6 +358,18 @@ modulate = Color(0.94, 0.94, 0.94, 1)
 position = Vector2(-1174.88, 82.5001)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_saglc")
+
+[node name="CrackD7" type="Sprite2D" parent="crack_decals"]
+modulate = Color(0.94, 0.94, 0.94, 1)
+position = Vector2(4481, -361)
+scale = Vector2(-0.75, 0.75)
+texture = ExtResource("8_saglc")
+
+[node name="CrackB5" type="Sprite2D" parent="crack_decals"]
+modulate = Color(0.94, 0.94, 0.94, 1)
+position = Vector2(-4516, -256)
+scale = Vector2(-0.75, 0.75)
+texture = ExtResource("6_k812c")
 
 [node name="Decals" type="Node2D" parent="."]
 
@@ -415,13 +429,6 @@ rotation = 0.360454
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("16_pla76")
 
-[node name="3Newspaper7" type="Sprite2D" parent="Decals"]
-modulate = Color(0.414576, 0.447094, 0.446683, 1)
-position = Vector2(3008, 504)
-rotation = 0.360454
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("16_pla76")
-
 [node name="1Newspaper7" type="Sprite2D" parent="Decals"]
 modulate = Color(0.419746, 0.447912, 0.468041, 1)
 position = Vector2(-3033.85, 413.708)
@@ -473,14 +480,14 @@ texture = ExtResource("16_pla76")
 
 [node name="1Newspaper4" type="Sprite2D" parent="Decals"]
 modulate = Color(0.44, 0.4312, 0.4048, 1)
-position = Vector2(-2476.29, 83.6501)
+position = Vector2(-2461.29, 83.6501)
 rotation = -0.598451
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("14_47ih5")
 
 [node name="3Newspaper5" type="Sprite2D" parent="Decals"]
 modulate = Color(0.439049, 0.439049, 0.439049, 1)
-position = Vector2(-2458.27, 64.5645)
+position = Vector2(-2443.27, 64.5645)
 rotation = 0.353426
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("16_pla76")
@@ -677,13 +684,6 @@ position = Vector2(-3472, -424)
 scale = Vector2(0.695122, 0.695122)
 texture = ExtResource("13_w45yx")
 
-[node name="5Stain3" type="Sprite2D" parent="Decals"]
-modulate = Color(1, 1, 1, 0.0392157)
-material = ExtResource("5_xunpx")
-position = Vector2(3816, -424)
-scale = Vector2(0.695122, 0.695122)
-texture = ExtResource("13_w45yx")
-
 [node name="paper pair" type="Node2D" parent="Decals"]
 position = Vector2(2658, -163)
 
@@ -708,12 +708,85 @@ position = Vector2(4000, -288)
 scale = Vector2(0.446561, 0.494845)
 texture = ExtResource("8_cvff4")
 
-[node name="2Newspaper6" type="Sprite2D" parent="Decals"]
+[node name="5Stain4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(3836, -424)
+scale = Vector2(0.695122, 0.695122)
+texture = ExtResource("13_w45yx")
+
+[node name="2Newspaper5" type="Sprite2D" parent="Decals"]
 modulate = Color(0.439049, 0.439049, 0.439049, 1)
-position = Vector2(4450, -302)
+position = Vector2(4598, -302)
 rotation = -1.32168
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("15_xrcdc")
+
+[node name="1Stain5" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(4540, -416)
+scale = Vector2(0.425926, 0.425926)
+texture = ExtResource("9_1v85k")
+
+[node name="3Newspaper10" type="Sprite2D" parent="Decals"]
+modulate = Color(0.481789, 0.48179, 0.481789, 1)
+position = Vector2(4102, 319)
+rotation = 1.60266
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="1Newspaper8" type="Sprite2D" parent="Decals"]
+modulate = Color(0.419746, 0.447912, 0.468041, 1)
+position = Vector2(4274.15, 413.708)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="3Newspaper7" type="Sprite2D" parent="Decals"]
+modulate = Color(0.414576, 0.447094, 0.446683, 1)
+position = Vector2(-3764, 89)
+rotation = 0.360454
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("16_pla76")
+
+[node name="Puddle5" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0352941)
+material = ExtResource("5_xunpx")
+position = Vector2(-4252, 80)
+scale = Vector2(0.46884, 0.506944)
+texture = ExtResource("5_lshov")
+
+[node name="paper pair2" type="Node2D" parent="Decals"]
+position = Vector2(-4650, -163)
+
+[node name="1Newspaper3" type="Sprite2D" parent="Decals/paper pair2"]
+modulate = Color(0.356, 0.381667, 0.4, 1)
+position = Vector2(0, -9)
+rotation = 0.886344
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("14_47ih5")
+
+[node name="2Newspaper3" type="Sprite2D" parent="Decals/paper pair2"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+position = Vector2(1, 7)
+rotation = 0.772119
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("15_xrcdc")
+
+[node name="4Stain4" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-4281, -426)
+scale = Vector2(-0.655, 0.593)
+texture = ExtResource("12_0g0cb")
+
+[node name="2Stain5" type="Sprite2D" parent="Decals"]
+modulate = Color(1, 1, 1, 0.0392157)
+material = ExtResource("5_xunpx")
+position = Vector2(-4546.2, -412)
+scale = Vector2(0.709654, 0.53125)
+texture = ExtResource("10_b2dm3")
 
 [node name="TracksCollider" type="StaticBody2D" parent="."]
 
@@ -1296,6 +1369,34 @@ modulate = Color(0.662452, 0.662452, 0.662452, 1)
 position = Vector2(-280, -557)
 scale = Vector2(0.7, 0.7)
 
+[node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
+position = Vector2(47, 2)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="VendingMachine" parent="Objects" instance=ExtResource("31_c5q8h")]
+y_sort_enabled = false
+position = Vector2(1339, -379)
+
+[node name="Bench" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(-647, -380)
+
+[node name="Bench2" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(-2045, -387)
+
+[node name="Bench3" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(741, -385)
+
+[node name="Bench4" parent="Objects" instance=ExtResource("32_8yww6")]
+position = Vector2(1962, -383)
+
+[node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
+position = Vector2(1165, -374)
+
+[node name="Sign" type="Sprite2D" parent="."]
+position = Vector2(-1346, -532)
+texture = ExtResource("22_f88se")
+
 [node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "counter_door_collider")]
 script = ExtResource("7_15l0w")
 counter_area = NodePath("CounterArea")
@@ -1364,6 +1465,8 @@ shape = SubResource("RectangleShape2D_720fm")
 position = Vector2(-3.5, -705.5)
 shape = SubResource("RectangleShape2D_do4ga")
 
+[node name="Toilette" parent="." instance=ExtResource("21_4m6i5")]
+
 [node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
 position = Vector2(0, -87)
 script = ExtResource("9_4hld4")
@@ -1381,14 +1484,6 @@ position = Vector2(4176, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
 shape = SubResource("RectangleShape2D_2w8kq")
-
-[node name="FluorescentTubes" parent="." instance=ExtResource("20_172kl")]
-
-[node name="Toilette" parent="." instance=ExtResource("21_4m6i5")]
-
-[node name="Sign" type="Sprite2D" parent="."]
-position = Vector2(-1381, -533)
-texture = ExtResource("22_f88se")
 
 [node name="Walls" type="Node2D" parent="." node_paths=PackedStringArray("wall_left", "wall_right")]
 script = ExtResource("3_3nthg")
