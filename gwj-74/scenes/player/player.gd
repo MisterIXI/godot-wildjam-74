@@ -62,6 +62,7 @@ func _physics_process(_delta: float) -> void:
 		if idle_timer > idle_offset:
 			if animated_sprite.animation != "start-idle" and animated_sprite.animation != "idle":
 				animated_sprite.play("start-idle")
+				animated_sprite.flip_h = false
 		else:
 			animated_sprite.stop()
 			animated_sprite.frame = 0
