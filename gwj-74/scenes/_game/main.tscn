@@ -18,6 +18,9 @@ player = NodePath("../YSort/CharacterBody2D")
 y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
+speed = 200.0
+acceleration = 0.2
+friction = 0.2
 
 [node name="Trashcan2" parent="YSort" instance=ExtResource("9_iux46")]
 position = Vector2(-1381, -81)
