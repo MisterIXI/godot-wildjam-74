@@ -14,15 +14,16 @@ func _physics_process(delta: float) -> void:
 	jiggle()
 
 func bubble_appear() -> void:
-	visible = true
-	bubble_up = true
-	var tween: Tween = create_tween()
-	tween.set_parallel()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
-	tween.tween_property(self, "rotation_degrees", 0, 0.25)
-	
+	if !bubble_up:
+		visible = true
+		bubble_up = true
+		var tween: Tween = create_tween()
+		tween.set_parallel()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
+		tween.tween_property(self, "rotation_degrees", 0, 0.25)
+		
 func bubble_disappear() -> void:
 	if bubble_up:
 		bubble_up = false

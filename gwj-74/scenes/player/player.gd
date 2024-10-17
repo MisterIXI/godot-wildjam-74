@@ -12,6 +12,7 @@ var idle_timer = 0.0
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
 @onready var interact_bubble: Node2D = %InteractBubble
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -78,3 +79,10 @@ func get_input():
 	var vertical = Input.get_axis("up", "down")
 	return Vector2(horizontal, vertical)
 	
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if animated_sprite.animation == "forward-walk":
+		match animated_sprite.frame:
+			0, 6, 12, 18:
+				audio_stream_player.play()

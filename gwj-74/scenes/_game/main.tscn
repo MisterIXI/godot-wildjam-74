@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbgdr3g22ejqs"]
 
-[ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" uid="uid://cof4xba0xgumk" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
 
 [node name="Main" type="Node2D"]
@@ -18,9 +18,6 @@ player = NodePath("../YSort/CharacterBody2D")
 y_sort_enabled = true
 
 [node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
-speed = 200.0
-acceleration = 0.2
-friction = 0.2
 
 [node name="Trashcan2" parent="YSort" instance=ExtResource("9_iux46")]
 position = Vector2(-1381, -81)

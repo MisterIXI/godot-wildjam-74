@@ -1,9 +1,14 @@
-[gd_scene load_steps=48 format=3 uid="uid://c6tip7fbowjjb"]
+[gd_scene load_steps=54 format=3 uid="uid://c6tip7fbowjjb"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_cglt2"]
 [ext_resource type="Texture2D" uid="uid://bpgc8g73davi8" path="res://assets/images/lights/circle_light.png" id="3_xcmmw"]
 [ext_resource type="PackedScene" uid="uid://ir7658lr1ygt" path="res://scenes/ui/interact_bubble.tscn" id="4_8cw75"]
 [ext_resource type="Texture2D" uid="uid://yrltqednwc2o" path="res://assets/images/character/charactersheet.png" id="5_hu1i1"]
+[ext_resource type="AudioStream" uid="uid://caw1airyl2rap" path="res://assets/sounds/step1.wav" id="5_lv5e5"]
+[ext_resource type="AudioStream" uid="uid://bl3naqxcpqpul" path="res://assets/sounds/step2.wav" id="6_423s1"]
+[ext_resource type="AudioStream" uid="uid://bcnt6gbkeyy2f" path="res://assets/sounds/step3.wav" id="7_3nu35"]
+[ext_resource type="AudioStream" uid="uid://caaw4mwvlboih" path="res://assets/sounds/step4.wav" id="8_0gixs"]
+[ext_resource type="AudioStream" uid="uid://dbfj0brqc2443" path="res://assets/sounds/step5.wav" id="9_hiu22"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2j3l"]
 radius = 14.3
@@ -392,6 +397,14 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rcfrh"]
+streams_count = 5
+stream_0/stream = ExtResource("5_lv5e5")
+stream_1/stream = ExtResource("6_423s1")
+stream_2/stream = ExtResource("7_3nu35")
+stream_3/stream = ExtResource("8_0gixs")
+stream_4/stream = ExtResource("9_hiu22")
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_cglt2")
@@ -429,5 +442,12 @@ unique_name_in_owner = true
 position = Vector2(0, -57)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_h6pi8")
-animation = &"idle"
+animation = &"forward-walk"
 autoplay = "forward-walk"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_rcfrh")
+bus = &"Steps"
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -1,4 +1,18 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://ctb6y2qompfej"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://ctb6y2qompfej"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_gm2e7"]
+resource_name = "Reverb"
+room_size = 0.4
+spread = 0.3
+hipass = 0.2
+dry = 0.5
+wet = 0.3
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_mgp45"]
+resource_name = "Delay"
+tap1_delay_ms = 50.0
+tap2_active = false
+tap2_delay_ms = 250.0
 
 [resource]
 bus/1/name = &"SFX"
@@ -13,3 +27,13 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/3/name = &"Steps"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -8.79822
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_gm2e7")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectDelay_mgp45")
+bus/3/effect/1/enabled = true
