@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd3atetchfge"]
+[gd_scene load_steps=7 format=3 uid="uid://dd3atetchfge"]
 
 [ext_resource type="Texture2D" uid="uid://dr7usxy6yx2ha" path="res://assets/images/objects/fluorescent tube.png" id="1_7brlc"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_yqvew"]
 [ext_resource type="Script" path="res://components/flicker/flicker.gd" id="3_red12"]
 [ext_resource type="PackedScene" uid="uid://5ba3dqmaewe3" path="res://components/flicker/flicker.tscn" id="4_iwvjg"]
+[ext_resource type="AudioStream" uid="uid://vrfwvchabu6o" path="res://assets/sounds/neonlamp.wav" id="4_oqc5m"]
+[ext_resource type="AudioStream" uid="uid://ss6fn1oqn0xo" path="res://assets/sounds/neon_dim.wav" id="5_e15cy"]
 
 [node name="FluorescentTubes" type="Node2D"]
 
@@ -22,6 +24,23 @@ texture = ExtResource("2_yqvew")
 script = ExtResource("3_red12")
 offset_range = Vector2(10, 20)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FluorescentTube/leuchtmittel"]
+position = Vector2(-4.30981, -69.0425)
+scale = Vector2(0.574637, 0.775759)
+stream = ExtResource("4_oqc5m")
+volume_db = -5.0
+autoplay = true
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
+[node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube/leuchtmittel"]
+stream = ExtResource("5_e15cy")
+volume_db = -8.0
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
 [node name="FluorescentTube3" type="Sprite2D" parent="."]
 position = Vector2(-2088, -512)
 texture = ExtResource("1_7brlc")
@@ -36,6 +55,23 @@ texture = ExtResource("2_yqvew")
 [node name="flicker" type="Node" parent="FluorescentTube3/leuchtmittel"]
 script = ExtResource("3_red12")
 offset_range = Vector2(10, 20)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FluorescentTube3/leuchtmittel"]
+position = Vector2(-4.30981, -69.0425)
+scale = Vector2(0.574637, 0.775759)
+stream = ExtResource("4_oqc5m")
+volume_db = -5.0
+autoplay = true
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
+[node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube3/leuchtmittel"]
+stream = ExtResource("5_e15cy")
+volume_db = -8.0
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
 
 [node name="FluorescentTube5" type="Sprite2D" parent="."]
 position = Vector2(696, -512)
@@ -52,6 +88,23 @@ texture = ExtResource("2_yqvew")
 script = ExtResource("3_red12")
 offset_range = Vector2(10, 20)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FluorescentTube5/leuchtmittel"]
+position = Vector2(-4.30981, -69.0425)
+scale = Vector2(0.574637, 0.775759)
+stream = ExtResource("4_oqc5m")
+volume_db = -5.0
+autoplay = true
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
+[node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube5/leuchtmittel"]
+stream = ExtResource("5_e15cy")
+volume_db = -8.0
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
 [node name="FluorescentTube6" type="Sprite2D" parent="."]
 position = Vector2(1914, -512)
 texture = ExtResource("1_7brlc")
@@ -65,3 +118,20 @@ texture = ExtResource("2_yqvew")
 
 [node name="flicker" parent="FluorescentTube6/leuchtmittel" instance=ExtResource("4_iwvjg")]
 offset_range = Vector2(10, 20)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FluorescentTube6/leuchtmittel"]
+position = Vector2(-4.30981, -69.0425)
+scale = Vector2(0.574637, 0.775759)
+stream = ExtResource("4_oqc5m")
+volume_db = -5.0
+autoplay = true
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"
+
+[node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube6/leuchtmittel"]
+stream = ExtResource("5_e15cy")
+volume_db = -8.0
+max_distance = 1500.0
+attenuation = 2.0
+bus = &"SFX"

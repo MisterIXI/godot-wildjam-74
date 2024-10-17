@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxjtlmlg0kxb"]
+[gd_scene load_steps=6 format=3 uid="uid://cxjtlmlg0kxb"]
 
 [ext_resource type="Texture2D" uid="uid://c01a7643olouw" path="res://assets/images/objects/Vending Machine.png" id="1_tq2x2"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_6c08c"]
 [ext_resource type="PackedScene" uid="uid://5ba3dqmaewe3" path="res://components/flicker/flicker.tscn" id="3_j1efr"]
+[ext_resource type="AudioStream" uid="uid://ss6fn1oqn0xo" path="res://assets/sounds/neon_dim.wav" id="4_4qf7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw4sq"]
 size = Vector2(145, 36)
@@ -24,6 +25,10 @@ texture = ExtResource("2_6c08c")
 
 [node name="flicker" parent="VendingMachine/PointLight2D" instance=ExtResource("3_j1efr")]
 offset_range = Vector2(15, 20)
+
+[node name="flickerSFX" type="AudioStreamPlayer2D" parent="VendingMachine/PointLight2D"]
+stream = ExtResource("4_4qf7a")
+volume_db = -80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 18)

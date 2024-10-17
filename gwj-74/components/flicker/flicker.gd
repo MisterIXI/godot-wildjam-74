@@ -7,6 +7,9 @@ class_name Flicker
 @export var count_range : Vector2i = Vector2i(1, 3)
 @export var intensity_range : Vector2 = Vector2(0.2, 0.5)
 
+@onready var flicker_sfx: AudioStreamPlayer2D = $"../flickerSFX"
+
+
 var _parent : PointLight2D
 var _start_energy : float
 var _tween : Tween
@@ -26,6 +29,7 @@ func flicker() -> void:
 	_tween = get_tree().create_tween()
 	var _count = randi_range(count_range.x, count_range.y)
 	for i in range(_count):
+		_tween.tween_callback(flicker_sfx.play)
 		_tween.tween_property(_parent, "energy", randf_range(intensity_range.x, intensity_range.y), randf_range(duration_range.x, duration_range.y))
 		_tween.tween_property(_parent, "energy", _start_energy, randf_range(duration_range.x, duration_range.y))
 	_tween.tween_callback(flicker)
