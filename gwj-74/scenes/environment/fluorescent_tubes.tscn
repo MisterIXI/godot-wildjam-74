@@ -28,16 +28,16 @@ offset_range = Vector2(10, 20)
 position = Vector2(-4.30981, -69.0425)
 scale = Vector2(0.574637, 0.775759)
 stream = ExtResource("4_oqc5m")
-volume_db = -5.0
+volume_db = -3.0
 autoplay = true
-max_distance = 1500.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
 [node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube/leuchtmittel"]
 stream = ExtResource("5_e15cy")
-volume_db = -8.0
-max_distance = 1500.0
+volume_db = -18.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
@@ -60,16 +60,16 @@ offset_range = Vector2(10, 20)
 position = Vector2(-4.30981, -69.0425)
 scale = Vector2(0.574637, 0.775759)
 stream = ExtResource("4_oqc5m")
-volume_db = -5.0
+volume_db = -3.0
 autoplay = true
-max_distance = 1500.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
 [node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube3/leuchtmittel"]
 stream = ExtResource("5_e15cy")
-volume_db = -8.0
-max_distance = 1500.0
+volume_db = -18.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
@@ -92,16 +92,16 @@ offset_range = Vector2(10, 20)
 position = Vector2(-4.30981, -69.0425)
 scale = Vector2(0.574637, 0.775759)
 stream = ExtResource("4_oqc5m")
-volume_db = -5.0
+volume_db = -3.0
 autoplay = true
-max_distance = 1500.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
 [node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube5/leuchtmittel"]
 stream = ExtResource("5_e15cy")
-volume_db = -8.0
-max_distance = 1500.0
+volume_db = -18.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
@@ -123,15 +123,15 @@ offset_range = Vector2(10, 20)
 position = Vector2(-4.30981, -69.0425)
 scale = Vector2(0.574637, 0.775759)
 stream = ExtResource("4_oqc5m")
-volume_db = -5.0
+volume_db = -3.0
 autoplay = true
-max_distance = 1500.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"
 
 [node name="flickerSFX" type="AudioStreamPlayer2D" parent="FluorescentTube6/leuchtmittel"]
 stream = ExtResource("5_e15cy")
-volume_db = -8.0
-max_distance = 1500.0
+volume_db = -18.0
+max_distance = 1000.0
 attenuation = 2.0
 bus = &"SFX"

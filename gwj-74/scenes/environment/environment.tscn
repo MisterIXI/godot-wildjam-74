@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=78 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
+[ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="43_y3658"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
 background_mode = 3
@@ -1598,3 +1599,10 @@ offset_right = 4800.0
 offset_bottom = 570.0
 color = Color(0.164063, 0.0499321, 0.0199728, 0.25098)
 metadata/_edit_lock_ = true
+
+[node name="DesertedSubway" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_y3658")
+volume_db = -18.0
+pitch_scale = 0.5
+autoplay = true
+bus = &"SFX"
