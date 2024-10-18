@@ -3,12 +3,14 @@
 [ext_resource type="Script" path="res://scenes/_debug/oli/debug_menu.gd" id="1_xat5f"]
 [ext_resource type="LabelSettings" uid="uid://dvryradd777of" path="res://resources/_debug/debug_label_font.tres" id="2_r181d"]
 
-[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("player_text", "player_button", "clock_text", "clock_button", "walls_left_check", "walls_right_check", "train_front_check", "train_back_check", "train_inside_check", "counter_door_check", "counter_man_check")]
+[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("player_text", "player_button", "clock_text", "clock_button", "color_text", "color_button", "walls_left_check", "walls_right_check", "train_front_check", "train_back_check", "train_inside_check", "counter_door_check", "counter_man_check")]
 script = ExtResource("1_xat5f")
 player_text = NodePath("ColorRect/VBoxContainer/Player/TextEdit2")
 player_button = NodePath("ColorRect/VBoxContainer/Player/Button")
 clock_text = NodePath("ColorRect/VBoxContainer/ClockTime/TextEdit2")
 clock_button = NodePath("ColorRect/VBoxContainer/ClockTime/Button")
+color_text = NodePath("ColorRect/VBoxContainer/ColorScreen/TextEdit2")
+color_button = NodePath("ColorRect/VBoxContainer/ColorScreen/Button")
 walls_left_check = NodePath("ColorRect/VBoxContainer/Walls/LeftCheck")
 walls_right_check = NodePath("ColorRect/VBoxContainer/Walls/RightCheck")
 train_front_check = NodePath("ColorRect/VBoxContainer/Train/frontCHeck")
@@ -19,7 +21,7 @@ counter_man_check = NodePath("ColorRect/VBoxContainer/Counter/mancheck")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 346.0
-offset_bottom = 152.0
+offset_bottom = 230.0
 color = Color(0.378403, 0.2013, 0.61, 0.670588)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
@@ -70,6 +72,28 @@ size_flags_horizontal = 3
 placeholder_text = "hour:minute"
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/ClockTime"]
+layout_mode = 2
+focus_mode = 0
+text = "set"
+
+[node name="ColorScreen" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/ColorScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Set Color Screen"
+label_settings = ExtResource("2_r181d")
+vertical_alignment = 1
+
+[node name="TextEdit2" type="TextEdit" parent="ColorRect/VBoxContainer/ColorScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Dialog String"
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/ColorScreen"]
 layout_mode = 2
 focus_mode = 0
 text = "set"
