@@ -9,28 +9,30 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Environment" parent="." instance=ExtResource("1_yuk8r")]
+[node name="Game" type="Node2D" parent="."]
 
-[node name="YSort" type="Node2D" parent="."]
+[node name="Environment" parent="Game" instance=ExtResource("1_yuk8r")]
+
+[node name="YSort" type="Node2D" parent="Game"]
 y_sort_enabled = true
 
-[node name="CharacterBody2D" parent="YSort" instance=ExtResource("3_o03rn")]
+[node name="CharacterBody2D" parent="Game/YSort" instance=ExtResource("3_o03rn")]
 
-[node name="Trashcan2" parent="YSort" instance=ExtResource("9_iux46")]
+[node name="Trashcan2" parent="Game/YSort" instance=ExtResource("9_iux46")]
 position = Vector2(-1381, -81)
 
-[node name="Trashcan3" parent="YSort" instance=ExtResource("9_iux46")]
+[node name="Trashcan3" parent="Game/YSort" instance=ExtResource("9_iux46")]
 position = Vector2(-2458, -82)
 
-[node name="Trashcan5" parent="YSort" instance=ExtResource("9_iux46")]
+[node name="Trashcan5" parent="Game/YSort" instance=ExtResource("9_iux46")]
 position = Vector2(2319, -82)
 
-[node name="Testbox" parent="YSort" instance=ExtResource("5_tpanc")]
+[node name="Testbox" parent="Game/YSort" instance=ExtResource("5_tpanc")]
 position = Vector2(-364, -239)
 
 [node name="ColorScreen" parent="." instance=ExtResource("6_1xhdv")]
 
 [node name="DebugMenu" parent="." node_paths=PackedStringArray("environment", "player", "color_screen") instance=ExtResource("1_pv4gp")]
-environment = NodePath("../Environment")
-player = NodePath("../YSort/CharacterBody2D")
+environment = NodePath("../Game/Environment")
+player = NodePath("../Game/YSort/CharacterBody2D")
 color_screen = NodePath("../ColorScreen")
