@@ -40,7 +40,10 @@ func _ready():
 func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
-	CustomTweener.tween_visibility(counter_inside, _tween_inside, counter_outside, _tween_outside, animation_duration)
+	var tween_array = CustomTweener.tween_visibility(counter_inside, _tween_inside, counter_outside, _tween_outside, animation_duration)
+	_tween_inside = tween_array[0]
+	_tween_outside = tween_array[1]
+
 	if !lights_outside.is_empty():
 		for light in lights_outside:
 			light.visible = false
@@ -52,7 +55,10 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
-	CustomTweener.tween_visibility(counter_outside, _tween_outside, counter_inside, _tween_inside, animation_duration)
+	var tween_array = CustomTweener.tween_visibility(counter_outside, _tween_outside, counter_inside, _tween_inside, animation_duration)
+	_tween_outside = tween_array[0]
+	_tween_inside = tween_array[1]
+
 	if !lights_outside.is_empty():
 		for light in lights_outside:
 			light.visible = true

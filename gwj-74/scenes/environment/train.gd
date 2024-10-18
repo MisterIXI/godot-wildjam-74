@@ -44,7 +44,9 @@ func _ready():
 func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
-	CustomTweener.tween_visibility(train_inside, _tween_inside, train_outside, _tween_outside, animation_duration)
+	var tween_array = CustomTweener.tween_visibility(train_inside, _tween_inside, train_outside, _tween_outside, animation_duration)
+	_tween_inside = tween_array[0]
+	_tween_outside = tween_array[1]
 	lights_outside.visible = false
 	lights_inside.visible = true
 
@@ -52,7 +54,9 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if not body.is_in_group("player"):
 		return
-	CustomTweener.tween_visibility(train_outside, _tween_outside, train_inside, _tween_inside, animation_duration)
+	var tween_array = CustomTweener.tween_visibility(train_outside, _tween_outside, train_inside, _tween_inside, animation_duration)
+	_tween_outside = tween_array[0]
+	_tween_inside = tween_array[1]
 	lights_inside.visible = false
 	lights_outside.visible = true
 
@@ -61,12 +65,12 @@ func set_door(open : bool, wagon_id : int) -> void:
 	if wagon_id == 0:
 		for child in train_door_front_static_body.get_children():
 			child.disabled = open
-		CustomTweener.set_visibility(open, train_door_front, _tween_door_front, door_animation_duration)
+		_tween_door_front = CustomTweener.set_visibility(open, train_door_front, _tween_door_front, door_animation_duration)
 		door_front_open = open
 	elif wagon_id == 1:
 		for child in train_door_back_static_body.get_children():
 			child.disabled = open
-		CustomTweener.set_visibility(open, train_door_back, _tween_door_back, door_animation_duration)
+		_tween_door_back = CustomTweener.set_visibility(open, train_door_back, _tween_door_back, door_animation_duration)
 		door_back_open = open
 	else:
 		print("Invalid wagon id: ", wagon_id)
@@ -75,5 +79,5 @@ func set_door(open : bool, wagon_id : int) -> void:
 
 func set_door_inside(open : bool) -> void:
 	train_door_inside_collider.disabled = open
-	CustomTweener.set_visibility(open, train_door_inside, _tween_door_inside, door_animation_duration)
+	_tween_door_inside = CustomTweener.set_visibility(open, train_door_inside, _tween_door_inside, door_animation_duration)
 	door_inside_open = open

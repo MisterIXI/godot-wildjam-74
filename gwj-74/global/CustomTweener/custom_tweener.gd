@@ -1,6 +1,6 @@
 extends Node
 
-func tween_visibility(item_on: CanvasItem, tween_on: Tween, item_off: CanvasItem, tween_off: Tween, duration: float) -> void:
+func tween_visibility(item_on: CanvasItem, tween_on: Tween, item_off: CanvasItem, tween_off: Tween, duration: float) -> Array[Tween]:
 	if tween_on:
 		tween_on.kill()
 	tween_on = get_tree().create_tween()
@@ -14,6 +14,7 @@ func tween_visibility(item_on: CanvasItem, tween_on: Tween, item_off: CanvasItem
 	tween_on.tween_property(item_on, "modulate:a", 1, duration)
 	tween_off.tween_property(item_off, "modulate:a", 0, duration)
 	tween_off.tween_callback(item_off.hide)
+	return [tween_on, tween_off]
 
 
 func reset_visibility(item_on : CanvasItem, item_off : CanvasItem) -> void:
@@ -23,7 +24,7 @@ func reset_visibility(item_on : CanvasItem, item_off : CanvasItem) -> void:
 	item_off.modulate.a = 0
 
 
-func set_visibility(value: bool, item: CanvasItem, tween: Tween, duration: float) -> void:
+func set_visibility(value: bool, item: CanvasItem, tween: Tween, duration: float) -> Tween:
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
@@ -34,3 +35,4 @@ func set_visibility(value: bool, item: CanvasItem, tween: Tween, duration: float
 	else:
 		tween.tween_property(item, "modulate:a", 0, duration)
 		tween.tween_callback(item.hide)
+	return tween
