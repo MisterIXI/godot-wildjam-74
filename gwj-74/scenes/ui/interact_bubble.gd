@@ -10,7 +10,7 @@ func _ready() -> void:
 	scale = Vector2(0.1, 0.1)
 	rotation_degrees = 60
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	jiggle()
 
 func bubble_appear() -> void:
@@ -38,8 +38,7 @@ func bubble_disappear() -> void:
 	
 func jiggle() -> void:
 	var tween: Tween
-	if tween == null:
-		tween = create_tween()
-		tween.set_parallel()
-		tween.tween_property(jiggle_pivot, "position", Vector2(randf_range(-10, 10), randf_range(-10, 10)), 1 / jiggle_speed)
-		tween.tween_property(jiggle_pivot, "rotation_degrees", randi_range(-10, 10), 1 / jiggle_speed)
+	tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(jiggle_pivot, "position", Vector2(randf_range(-10, 10), randf_range(-10, 10)), 1 / jiggle_speed)
+	tween.tween_property(jiggle_pivot, "rotation_degrees", randi_range(-10, 10), 1 / jiggle_speed)
