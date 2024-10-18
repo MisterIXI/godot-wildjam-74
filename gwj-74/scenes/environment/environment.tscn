@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=84 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -103,6 +103,10 @@ size = Vector2(3530.5, 42.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl22c"]
 size = Vector2(100.5, 21.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_55ywr"]
+blend_mode = 1
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hp67"]
 size = Vector2(49.5, 321)
@@ -965,16 +969,6 @@ rotation = -1.5708
 scale = Vector2(0.357422, 1.23242)
 texture = ExtResource("8_a42q5")
 
-[node name="PointLight2D" type="PointLight2D" parent="Train/TrainOutside/Lights-outside"]
-position = Vector2(-1624, 71)
-scale = Vector2(0.0634763, 0.0839844)
-texture = ExtResource("10_khwxr")
-
-[node name="PointLight2D2" type="PointLight2D" parent="Train/TrainOutside/Lights-outside"]
-position = Vector2(-1624, -42)
-scale = Vector2(0.0634763, 0.0839844)
-texture = ExtResource("10_khwxr")
-
 [node name="PointLight2D3" type="PointLight2D" parent="Train/TrainOutside/Lights-outside"]
 position = Vector2(-1338, -172)
 rotation = 1.5708
@@ -1139,6 +1133,30 @@ texture = ExtResource("10_khwxr")
 position = Vector2(-1548, 9)
 scale = Vector2(0.320313, 0.328125)
 energy = 0.6
+texture = ExtResource("10_khwxr")
+
+[node name="PointLight2D" type="PointLight2D" parent="Train/TrainOutside/Lights-outside"]
+visible = false
+position = Vector2(-1624, 71)
+scale = Vector2(0.0634763, 0.0839844)
+texture = ExtResource("10_khwxr")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Train/TrainOutside/Lights-outside"]
+visible = false
+position = Vector2(-1624, -42)
+scale = Vector2(0.0634763, 0.0839844)
+texture = ExtResource("10_khwxr")
+
+[node name="FullRoundLight" type="Sprite2D" parent="Train/TrainOutside/Lights-outside"]
+material = SubResource("CanvasItemMaterial_55ywr")
+position = Vector2(-1623.48, 72.5269)
+scale = Vector2(0.0752635, 0.0879061)
+texture = ExtResource("10_khwxr")
+
+[node name="FullRoundLight2" type="Sprite2D" parent="Train/TrainOutside/Lights-outside"]
+material = SubResource("CanvasItemMaterial_55ywr")
+position = Vector2(-1622.81, -41.9357)
+scale = Vector2(0.0752635, 0.0879061)
 texture = ExtResource("10_khwxr")
 
 [node name="Train-inside" type="Sprite2D" parent="Train"]
