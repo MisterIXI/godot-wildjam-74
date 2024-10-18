@@ -22,9 +22,6 @@ var random_cig: AudioStreamRandomizer = preload("res://resources/misc/random_cig
 @onready var idle_player: AudioStreamPlayer = $IdlePlayer
 
 
-
-
-
 func _ready() -> void:
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
@@ -77,8 +74,6 @@ func _physics_process(_delta: float) -> void:
 		else:
 			animated_sprite.stop()
 			animated_sprite.frame = 0
-
-
 	move_and_slide()
 
 
@@ -86,11 +81,12 @@ func _on_animation_finished() -> void:
 	if animated_sprite.animation == "start-idle":
 		animated_sprite.play("idle")
 
+
 func get_input():
 	var horizontal = Input.get_axis("left", "right")
 	var vertical = Input.get_axis("up", "down")
 	return Vector2(horizontal, vertical)
-	
+
 
 # Handle Animation SFX
 func _on_animated_sprite_2d_frame_changed() -> void:
@@ -98,7 +94,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite != null:
 		
 		# Handle Walk Animation SFX
-		if animated_sprite.animation == "forward-walk":
+		if animated_sprite.animation == "forward-walk" or animated_sprite.animation == "backward-walk":
 			match animated_sprite.frame:
 				0, 6, 12, 18:
 					step_player.play()
