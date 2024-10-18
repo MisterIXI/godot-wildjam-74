@@ -9,10 +9,20 @@ class_name Player
 var direction: Vector2
 var idle_timer = 0.0
 
+var zippo_1: AudioStream = preload("res://assets/sounds/zippo_1.wav")
+var zippo_2: AudioStream = preload("res://assets/sounds/zippo_2.wav")
+var zippo_3: AudioStream = preload("res://assets/sounds/zippo_3.wav")
+
+var random_cig: AudioStreamRandomizer = preload("res://resources/misc/random_cig.tres")
+
 @onready var interaction_ray_cast: RayCast2D = $InteractionRayCast
 @onready var interact_bubble: Node2D = %InteractBubble
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var step_player: AudioStreamPlayer = %StepPlayer
+@onready var idle_player: AudioStreamPlayer = $IdlePlayer
+
+
+
 
 
 func _ready() -> void:
@@ -80,9 +90,33 @@ func get_input():
 	return Vector2(horizontal, vertical)
 	
 
-
+# Handle Animation SFX
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if animated_sprite.animation == "forward-walk":
-		match animated_sprite.frame:
-			0, 6, 12, 18:
-				audio_stream_player.play()
+	# Why is the following line necessary????
+	if animated_sprite != null:
+		
+		# Handle Walk Animation SFX
+		if animated_sprite.animation == "forward-walk":
+			match animated_sprite.frame:
+				0, 6, 12, 18:
+					step_player.play()
+		
+		# Handle Zippo SFX
+		elif animated_sprite.animation == "start-idle":
+			if animated_sprite.frame == 4:
+				idle_player.stream = zippo_1
+				idle_player.play()
+			elif animated_sprite.frame == 8:
+				idle_player.stream = zippo_2
+				idle_player.play()
+			elif animated_sprite.frame == 13:
+				idle_player.stream = zippo_3
+				idle_player.play()
+				
+		# Handle Smoking SFX
+		elif animated_sprite.animation == "idle":
+			match animated_sprite.frame:
+				0:
+					idle_player.pitch_scale = randf_range(0.95, 1.1)
+					idle_player.stream = random_cig
+					idle_player.play()

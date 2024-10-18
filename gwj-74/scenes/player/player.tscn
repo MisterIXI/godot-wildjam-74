@@ -442,12 +442,16 @@ unique_name_in_owner = true
 position = Vector2(0, -57)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_h6pi8")
-animation = &"forward-walk"
+animation = &"idle"
 autoplay = "forward-walk"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="StepPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_rcfrh")
 bus = &"Steps"
+
+[node name="IdlePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+max_polyphony = 5
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
