@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=83 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -36,11 +36,12 @@
 [ext_resource type="Texture2D" uid="uid://b3e2iwtyaccnr" path="res://assets/images/decals/2newspaper.png" id="15_xrcdc"]
 [ext_resource type="Texture2D" uid="uid://bgtrbmcl8k8m8" path="res://assets/images/decals/3newspaper.png" id="16_pla76"]
 [ext_resource type="PackedScene" uid="uid://dd3atetchfge" path="res://scenes/environment/fluorescent_tubes.tscn" id="20_172kl"]
-[ext_resource type="PackedScene" uid="uid://bxcutxc36q38w" path="res://scenes/environment/toilette.tscn" id="21_4m6i5"]
 [ext_resource type="Texture2D" uid="uid://l6d3du7bba3w" path="res://assets/images/backgrounds/Sign.png" id="22_f88se"]
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
+[ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
+[ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 [ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="43_y3658"]
 
@@ -90,8 +91,14 @@ size = Vector2(5498.5, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amooh"]
 size = Vector2(5833.5, 42.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1lkh"]
-size = Vector2(6678.75, 42.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cru76"]
+size = Vector2(753.745, 42.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_medp3"]
+size = Vector2(2264, 42.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46xkg"]
+size = Vector2(3530.5, 42.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl22c"]
 size = Vector2(100.5, 21.5)
@@ -147,6 +154,12 @@ size = Vector2(52.25, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_do4ga"]
 size = Vector2(929, 575)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhbgo"]
+size = Vector2(84.97, 42.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnjw0"]
+size = Vector2(84.9595, 42.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8kq"]
 size = Vector2(40, 663)
 
@@ -159,13 +172,14 @@ size = Vector2(176, 1254)
 [sub_resource type="LabelSettings" id="LabelSettings_5w8xh"]
 font_size = 33
 
-[node name="Environment" type="Node2D" node_paths=PackedStringArray("counter", "train", "clock", "teleporter", "walls")]
+[node name="Environment" type="Node2D" node_paths=PackedStringArray("counter", "train", "clock", "teleporter", "walls", "hallway")]
 script = ExtResource("1_fo1js")
 counter = NodePath("Counter")
 train = NodePath("Train")
 clock = NodePath("Objects/Clock")
 teleporter = NodePath("Teleporter")
 walls = NodePath("Walls")
+hallway = NodePath("Hallway")
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(47.26, 71.465)
@@ -210,6 +224,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
+visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -829,9 +844,17 @@ shape = SubResource("RectangleShape2D_yv0w0")
 position = Vector2(-3092.25, -395.75)
 shape = SubResource("RectangleShape2D_amooh")
 
-[node name="WallRigth" type="CollisionShape2D" parent="Collider/WallCollider"]
-position = Vector2(3667.63, -396)
-shape = SubResource("RectangleShape2D_d1lkh")
+[node name="WallRight1" type="CollisionShape2D" parent="Collider/WallCollider"]
+position = Vector2(705.127, -396)
+shape = SubResource("RectangleShape2D_cru76")
+
+[node name="WallRight2" type="CollisionShape2D" parent="Collider/WallCollider"]
+position = Vector2(2299, -396.014)
+shape = SubResource("RectangleShape2D_medp3")
+
+[node name="WallRight3" type="CollisionShape2D" parent="Collider/WallCollider"]
+position = Vector2(5280.75, -396)
+shape = SubResource("RectangleShape2D_46xkg")
 
 [node name="Train-entrances-front-collider" type="StaticBody2D" parent="Collider"]
 
@@ -869,7 +892,7 @@ position = Vector2(-280, -557)
 scale = Vector2(0.7, 0.7)
 
 [node name="FluorescentTubes" parent="Objects" instance=ExtResource("20_172kl")]
-position = Vector2(47, 2)
+position = Vector2(50, 6)
 
 [node name="Sign" type="Sprite2D" parent="Objects"]
 position = Vector2(-1346, -532)
@@ -877,7 +900,7 @@ texture = ExtResource("22_f88se")
 
 [node name="VendingMachine" parent="Objects" instance=ExtResource("31_c5q8h")]
 y_sort_enabled = false
-position = Vector2(1339, -379)
+position = Vector2(1440.5, -374)
 
 [node name="Bench" parent="Objects" instance=ExtResource("32_8yww6")]
 position = Vector2(-647, -380)
@@ -892,7 +915,7 @@ position = Vector2(741, -385)
 position = Vector2(1962, -383)
 
 [node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
-position = Vector2(1165, -374)
+position = Vector2(1266.5, -369)
 
 [node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
 script = ExtResource("3_co6w8")
@@ -1479,7 +1502,47 @@ shape = SubResource("RectangleShape2D_720fm")
 position = Vector2(-3.5, -705.5)
 shape = SubResource("RectangleShape2D_do4ga")
 
-[node name="Hallway" parent="." instance=ExtResource("21_4m6i5")]
+[node name="Hallway" type="Node2D" parent="."]
+script = ExtResource("38_p4fao")
+
+[node name="Inside" type="ColorRect" parent="Hallway"]
+visible = false
+offset_left = -107.693
+offset_top = -2985.88
+offset_right = 4401.31
+offset_bottom = 146.122
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Hallway/Inside"]
+offset_left = 1183.69
+offset_top = 1648.88
+offset_right = 3621.69
+offset_bottom = 2567.88
+color = Color(0.209095, 0.0717175, 0.269531, 1)
+
+[node name="Outside" type="Node2D" parent="Hallway"]
+
+[node name="Hallway-entrance" type="Sprite2D" parent="Hallway/Outside"]
+position = Vector2(1124.5, -473.255)
+scale = Vector2(1, 1.0051)
+texture = ExtResource("38_emwp0")
+
+[node name="HallwayEntranceCollider" type="StaticBody2D" parent="Hallway/Outside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Outside/HallwayEntranceCollider"]
+position = Vector2(1124.52, -395.995)
+shape = SubResource("RectangleShape2D_vhbgo")
+
+[node name="Hallway-exit" type="Sprite2D" parent="Hallway/Outside"]
+position = Vector2(3473, -473.745)
+scale = Vector2(1, 1.0102)
+texture = ExtResource("38_emwp0")
+
+[node name="HallwayExitCollider" type="StaticBody2D" parent="Hallway/Outside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Outside/HallwayExitCollider"]
+position = Vector2(3472.98, -396)
+shape = SubResource("RectangleShape2D_tnjw0")
 
 [node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
 position = Vector2(0, -87)
@@ -1524,7 +1587,6 @@ position = Vector2(-2872.04, -1.52588e-05)
 shape = SubResource("RectangleShape2D_ifasf")
 
 [node name="StationWallRight" type="StaticBody2D" parent="Walls"]
-visible = false
 position = Vector2(1043, 0)
 
 [node name="Station-wall-tile" type="Sprite2D" parent="Walls/StationWallRight"]
