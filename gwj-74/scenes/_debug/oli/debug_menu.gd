@@ -2,11 +2,14 @@ extends CanvasLayer
 
 @export var environment : xXxEnvironmentxXx = null
 @export var player : Player = null
+@export var color_screen : ColorScreen = null
 
 @export var player_text : TextEdit = null
 @export var player_button : Button = null
 @export var clock_text : TextEdit = null
 @export var clock_button : Button = null
+@export var color_text : TextEdit = null
+@export var color_button : Button = null
 @export var walls_left_check : CheckButton = null
 @export var walls_right_check : CheckButton = null
 @export var train_front_check : CheckButton = null
@@ -20,8 +23,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 
 	player_button.pressed.connect(_on_player_button_pressed)
-
 	clock_button.pressed.connect(_on_clock_button_pressed)
+	color_button.pressed.connect(_on_color_button_pressed)
 
 	walls_left_check.toggled.connect(_on_walls_left_check_pressed)
 	if environment.walls.wall_left_active:
@@ -67,6 +70,16 @@ func _on_clock_button_pressed() -> void:
 	environment.clock.set_time(hour, minute)
 	clock_text.text = ""
 	clock_text.release_focus()
+
+
+func _on_color_button_pressed() -> void:
+	if color_text.text == "":
+		color_text.release_focus()
+		return
+	if color_text.text in color_screen.dialogue_resource.titles:
+		color_screen.start_dialog(color_text.text)
+		color_text.text = ""
+	color_text.release_focus()
 
 
 func _on_walls_left_check_pressed(value : bool) -> void:

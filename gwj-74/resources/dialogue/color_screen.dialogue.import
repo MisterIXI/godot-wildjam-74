@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dtweqmiwtg5hk"
+path="res://.godot/imported/color_screen.dialogue-6f8e292eb4d06c723c65d067073498fb.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/color_screen.dialogue"
+dest_files=["res://.godot/imported/color_screen.dialogue-6f8e292eb4d06c723c65d067073498fb.tres"]
+
+[params]
+
+defaults=true
