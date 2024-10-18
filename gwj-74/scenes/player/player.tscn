@@ -448,7 +448,6 @@ autoplay = "forward-walk"
 [node name="StepPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_rcfrh")
-bus = &"Steps"
 
 [node name="IdlePlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -6.0
