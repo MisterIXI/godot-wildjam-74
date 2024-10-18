@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3fwpebgt8ekf"]
+
+[ext_resource type="Script" path="res://scenes/intro/intro.gd" id="1_tvs07"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="2_y7lqg"]
+
+[sub_resource type="Theme" id="Theme_iwbtd"]
+RichTextLabel/font_sizes/normal_font_size = 30
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_tvs07")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.734375, 0.513033, 0.191479, 1)
+
+[node name="DialogueLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_iwbtd")
+bbcode_enabled = true
+text = "[center]Yoooo[/center]"
+fit_content = true
+script = ExtResource("2_y7lqg")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
