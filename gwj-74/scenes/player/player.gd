@@ -84,7 +84,7 @@ func get_input():
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if animated_sprite.animation == "forward-walk":
+	if animated_sprite.animation == "forward-walk" or animated_sprite.animation == "backward-walk":
 		match animated_sprite.frame:
 			0, 6, 12, 18:
 				audio_stream_player.play()
