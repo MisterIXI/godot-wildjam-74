@@ -5,6 +5,7 @@ class_name Intro
 @export var happy_color = Color(0.7, 0.5, 0.19, 1)
 @export var scary_color = Color(0.11, 0.36, 0.38, 1)
 @export_range(0, 10) var animation_speed = 1
+@export var dialogue_resource: DialogueResource
 
 var _tween: Tween
 var background : ColorRect
@@ -17,6 +18,7 @@ func _ready() -> void:
 			background = child
 			break
 	background.color = _get_target_color(GameState.intro_scary_color)
+	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 
 
 func _on_intro_color_changed(value: bool) -> void:
