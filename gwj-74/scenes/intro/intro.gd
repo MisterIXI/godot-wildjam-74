@@ -18,6 +18,7 @@ func _ready() -> void:
 			background = child
 			break
 	background.color = _get_target_color(GameState.intro_scary_color)
+	await get_tree().create_timer(1).timeout
 	DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 
 
