@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -1514,6 +1514,7 @@ offset_bottom = 146.122
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Hallway/Inside"]
+layout_mode = 0
 offset_left = 1183.69
 offset_top = 1648.88
 offset_right = 3621.69

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3fwpebgt8ekf"]
+[gd_scene load_steps=5 format=3 uid="uid://b3fwpebgt8ekf"]
 
 [ext_resource type="Script" path="res://scenes/intro/intro.gd" id="1_tvs07"]
 [ext_resource type="Resource" uid="uid://dtweqmiwtg5hk" path="res://resources/intro.dialogue" id="2_uin2b"]
+[ext_resource type="AudioStream" uid="uid://5k0mf5c8y8wp" path="res://assets/sounds/train_interior.wav" id="4_aji2u"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/dialogue/balloon.tscn" id="4_j31hn"]
 
 [node name="Intro" type="CanvasLayer"]
@@ -17,3 +18,7 @@ grow_vertical = 2
 color = Color(0.734375, 0.513033, 0.191479, 1)
 
 [node name="ExampleBalloon" parent="ColorRect" instance=ExtResource("4_j31hn")]
+
+[node name="TrainInterior" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aji2u")
+autoplay = true

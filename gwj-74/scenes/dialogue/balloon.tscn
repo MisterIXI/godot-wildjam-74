@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://bqquq2bcpiyhh" path="res://assets/fonts/PatrickHand-Regular.ttf" id="3_hvlt6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -65,7 +66,8 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="Theme" id="Theme_phshf"]
 RichTextLabel/constants/line_separation = 20
-RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("3_hvlt6")
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
