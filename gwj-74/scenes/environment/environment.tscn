@@ -50,8 +50,9 @@ background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_strength = 1.14
-glow_bloom = 0.16
+glow_intensity = 0.28
+glow_strength = 0.62
+glow_bloom = 0.18
 glow_blend_mode = 0
 fog_light_color = Color(0, 0, 0, 1)
 
@@ -65,7 +66,7 @@ shader_parameter/shake = 0.5
 shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.17
+shader_parameter/colorOffsetIntensity = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7hah"]
 size = Vector2(4543, 50)
@@ -224,7 +225,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
