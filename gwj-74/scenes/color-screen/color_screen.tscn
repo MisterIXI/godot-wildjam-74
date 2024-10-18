@@ -5,6 +5,8 @@
 
 [node name="ColorScreen" type="CanvasLayer"]
 script = ExtResource("1_tvs07")
+happy_color = Color(0.32, 0.0288, 0.17895, 1)
+scary_color = Color(0.0156863, 0.101961, 0.239216, 1)
 dialogue_resource = ExtResource("2_uin2b")
 
 [node name="ColorRect" type="ColorRect" parent="."]

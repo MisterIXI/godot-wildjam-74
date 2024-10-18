@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" uid="uid://cof4xba0xgumk" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
 [ext_resource type="PackedScene" uid="uid://b3fwpebgt8ekf" path="res://scenes/color-screen/color_screen.tscn" id="6_1xhdv"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
 
@@ -31,6 +31,7 @@ position = Vector2(2319, -82)
 position = Vector2(-364, -239)
 
 [node name="ColorScreen" parent="." instance=ExtResource("6_1xhdv")]
+color_animation_speed = 3.0
 
 [node name="DebugMenu" parent="." node_paths=PackedStringArray("environment", "player", "color_screen") instance=ExtResource("1_pv4gp")]
 environment = NodePath("../Game/Environment")
