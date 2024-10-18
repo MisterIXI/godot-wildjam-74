@@ -7,6 +7,8 @@ class_name Intro
 @export_range(0, 10) var animation_speed = 1
 @export var dialogue_resource: DialogueResource
 
+@onready var train_interior: AudioStreamPlayer = $TrainInterior
+
 var _tween: Tween
 var background : ColorRect
 

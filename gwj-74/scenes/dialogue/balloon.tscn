@@ -65,6 +65,7 @@ MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="Theme" id="Theme_phshf"]
+RichTextLabel/colors/default_color = Color(1, 0.889099, 0.382813, 1)
 RichTextLabel/constants/line_separation = 20
 RichTextLabel/font_sizes/normal_font_size = 32
 RichTextLabel/fonts/normal_font = ExtResource("3_hvlt6")
