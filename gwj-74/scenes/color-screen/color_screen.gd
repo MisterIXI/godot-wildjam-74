@@ -43,13 +43,13 @@ func _get_target_color(value : bool) -> Color:
 
 
 func start_dialog(dialog_string : String) -> void:
+	game.process_mode = Node.PROCESS_MODE_DISABLED
 	if !background.visible:
 		set_visibility(true)
 		await _screen_tween.finished
 	background.color = _get_target_color(GameState.intro_scary_color)
 	BalloonSetter.set_balloon(true)
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialog_string)
-	game.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func set_visibility(value : bool) -> void:

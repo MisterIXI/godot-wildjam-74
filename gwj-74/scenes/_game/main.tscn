@@ -33,6 +33,14 @@ position = Vector2(2319, -82)
 [node name="Testbox" parent="Game/YSort" instance=ExtResource("5_tpanc")]
 position = Vector2(-364, -239)
 
+[node name="DesertedSubway" type="AudioStreamPlayer" parent="Game"]
+unique_name_in_owner = true
+stream = ExtResource("7_shvcr")
+volume_db = -20.0
+pitch_scale = 0.5
+autoplay = true
+bus = &"SFX"
+
 [node name="ColorScreen" parent="." node_paths=PackedStringArray("game") instance=ExtResource("6_1xhdv")]
 game = NodePath("../Game")
 color_animation_speed = 3.0
@@ -43,11 +51,3 @@ player = NodePath("../Game/YSort/player")
 color_screen = NodePath("../ColorScreen")
 
 [node name="SFX" type="Node" parent="."]
-
-[node name="DesertedSubway" type="AudioStreamPlayer" parent="SFX"]
-unique_name_in_owner = true
-stream = ExtResource("7_shvcr")
-volume_db = -20.0
-pitch_scale = 0.5
-autoplay = true
-bus = &"SFX"
