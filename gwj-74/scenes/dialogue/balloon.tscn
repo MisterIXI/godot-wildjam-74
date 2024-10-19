@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnf35hipcoe38"]
+[gd_scene load_steps=12 format=3 uid="uid://bnf35hipcoe38"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="StyleBox" uid="uid://i471giespijg" path="res://resources/dialogue/balloon_panel.tres" id="2_a4ufl"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="PackedScene" uid="uid://djuo13dsshjbu" path="res://scenes/dialogue/audio_stream_clicker.tscn" id="3_wr7tg"]
+[ext_resource type="FontFile" uid="uid://bqquq2bcpiyhh" path="res://assets/fonts/PatrickHand-Regular.ttf" id="4_h5opf"]
 [ext_resource type="PackedScene" uid="uid://c6htjydhqvuuy" path="res://scenes/dialogue/audio_stream_selector.tscn" id="5_aueb5"]
 [ext_resource type="PackedScene" uid="uid://cxd8osmssw1m5" path="res://scenes/dialogue/audio_stream_hover.tscn" id="6_te8pv"]
 
@@ -20,12 +21,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpwkc"]
-bg_color = Color(0.0288, 0.1944, 0.36, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkr5d"]
+bg_color = Color(0.050798, 0.225457, 0.350649, 0.909804)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -35,8 +32,8 @@ corner_radius_bottom_left = 5
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font_size = 20
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
-Button/styles/focus = SubResource("StyleBoxFlat_lpwkc")
-Button/styles/hover = SubResource("StyleBoxFlat_lpwkc")
+Button/styles/focus = SubResource("StyleBoxFlat_nkr5d")
+Button/styles/hover = SubResource("StyleBoxFlat_nkr5d")
 Button/styles/normal = ExtResource("2_a4ufl")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
@@ -67,9 +64,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 252.0
-offset_top = -163.0
+offset_top = -185.0
 offset_right = -250.0
-offset_bottom = -39.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -100,7 +97,12 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Dialogue..."
+theme_override_fonts/normal_font = ExtResource("4_h5opf")
+theme_override_font_sizes/normal_font_size = 28
+text = "Dialogue...
+ddd
+ddd
+ddd"
 seconds_per_step = 0.03
 
 [node name="AudioStreamClicker" parent="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" instance=ExtResource("3_wr7tg")]
@@ -112,10 +114,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -251.5
-offset_top = -203.0
-offset_right = 251.5
-offset_bottom = 201.0
+offset_left = -193.0
+offset_top = -218.0
+offset_right = 193.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -131,6 +133,8 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_h5opf")
+theme_override_font_sizes/font_size = 22
 text = "Response example"
 
 [node name="AudioStreamHover" parent="Balloon/Responses/ResponsesMenu/ResponseExample" instance=ExtResource("6_te8pv")]

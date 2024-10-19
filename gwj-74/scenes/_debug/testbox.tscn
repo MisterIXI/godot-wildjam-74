@@ -41,6 +41,7 @@ position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_7pgkp")
 
 [node name="Interactable" parent="." instance=ExtResource("2_n0lbm")]
+dialogue_start = "inside_toilet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(0, 56)

@@ -264,7 +264,7 @@ do wait(0.5)
 Man, what am I even doing here? [wait=0.5] This whole situation is completely fucked.
 I can't find the exit and there's noone here. What should I do?
 ...[wait=1]What's this?
-do player.move_to(newspaper_marker.global.position)
+#do player.move_to(newspaper_marker.global.position)
 ...[wait=1]It's another newspaper clipping.
 "49 dead after freak accident in Glenwich Station
 	Yesterday a part of Glenwich Station collapsed and got completely blocked by debris trapping all 44 passengers and 5 members of the staff.
@@ -272,7 +272,7 @@ The situation worsened further when a broken pipe of the city's freshwater syste
 After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
 This article is from October 1992.
 [speed=0.6]...[wait=0.5]So that's what happened here.
-
+=> END
 
 
 ~ cutscene_tester
