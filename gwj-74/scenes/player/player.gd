@@ -52,11 +52,11 @@ func _physics_process(_delta: float) -> void:
 		interaction_ray_cast.rotation = 0
 	if direction.x < 0 and direction.y == 0:
 		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = false
+		animated_sprite.flip_h = true
 		interaction_ray_cast.rotation = 0.5 * PI
 	if direction.x > 0 and direction.y == 0:
 		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = true
+		animated_sprite.flip_h = false
 		interaction_ray_cast.rotation = 1.5 * PI
 
 	# Handle character movement
@@ -94,7 +94,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite != null:
 		
 		# Handle Walk Animation SFX
-		if animated_sprite.animation == "forward-walk" or animated_sprite.animation == "backward-walk":
+		if animated_sprite.animation == "forward-walk" or animated_sprite.animation == "backward-walk" or animated_sprite.animation == "sideward-walk":
 			match animated_sprite.frame:
 				0, 6, 12, 18:
 					step_player.play()
