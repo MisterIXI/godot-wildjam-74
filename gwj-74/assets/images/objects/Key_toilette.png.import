@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br3rn7frnb8b4"
-path="res://.godot/imported/Key_Toilette.png-26979de9a9731fd8b621f5d2505f4d16.ctex"
+path="res://.godot/imported/Key_toilette.png-1d682ee2db200b739f9589ec2f1f93d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/Key_Toilette.png"
-dest_files=["res://.godot/imported/Key_Toilette.png-26979de9a9731fd8b621f5d2505f4d16.ctex"]
+source_file="res://assets/images/objects/Key_toilette.png"
+dest_files=["res://.godot/imported/Key_toilette.png-1d682ee2db200b739f9589ec2f1f93d7.ctex"]
 
 [params]
 
