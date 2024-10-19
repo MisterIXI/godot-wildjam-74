@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=85 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
+[ext_resource type="PackedScene" uid="uid://cds3rbcr6oguh" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
@@ -1445,6 +1446,9 @@ scale = Vector2(0.317, 0.175)
 color = Color(1, 0.99934, 0.719946, 1)
 energy = 0.1
 texture = ExtResource("10_khwxr")
+
+[node name="InsideDoorCloser" parent="Train/Train-inside" node_paths=PackedStringArray("train") instance=ExtResource("35_p633o")]
+train = NodePath("../..")
 
 [node name="TrainArea" type="Area2D" parent="Train"]
 

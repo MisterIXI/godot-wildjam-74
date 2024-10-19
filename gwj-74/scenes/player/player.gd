@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed = 200.0
-@export var acceleration = 0.1
+@export var acceleration = 0.2
 @export var friction = 0.2
 @export_range(1,10) var idle_offset = 5.0
 
