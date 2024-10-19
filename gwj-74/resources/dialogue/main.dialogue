@@ -21,7 +21,7 @@ Is this the terminal station?
 if was_outside == false:
 	Man, this place looks deserted...
 	Is anyone even here?
-	was_outside = true
+	set was_outside = true
 => END
 
 ~ clock
@@ -37,13 +37,28 @@ elif clock_spinning:
 => END
 
 ~ vending_machine
-It holds a few items, what do I want to get?
+if !met_vending_machine:
+	I have a few coins in my pocket, what do I want to get?
+else:
+	Maybe I should try again.
 - Cola
 	Alright the code for cola is 3712.
-	#do vending_sfx.play()
 - Chips
+	Yeah, chips sound good, The code is 4534.
 - Grape Soda
+	Grape Soda it is! The code is 1758.
 - Bubble Gum
+	I hadn't bubble gum for ages! The code is 0591.
+- Nothing
+	I've changed my mind. => END
+#do vending_sfx.play()
+if !met_vending_machine:
+	The coin fell right through.
+else:
+	% Come on! Why?
+	% Didn't work... again...
+	% This machine sucks!
+set met_vending_machine = true
 => END
 
 ~ ghost
@@ -55,9 +70,16 @@ if !ghost_met:
 	set ghost_met = true
 => END
 
-~ clerk
-
-if ghost_met and wrapped_around:
+~ clerk_cutscene
+if ghost_met and wrapped_around and clerk_appear_happened:
 	#do game_manager.clerk_appear()
-	as
-	
+	Oh, there's someone in there!
+		I better talk to them! Maybe they know how I can get home.
+	set clerk_appear_happened = true
+=> END
+
+~ clerk
+Hello, thank goodness, you are here!
+	Can you tell me, when the next train is leaving?
+	I dozed off in the train and missed my stop.
+Clerk?: ...There is 

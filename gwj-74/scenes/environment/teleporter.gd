@@ -33,3 +33,4 @@ func on_body_entered_from_direction(body: Node, entered_left_area: bool) -> void
 			body.global_position.x -= DIST
 		camera.reset_smoothing()
 		camera.position = Vector2.ZERO
+		GameState.wrapped_around = true
