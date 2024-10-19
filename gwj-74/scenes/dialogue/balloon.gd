@@ -136,6 +136,8 @@ func _on_mutated(_mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
+	if DialogueManager.auto_skip:
+		return
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
@@ -162,3 +164,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_finished_typing() -> void:
+	if DialogueManager.auto_skip:
+		await get_tree().create_timer(1).timeout
+		next(dialogue_line.next_id)
