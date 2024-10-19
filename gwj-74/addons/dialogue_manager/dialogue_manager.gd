@@ -45,6 +45,7 @@ enum TranslationSource {
 	PO
 }
 
+var is_in_dialogue: bool = false
 
 ## The list of globals that dialogue can query
 var game_states: Array = []
@@ -112,6 +113,7 @@ func get_next_dialogue_line(resource: DialogueResource, key: String = "", extra_
 	# If our dialogue is nothing then we hit the end
 	if not is_valid(dialogue):
 		(func(): dialogue_ended.emit(resource)).call_deferred()
+		is_in_dialogue = false
 		return null
 
 	# Run the mutation if it is one
@@ -127,6 +129,7 @@ func get_next_dialogue_line(resource: DialogueResource, key: String = "", extra_
 		if actual_next_id in [DialogueConstants.ID_END_CONVERSATION, DialogueConstants.ID_NULL, null]:
 			# End the conversation
 			(func(): dialogue_ended.emit(resource)).call_deferred()
+			is_in_dialogue = false
 			return null
 		else:
 			return await get_next_dialogue_line(resource, dialogue.next_id, extra_game_states, mutation_behaviour)
@@ -265,7 +268,7 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 	var balloon: Node = load(_get_example_balloon_path()).instantiate()
 	get_current_scene.call().add_child(balloon)
 	balloon.start(resource, title, extra_game_states)
-
+	is_in_dialogue = true
 	return balloon
 
 
@@ -274,6 +277,7 @@ func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra
 	var balloon_path: String = DialogueSettings.get_setting(&"balloon_path", _get_example_balloon_path())
 	if not ResourceLoader.exists(balloon_path):
 		balloon_path = _get_example_balloon_path()
+	is_in_dialogue = true
 	return show_dialogue_balloon_scene(balloon_path, resource, title, extra_game_states)
 
 

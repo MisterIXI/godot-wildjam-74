@@ -163,6 +163,7 @@ else:
 % Okay...
 => END
 
+<<<<<<< HEAD
 ~ train_door_close
 #do game_manager.train_door_close_inside()
 Oh, no! This is bad...
@@ -203,3 +204,18 @@ I think it came from in there.
 => END
 
 ~ toilet_door
+=======
+
+~ cutscene_tester
+
+Gott sei dank der Zug ist noch da, da kann ich noch eine rauchen.
+do player.start_smoking()
+do wait(5)
+do environment.train.depart()
+do wait(0.5)
+do player.move_to(Vector2(-3500,0), 350)
+do environment.walls.set_wall_left(true)
+do player.wait_for_player()
+FUUUUUCK!
+=> END
+>>>>>>> main

@@ -27,6 +27,9 @@ var _tween_door_front : Tween = null
 var _tween_door_back : Tween = null
 var _tween_door_inside : Tween = null
 
+var _train_start_position : Vector2 = Vector2.ZERO
+var _train_end_position : Vector2 = Vector2.ZERO
+
 
 func _ready():
 	train_area.body_entered.connect(_on_body_entered)
@@ -39,6 +42,9 @@ func _ready():
 	set_door(train_door_front.visible, 0)
 	set_door(train_door_back.visible, 1)
 	set_door_inside(train_door_inside_collider.disabled)
+
+	_train_start_position = global_position
+	_train_end_position = global_position + Vector2(-8000, 0)
 
 
 func _on_body_entered(body: Node) -> void:
@@ -81,3 +87,18 @@ func set_door_inside(open : bool) -> void:
 	train_door_inside_collider.disabled = open
 	_tween_door_inside = CustomTweener.set_visibility(open, train_door_inside, _tween_door_inside, door_animation_duration)
 	door_inside_open = open
+
+
+func depart() -> void:
+	set_door(false, 0)
+	set_door(false, 1)
+
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(self, "global_position", _train_end_position, 5)
+
+
+func reset_position() -> void:
+	global_position = _train_start_position
+	set_door(true, 0)
