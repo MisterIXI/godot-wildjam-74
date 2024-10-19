@@ -1,7 +1,13 @@
 extends Node
 
 var test_checked: bool = false
+
 var was_outside: bool = false
+var ghost_met: bool = false
+
+# Items 
+var clock_checked: bool = false
+var clock_spinning: bool = false
 
 signal intro_scary_color_changed
 var intro_scary_color: bool = false:

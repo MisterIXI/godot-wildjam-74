@@ -56,7 +56,7 @@ text/input_action="dialogic_default_action"
 [dialogue_manager]
 
 general/states=["GameState"]
-general/balloon_path="res://scenes/dialogue/color_screen_balloon.tscn"
+general/balloon_path="res://scenes/dialogue/balloon.tscn"
 
 [display]
 

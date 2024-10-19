@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxjtlmlg0kxb"]
+[gd_scene load_steps=8 format=3 uid="uid://cxjtlmlg0kxb"]
 
 [ext_resource type="Texture2D" uid="uid://c01a7643olouw" path="res://assets/images/objects/Vending Machine.png" id="1_tq2x2"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="2_6c08c"]
 [ext_resource type="PackedScene" uid="uid://5ba3dqmaewe3" path="res://components/flicker/flicker.tscn" id="3_j1efr"]
 [ext_resource type="AudioStream" uid="uid://ss6fn1oqn0xo" path="res://assets/sounds/neon_dim.wav" id="4_4qf7a"]
+[ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_jyuof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw4sq"]
 size = Vector2(145, 36)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gqgkv"]
+a = Vector2(-72, 0)
+b = Vector2(72, 0)
 
 [node name="VendingMachine" type="StaticBody2D"]
 y_sort_enabled = true
@@ -33,3 +38,9 @@ volume_db = -80.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 18)
 shape = SubResource("RectangleShape2D_xw4sq")
+
+[node name="Interactable" parent="." instance=ExtResource("5_jyuof")]
+dialogue_start = "vending_machine"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("SegmentShape2D_gqgkv")

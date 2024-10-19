@@ -1,44 +1,63 @@
 ~ default
-
 This is a test dialogue!
-
 => END
 
 ~ testbox
-
-if test_checked == false:
+if !test_checked:
 	This is a testbox!
 	set test_checked = true
 else:
 	I've already checked it!
-
-=> END
-
-~ intro
-
-You're on your way home from work sitting in your usual subway line.
-As you listen to the rhythmic rattling of the rails and the mumbling of the other busy passengers,
-	your eyes grow heavier and heavier and you drift off into a deep slumber...
-set intro_scary_color = true
-You're on your way home from work sitting in your usual subway line.
-As you listen to the rhythmic rattling of the rails and the mumbling of the other busy passengers,
-	your eyes grow heavier and heavier and you drift off into a deep slumber...
-
 => END
 
 ~ beginning
-
 Huh?
-Damn, I must've dow
-	And where is everybody else?
+Damn, I must've dozed off...
+	...Where is everybody else?
 Is this the terminal station?
-
 => END
 
 ~ outside
-
 if was_outside == false:
-	Man, this place looks deserted..,
+	Man, this place looks deserted...
 	Is anyone even here?
 	was_outside = true
+=> END
+
+~ clock
+if !clock_spinning and !clock_checked:
+	It doesn't seem to work...
+		In fact, it seems it hasn't been in working order for quite some time.
+	set clock_checked = true
+elif clock_checked and !clock_spinning:
+	Still not working...
+	 It's kinda accurate though. Time does seem to stand still in this place.
+elif clock_spinning:
+	What the fuck is going on here?
+=> END
+
+~ vending_machine
+It holds a few items, what do I want to get?
+- Cola
+	Alright the code for cola is 3712.
+	#do vending_sfx.play()
+- Chips
+- Grape Soda
+- Bubble Gum
+=> END
+
+~ ghost
+if !ghost_met:
+	Uhh, hello?
+	Can you tell me where we are? When this train is leaving the station?
+	#do ghost_sfx.play()
+	Umm, okay?... It's okay, i'll look for somebody else.
+	set ghost_met = true
+=> END
+
+~ clerk
+
+if ghost_met and wrapped_around:
+	#do game_manager.clerk_appear()
+	as
 	

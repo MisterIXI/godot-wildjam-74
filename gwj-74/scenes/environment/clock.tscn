@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://qfoxvsaqkndc"]
+[gd_scene load_steps=7 format=3 uid="uid://bw5fn7iss1mgg"]
 
 [ext_resource type="Script" path="res://scenes/environment/clock.gd" id="1_qxlfg"]
 [ext_resource type="Texture2D" uid="uid://ddblefci1psfl" path="res://assets/images/objects/clock_background.svg" id="2_jnocn"]
 [ext_resource type="Texture2D" uid="uid://cg6ibeko7re6m" path="res://assets/images/objects/clock_minute_hand.svg" id="3_csiww"]
 [ext_resource type="Texture2D" uid="uid://d3fbbmhctipyp" path="res://assets/images/objects/hour_hand.svg" id="4_aqdtp"]
+[ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="5_4ukvj"]
 
-[node name="Clock" type="Node2D" node_paths=PackedStringArray("minute_hand", "hour_hand", "player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t3xa"]
+size = Vector2(101, 20)
+
+[node name="Clock" type="Node2D" node_paths=PackedStringArray("minute_hand", "hour_hand")]
 position = Vector2(190, -527)
 script = ExtResource("1_qxlfg")
 minute_hand = NodePath("MinuteHand")
 hour_hand = NodePath("HourHand")
-player = NodePath("")
 
 [node name="Clock" type="Sprite2D" parent="."]
 texture = ExtResource("2_jnocn")
@@ -24,3 +27,10 @@ offset = Vector2(0, -14)
 scale = Vector2(1, 1.64)
 texture = ExtResource("4_aqdtp")
 offset = Vector2(0, -6)
+
+[node name="Interactable" parent="." instance=ExtResource("5_4ukvj")]
+dialogue_start = "clock"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 220)
+shape = SubResource("RectangleShape2D_1t3xa")
