@@ -5,10 +5,15 @@ var test_checked: bool = false
 var wrapped_around: bool = false
 var ghost_met: bool = false
 
-# Items 
+# Environment
 var clock_checked: bool = false
 var clock_spinning: bool = false
 var met_vending_machine: bool = false
+var newspaper_read: bool = false
+
+# Items 
+var has_train_key: bool = false
+var train_key_broken: bool = false
 
 # Cutscenes
 var clerk_appear_happened: bool = false

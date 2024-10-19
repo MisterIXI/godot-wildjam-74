@@ -18,7 +18,7 @@ Is this the terminal station?
 => END
 
 ~ outside
-if was_outside == false:
+if !was_outside:
 	Man, this place looks deserted...
 	Is anyone even here?
 	set was_outside = true
@@ -66,7 +66,7 @@ if !ghost_met:
 	Uhh, hello?
 	Can you tell me where we are? When this train is leaving the station?
 	#do ghost_sfx.play()
-	Umm, okay?... It's okay, i'll look for somebody else.
+	Umm, okay?... It's okay, I'll look for somebody else.
 	set ghost_met = true
 => END
 
@@ -82,4 +82,82 @@ if ghost_met and wrapped_around and clerk_appear_happened:
 Hello, thank goodness, you are here!
 	Can you tell me, when the next train is leaving?
 	I dozed off in the train and missed my stop.
-Clerk?: ...There is 
+Clerk?: [speed=0.6]Well, let me see here.
+	[speed=0.6]There is no train scheduled for the next [shake rate=20.0 level=5 connected=1]§&%$[/shake] hours.
+Wait, what are you saying? There is no train coming?
+Where do I leave this station then?
+	I walked around but I couldn't find an exit...
+Clerk?: [speed=0.6]Leave... Exit...?
+[shake rate=20.0 level=5 connected=1]Maybe you should just sit down over there and wait. I’ll lock everything up here soon.[/shake]
+What are you-
+#do game_manager.clerk_disappear()
+#do unlock_sfx.play()
+The door unlocked... Maybe I should enter and ask him again?
+=> END
+
+~ inside_office
+...Hello?
+Where did he go?
+#do lightswitch_sfx.play()
+The lightswitch doesn't work...
+=> END
+
+~ calendar
+It's an old calendar from 1992.
+	The paper is yellowed and brittle.
+It seems like it would crumble in my fingers if I touched it.
+=> END
+
+~ newspaper
+if !newspaper_read:
+	Here's a torn up newspaper article.
+		...I can't make out much of it, but it seems to talk about this subway station.
+[speed=0.6]...The city mayor decided to permanently close Glenwich Station and seal it off from the subway grid.
+if !newspaper_read:
+	What the hell? From when is this article? And how am I even here then?
+I really need to get out of here!
+set newspaper_read = true
+=> END
+
+~ key_hanger
+if !has_train_key:
+	It's a key hanger, but there is only one key here.
+	Let's see... it has a tag with a train symbol attached to it.
+		I'll take it just in case.
+	set has_train_key = true
+else:
+	Just a regular old key hanger. There are no keys left.
+=> END
+
+~ office_exit
+if has_train_key and newspaper_read:
+	I'll better get out of here...
+		This place is giving me the creeps!
+=> END
+
+~ train_door
+if has_train_key and !train_key_broken:
+	Yes! The key fits!
+	#do unlock_sfx.play()
+	#do key_break_sfx.play()
+	do environment.train.set_door_inside(true)
+	set train_key_broken = true
+	Fuck, it broke off!
+	Well, at least the door is open...
+elif has_train_key and train_key_broken:
+	#do locked_sfx.play()
+	Damn it! It doesn't move an inch and the broken key is stuck.
+else:
+	#do locked_sfx.play()
+	It's locked.
+=> END
+
+~ ghosts
+% Um, hello?
+% Do you speak english?
+% Excuse me, can you tell me-
+#do ghost_sfx.play()
+% Uh, right...
+% ...
+% Okay...
+=> END
