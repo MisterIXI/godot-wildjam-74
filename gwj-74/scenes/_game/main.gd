@@ -5,5 +5,5 @@ extends Node2D
 @onready var player: Player = %player
 
 
-func set_dialogue_auo_skip(value : bool) -> void:
+func set_dialogue_auto_skip(value : bool) -> void:
 	DialogueManager.auto_skip = value
