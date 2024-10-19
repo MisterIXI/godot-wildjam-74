@@ -8,8 +8,8 @@ var wall_left_active : bool = true
 var wall_right_active : bool = true
 
 func _ready() -> void:
-	set_wall_left(wall_left.visible)
-	set_wall_right(wall_right.visible)
+	set_wall_left(false)
+	set_wall_right(false)
 
 
 func set_wall_left(active : bool) -> void:
