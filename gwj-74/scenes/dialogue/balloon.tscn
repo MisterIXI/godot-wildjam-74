@@ -139,6 +139,8 @@ offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="AudioStreamPlayer" parent="Balloon/Responses" instance=ExtResource("5_aueb5")]
+
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -146,8 +148,6 @@ size_flags_vertical = 8
 theme_override_constants/separation = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
-
-[node name="AudioStreamPlayer" parent="Balloon/Responses/ResponsesMenu" instance=ExtResource("5_aueb5")]
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2

@@ -1,16 +1,16 @@
 extends AudioStreamPlayer
 class_name AudioStreamSelector
 
-var _parent : DialogueResponsesMenu = null
+var _sibling : DialogueResponsesMenu = null
 
 
 func _ready() -> void:
-	_parent = get_parent()
-	print("AudioStreamSelector: Ready")
-	_parent.response_selected.connect(_on_response_selected)
-	print(_parent, _parent.response_selected)
+	for sibling in get_parent().get_children():
+		if sibling is DialogueResponsesMenu:
+			_sibling = sibling
+			break
+	_sibling.response_selected.connect(_on_response_selected)
 
 
 func _on_response_selected(_response) -> void:
 	play()
-	print("AudioStreamSelector: Playing audio stream")
