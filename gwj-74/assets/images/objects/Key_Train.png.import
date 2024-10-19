@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br3rn7frnb8b4"
-path="res://.godot/imported/Key_Toilette.png-26979de9a9731fd8b621f5d2505f4d16.ctex"
+uid="uid://yb4n6t6jl1u4"
+path="res://.godot/imported/Key_Train.png-dddd5a03f1df181d8d4e0fa622383fb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/Key_Toilette.png"
-dest_files=["res://.godot/imported/Key_Toilette.png-26979de9a9731fd8b621f5d2505f4d16.ctex"]
+source_file="res://assets/images/objects/Key_Train.png"
+dest_files=["res://.godot/imported/Key_Train.png-dddd5a03f1df181d8d4e0fa622383fb7.ctex"]
 
 [params]
 
