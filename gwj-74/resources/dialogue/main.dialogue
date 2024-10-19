@@ -168,10 +168,9 @@ else:
 Gott sei dank der Zug ist noch da, da kann ich noch eine rauchen.
 do player.start_smoking()
 do wait(5)
-Heyy!!!!!!
-do player.move_to(Vector2(-3500,0), 350)
-#do player.wait_for_player()
 do environment.train.depart()
+do wait(0.5)
+do player.move_to(Vector2(-3500,0), 350)
 do environment.walls.set_wall_left(true)
 do player.wait_for_player()
 FUUUUUCK!
