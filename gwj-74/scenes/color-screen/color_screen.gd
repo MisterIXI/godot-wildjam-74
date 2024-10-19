@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name ColorScreen
 
-
+@export var game : Node
 @export var happy_color = Color(0.7, 0.5, 0.19, 1)
 @export var scary_color = Color(0.11, 0.36, 0.38, 1)
 @export_range(0, 10) var color_animation_speed : float = 1
@@ -43,10 +43,12 @@ func _get_target_color(value : bool) -> Color:
 
 
 func start_dialog(dialog_string : String) -> void:
+	game.process_mode = Node.PROCESS_MODE_DISABLED
 	if !background.visible:
 		set_visibility(true)
 		await _screen_tween.finished
 	background.color = _get_target_color(GameState.intro_scary_color)
+	BalloonSetter.set_balloon(true)
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialog_string)
 
 
@@ -57,3 +59,5 @@ func set_visibility(value : bool) -> void:
 func _on_dialogue_ended(resource) -> void:
 	if resource == dialogue_resource:
 		set_visibility(false)
+		game.process_mode = Node.PROCESS_MODE_INHERIT
+		BalloonSetter.set_balloon(false)
