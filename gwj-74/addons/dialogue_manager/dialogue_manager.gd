@@ -46,6 +46,7 @@ enum TranslationSource {
 }
 
 var is_in_dialogue: bool = false
+var auto_skip: bool = false
 
 ## The list of globals that dialogue can query
 var game_states: Array = []

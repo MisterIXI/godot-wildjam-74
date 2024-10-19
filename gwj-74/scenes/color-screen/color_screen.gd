@@ -26,6 +26,12 @@ func _ready() -> void:
 
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
+	if OS.get_name() == "Web":
+		background.modulate.a = 1
+		background.visible = true
+		await get_tree().create_timer(1).timeout
+		start_dialog("intro")
+
 
 func _on_intro_color_changed(value: bool) -> void:
 	if _tween:

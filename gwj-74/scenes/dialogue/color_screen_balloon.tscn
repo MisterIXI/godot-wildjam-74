@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=12 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/color_screen_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="FontFile" uid="uid://bqquq2bcpiyhh" path="res://assets/fonts/PatrickHand-Regular.ttf" id="3_hvlt6"]
+[ext_resource type="PackedScene" uid="uid://djuo13dsshjbu" path="res://scenes/dialogue/audio_stream_clicker.tscn" id="4_n0veu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -132,6 +133,8 @@ theme = SubResource("Theme_phshf")
 text = "Dialogue..."
 seconds_per_step = 0.035
 
+[node name="AudioStreamClicker" parent="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" instance=ExtResource("4_n0veu")]
+
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 visible = false
 layout_mode = 1
@@ -160,4 +163,5 @@ layout_mode = 2
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="finished_typing" from="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_finished_typing"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

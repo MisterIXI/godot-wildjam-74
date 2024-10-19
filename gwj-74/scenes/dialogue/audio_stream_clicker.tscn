@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djuo13dsshjbu"]
+
+[ext_resource type="AudioStream" uid="uid://dk30av0ksvdfb" path="res://assets/sounds/UIClick.wav" id="1_3yog2"]
+[ext_resource type="Script" path="res://scenes/dialogue/audio_stream_player.gd" id="2_gxpq7"]
+
+[node name="AudioStreamClicker" type="AudioStreamPlayer"]
+stream = ExtResource("1_3yog2")
+volume_db = -17.0
+max_polyphony = 10
+bus = &"SFX"
+script = ExtResource("2_gxpq7")

@@ -20,6 +20,9 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	if OS.get_name() == "Web":
+		queue_free()
+		return
 	await get_tree().create_timer(0.1).timeout
 
 	player_button.pressed.connect(_on_player_button_pressed)
