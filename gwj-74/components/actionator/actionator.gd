@@ -39,7 +39,11 @@ func _ready() -> void:
 
 	if only_on_game_state_name.size() > 0 and only_on_game_state_value.size() > 0:
 		if only_on_game_state_name.size() != only_on_game_state_value.size():
-			print("### ACTIONATOR WARNING #### Game state name and value arrays are not the same size in: " + name)
+			print("### ACTIONATOR WARNING #### Only on Game state name and value arrays are not the same size in: " + name)
+	
+	if set_game_state_name.size() > 0 and set_game_state_value.size() > 0:
+		if set_game_state_name.size() != set_game_state_value.size():
+			print("### ACTIONATOR WARNING #### Set game state name and value arrays are not the same size in: " + name)
 	
 	if start_cutscene:
 		print("### ACTIONATOR WARNING #### Cutscene is not implemented yet in: " + name)
