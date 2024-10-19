@@ -16,7 +16,6 @@ script = ExtResource("1_nnq32")
 
 [node name="Environment" parent="Game" instance=ExtResource("1_yuk8r")]
 unique_name_in_owner = true
-script = null
 
 [node name="YSort" type="Node2D" parent="Game"]
 y_sort_enabled = true
