@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="10_dkuxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxcwo"]
-size = Vector2(20, 76)
+size = Vector2(75, 238)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_nnq32")
@@ -66,6 +66,6 @@ dialogue_string = "cutscene_tester"
 dialogue_resource = ExtResource("10_dkuxk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionator"]
-position = Vector2(-2, 6)
+position = Vector2(-997.5, 87)
 shape = SubResource("RectangleShape2D_kxcwo")
 debug_color = Color(0.701961, 0.239216, 0.145098, 0.764706)

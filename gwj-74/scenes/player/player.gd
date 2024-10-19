@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed = 200.0
-@export var acceleration = 0.2
+@export var acceleration = 0.1
 @export var friction = 0.2
 @export_range(1,10) var idle_offset = 5.0
 
@@ -63,6 +63,7 @@ func _physics_process(_delta: float) -> void:
 
 
 	# Handle character direction
+	animated_sprite.speed_scale = speed / 200
 	if direction.x < 0:
 		animated_sprite.play("sideward-walk")
 		animated_sprite.flip_h = true
