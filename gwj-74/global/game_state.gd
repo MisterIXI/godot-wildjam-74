@@ -1,5 +1,5 @@
 extends Node
-
+signal ui_flags_changed
 var test_checked: bool = false
 
 var wrapped_around: bool = false
@@ -12,8 +12,14 @@ var met_vending_machine: bool = false
 var newspaper_read: bool = false
 
 # Items 
-var has_train_key: bool = false
-var train_key_broken: bool = false
+var has_train_key: bool = false:
+	set(value): 
+		has_train_key = value
+		ui_flags_changed.emit()
+var train_key_broken: bool = false:
+	set(value): 
+		train_key_broken = value
+		ui_flags_changed.emit()
 
 # Cutscenes
 var clerk_appear_happened: bool = false
