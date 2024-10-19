@@ -1,7 +1,7 @@
 @icon("res://components/actionator/actionator.png")
 extends Area2D
 class_name Actionator
-
+## Activates some action when the player enters the area.
 
 @export_group("General")
 ## Only use the actionator once. It will destroy itself after the first use.
