@@ -8,6 +8,7 @@ class_name Player
 
 var direction: Vector2
 var idle_timer = 0.0
+var start_speed = 0.0
 
 var zippo_1: AudioStream = preload("res://assets/sounds/zippo_1.wav")
 var zippo_2: AudioStream = preload("res://assets/sounds/zippo_2.wav")
@@ -22,8 +23,14 @@ var random_cig: AudioStreamRandomizer = preload("res://resources/misc/random_cig
 @onready var idle_player: AudioStreamPlayer = $IdlePlayer
 
 
+var is_beeing_controlled = false
+var controlled_target: Vector2 = Vector2.ZERO
+
+
 func _ready() -> void:
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+	start_speed = speed
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -40,24 +47,39 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	
+	if DialogueManager.is_in_dialogue:
+		direction = Vector2.ZERO
+
+
+	if is_beeing_controlled:
+		direction = controlled_target - global_position
+		if direction.length() < 10:
+			is_beeing_controlled = false
+			direction = Vector2.ZERO
+			velocity = Vector2.ZERO
+			speed = start_speed
+		else:
+			direction = direction.normalized()
+
+
 	# Handle character direction
-	if direction.y < 0 and direction.x == 0:
-		animated_sprite.play("backward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = PI
-	if direction.y > 0 and direction.x == 0:
-		animated_sprite.play("forward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = 0
-	if direction.x < 0 and direction.y == 0:
+	if direction.x < 0:
 		animated_sprite.play("sideward-walk")
 		animated_sprite.flip_h = true
 		interaction_ray_cast.rotation = 0.5 * PI
-	if direction.x > 0 and direction.y == 0:
+	elif direction.x > 0:
 		animated_sprite.play("sideward-walk")
 		animated_sprite.flip_h = false
 		interaction_ray_cast.rotation = 1.5 * PI
+	elif direction.y > 0:
+		animated_sprite.play("forward-walk")
+		animated_sprite.flip_h = false
+		interaction_ray_cast.rotation = 0
+	elif direction.y < 0:
+		animated_sprite.play("backward-walk")
+		animated_sprite.flip_h = false
+		interaction_ray_cast.rotation = PI
+
 
 	# Handle character movement
 	if direction.length() > 0:
@@ -65,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 		idle_timer = 0.0
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
-		if interact_bubble.visible == false:
+		if interact_bubble.visible == false and not DialogueManager.is_in_dialogue:
 			idle_timer += _delta
 		if idle_timer > idle_offset:
 			if animated_sprite.animation != "start-idle" and animated_sprite.animation != "idle":
@@ -118,3 +140,20 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 					idle_player.pitch_scale = randf_range(0.95, 1.1)
 					idle_player.stream = random_cig
 					idle_player.play()
+
+
+func move_to(target_position: Vector2, speed_overrite : float = speed) -> void:
+	is_beeing_controlled = true
+	controlled_target = target_position
+	speed = speed_overrite
+
+
+func wait_for_player() -> void:
+	while is_beeing_controlled:
+		await get_tree().create_timer(0.1).timeout
+
+
+func start_smoking() -> void:
+	animated_sprite.play("start-idle")
+	animated_sprite.flip_h = false
+	idle_timer = idle_offset + 1

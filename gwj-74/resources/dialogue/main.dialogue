@@ -161,3 +161,17 @@ else:
 % ...
 % Okay...
 => END
+
+
+~ cutscene_tester
+
+Gott sei dank der Zug ist noch da, da kann ich noch eine rauchen.
+do player.start_smoking()
+do wait(5)
+Heyy!!!!!!
+do player.move_to(Vector2(-1500,0), 300)
+#do player.wait_for_player()
+do environment.train.depart()
+do player.wait_for_player()
+FUUUUUCK!
+=> END

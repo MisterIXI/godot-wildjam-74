@@ -4,17 +4,15 @@ class_name Actionator
 ## Activates some action when the player enters the area.
 
 @export_group("General")
-## Only use the actionator once. It will destroy itself after the first use.
+## Only use the actionator once. This Node will destroy itself after the first use.
 @export var only_use_once : bool = false
-## Only activate the actionator if the some specific game states are set to a specific value.
+## Only activate the actionator if some specific game states are set either true or false. The name of the game state variable.
 @export var only_on_game_state_name  : Array[String] = []
 ## The value the game state variable should be set to.
 @export var only_on_game_state_value : Array[bool] = []
 
 
 @export_group("Start Dialogue")
-## Activate the dialogue activator
-@export var start_dialogue : bool = false
 ## The string name of the dialogue
 @export var dialogue_string : String = ""
 ## The dialogue resource to use
@@ -22,7 +20,7 @@ class_name Actionator
 
 
 @export_group("Set Game State")
-## Set the game state variable to a specific value.
+## Set the game state variable to a specific value. The name of the game state variable.
 @export var set_game_state_name : Array[String] = []
 ## The value to set the game state variable to.
 @export var set_game_state_value : Array[bool] = []
@@ -30,9 +28,6 @@ class_name Actionator
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-
-	if start_dialogue and dialogue_string == "":
-		print("### ACTIONATOR WARNING #### Dialogue string is empty in: " + name)
 
 	if only_on_game_state_name.size() > 0 and only_on_game_state_value.size() > 0:
 		if only_on_game_state_name.size() != only_on_game_state_value.size():
@@ -52,7 +47,7 @@ func _on_body_entered(body: Node) -> void:
 			if GameState.get(only_on_game_state_name[i]) != only_on_game_state_value[i]:
 				return
 
-	if start_dialogue:
+	if dialogue_string != "":
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_string)
 	
 	for i in range(set_game_state_name.size()):
