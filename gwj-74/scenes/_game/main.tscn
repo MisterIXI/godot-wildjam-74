@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=11 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="Script" path="res://scenes/_game/main.gd" id="1_nnq32"]
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
 [ext_resource type="PackedScene" uid="uid://5y3y8neopnpa" path="res://scenes/environment/environment.tscn" id="1_yuk8r"]
 [ext_resource type="PackedScene" uid="uid://c6tip7fbowjjb" path="res://scenes/player/player.tscn" id="3_o03rn"]
-[ext_resource type="PackedScene" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
+[ext_resource type="PackedScene" uid="uid://cof4xba0xgumk" path="res://scenes/_debug/testbox.tscn" id="5_tpanc"]
 [ext_resource type="PackedScene" uid="uid://b3fwpebgt8ekf" path="res://scenes/color-screen/color_screen.tscn" id="6_1xhdv"]
 [ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="7_shvcr"]
+[ext_resource type="Script" path="res://components/actionator/actionator.gd" id="9_g40xn"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxcwo"]
+size = Vector2(20, 76)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_nnq32")
@@ -52,3 +56,14 @@ volume_db = -20.0
 pitch_scale = 0.5
 autoplay = true
 bus = &"SFX"
+
+[node name="Actionator" type="Area2D" parent="." node_paths=PackedStringArray("cutscene")]
+position = Vector2(-349, -28)
+script = ExtResource("9_g40xn")
+start_cutscene = true
+cutscene = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionator"]
+position = Vector2(-2, 6)
+shape = SubResource("RectangleShape2D_kxcwo")
+debug_color = Color(0.701961, 0.239216, 0.145098, 0.764706)

@@ -8,27 +8,24 @@ class_name Actionator
 @export var only_use_once : bool = false
 ## Only activate the actionator if the some specific game states are set to a specific value.
 @export var only_on_game_state_name  : Array[String] = []
+## The value the game state variable should be set to.
 @export var only_on_game_state_value : Array[bool] = []
 
 
-
-@export_group("Dialogue")
+@export_group("Start Dialogue")
 ## Activate the dialogue activator
 @export var start_dialogue : bool = false
 ## The string name of the dialogue
 @export var dialogue_string : String = ""
+## The dialogue resource to use
 @export var dialogue_resource : DialogueResource = null
 
 
-@export_group("Game State")
-## Change the game state variables.
+@export_group("Set Game State")
+## Set the game state variable to a specific value.
 @export var set_game_state_name : Array[String] = []
+## The value to set the game state variable to.
 @export var set_game_state_value : Array[bool] = []
-
-
-@export_group("Cutscene")
-## Activate the cutscene CURRENTLY NOT IMPLEMENTED
-@export var start_cutscene : bool = false
 
 
 func _ready() -> void:
@@ -44,9 +41,6 @@ func _ready() -> void:
 	if set_game_state_name.size() > 0 and set_game_state_value.size() > 0:
 		if set_game_state_name.size() != set_game_state_value.size():
 			print("### ACTIONATOR WARNING #### Set game state name and value arrays are not the same size in: " + name)
-	
-	if start_cutscene:
-		print("### ACTIONATOR WARNING #### Cutscene is not implemented yet in: " + name)
 
 
 func _on_body_entered(body: Node) -> void:
