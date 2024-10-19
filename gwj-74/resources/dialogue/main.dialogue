@@ -204,7 +204,76 @@ I think it came from in there.
 => END
 
 ~ toilet_door
-=======
+if !has_toilet_key:
+	It's the door to the toilet.
+	#do locked_sfx.play()
+	Damn, it's locked.
+else:
+	unlock door
+	#do unlock_sfx.play()
+	Well, here we go...
+=> END
+
+~ janitor_closet
+This seems to be a janitor's closet.
+Maybe there is something of use here?
+=> END
+
+~ janitor_shelf
+They store here cleaning utensils and tools.
+It's mostly old dusty stuff though.
+=> END
+
+~ padlocked_safe
+if !safe_open:
+	It's a small safe with a padlock.
+		There's a note attached to it.
+	What should I do?
+	- Read the note
+		"Hey Frank, next time you forget the combination to the key safe, you can buy me a grape soda. Maybe that’ll jog your memory. -Dave"
+	- Check the padlock
+		It's a four digit padlock.
+		#do padlock.start()
+		if padlock_code == 1758:
+			#do padlock_sfx.play()
+			It's open!
+			set safe_open = true
+		else:
+			That wasn't it...
+	- Do nothing
+else:
+	if !has_toilet_key:
+		Ok, let's see...
+			Here's another key. It seems to be for the toilets.
+		#do key_grab_sfx.play()
+		set has_toilet_key = true
+		Okay, now let's check the toilets.
+	else:
+		Now it's empty.
+=> END
+
+~ janitor_note
+It's a note to the staff asking to gather any personal belongings before the closing date.
+They really were in a hurry to close this station, huh?
+=> END
+
+~ inside_toilet
+...It's a regular old toilet.
+	And it stinks like death in here.
+do wait(0.5)
+Man, what am I even doing here? [wait=0.5] This whole situation is completely fucked.
+I can't find the exit and there's noone here. What should I do?
+...[wait=1]What's this?
+do player.move_to(newspaper_marker.global.position)
+...[wait=1]It's another newspaper clipping.
+"49 dead after freak accident in Glenwich Station
+	Yesterday a part of Glenwich Station collapsed and got completely blocked by debris trapping all 44 passengers and 5 members of the staff.
+The situation worsened further when a broken pipe of the city's freshwater system quickly filled the station with water.
+After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
+This article is from October 1992.
+[speed=0.6]...[wait=0.5]So that's what happened here.
+
+
 
 ~ cutscene_tester
 
@@ -218,4 +287,4 @@ do environment.walls.set_wall_left(true)
 do player.wait_for_player()
 FUUUUUCK!
 => END
->>>>>>> main
+
