@@ -192,6 +192,14 @@ Was this wall here before?
 => END
 
 ~ black_door
-Was this ominous hole here before?
+Okay, this ominous looking hole was definitely not here before,[wait=0.5] right?
 Man, I think I'm losing my mind...
 => END
+
+~ toilet_sound
+#do creepy_sfx.play()
+What was that?
+I think it came from in there.
+=> END
+
+~ toilet_door
