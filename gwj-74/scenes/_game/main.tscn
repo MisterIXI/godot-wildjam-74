@@ -15,15 +15,7 @@ script = ExtResource("1_nnq32")
 [node name="Game" type="Node2D" parent="."]
 
 [node name="Environment" parent="Game" instance=ExtResource("1_yuk8r")]
-_import_path = NodePath("")
 unique_name_in_owner = true
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 script = null
 
 [node name="YSort" type="Node2D" parent="Game"]
