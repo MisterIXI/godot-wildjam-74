@@ -22,6 +22,7 @@ var train_key_broken: bool = false:
 		ui_flags_changed.emit()
 
 # Cutscenes
+var is_awake: bool = false
 var clerk_appear_happened: bool = false
 var was_outside: bool = false
 
