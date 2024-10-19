@@ -47,6 +47,7 @@ vertical_alignment = 1
 [node name="TextEdit2" type="TextEdit" parent="ColorRect/VBoxContainer/Player"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "700"
 placeholder_text = "float"
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/Player"]

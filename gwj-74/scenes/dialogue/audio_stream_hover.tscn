@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxd8osmssw1m5"]
+
+[ext_resource type="AudioStream" uid="uid://dwh7dsonaxvu0" path="res://assets/sounds/click.wav" id="1_fo7eb"]
+[ext_resource type="Script" path="res://scenes/dialogue/audio_stream_hover.gd" id="2_uy87j"]
+
+[node name="AudioStreamHover" type="AudioStreamPlayer"]
+stream = ExtResource("1_fo7eb")
+volume_db = -15.0
+bus = &"SFX"
+script = ExtResource("2_uy87j")
