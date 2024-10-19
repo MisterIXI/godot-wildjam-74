@@ -11,11 +11,12 @@ else:
 => END
 
 ~ beginning
-Huh?
-Damn, I must've dozed off...
-	...Where is everybody else?
-Is this the terminal station?
-=> END
+if !is_awake:
+	Huh?
+	Damn, I must've dozed off...
+		...Where is everybody else?
+	Is this the terminal station?
+	set is_awake = true
 
 ~ outside
 if !was_outside:
@@ -160,4 +161,37 @@ else:
 % Uh, right...
 % ...
 % Okay...
+=> END
+
+~ train_door_close
+#do game_manager.train_door_close_inside()
+Oh, no! This is bad...
+=> END
+
+~ train_operator_door
+#do game_manager.train_ghost_appear()
+Ghost: [speed=0.5][shake rate=20.0 level=5 connected=1]...L..E..A..V..E...[/shake]
+#do game_manager.train_blackout()
+Huh?
+Damn, I must've dozed off...
+	...Where is everybody else?
+Is this the terminal sta...
+Wait,[wait=0.5] did I black out?
+	This has already happened...
+set act_2 = true
+=> END
+
+~ train_leave
+#do game_manager.train_door_close_outside()
+What?
+#do game_manager.train_leave()
+set train_left = true
+Wait!! [wait=1]Don't leave me here!
+Where did they go?
+Was this wall here before?
+=> END
+
+~ black_door
+Was this ominous hole here before?
+Man, I think I'm losing my mind...
 => END

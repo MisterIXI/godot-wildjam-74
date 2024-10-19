@@ -16,6 +16,7 @@ var has_train_key: bool = false
 var train_key_broken: bool = false
 
 # Cutscenes
+var is_awake: bool = false
 var clerk_appear_happened: bool = false
 var was_outside: bool = false
 
