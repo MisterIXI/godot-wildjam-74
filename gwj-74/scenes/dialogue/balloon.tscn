@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnf35hipcoe38"]
+[gd_scene load_steps=11 format=3 uid="uid://bnf35hipcoe38"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="PackedScene" uid="uid://djuo13dsshjbu" path="res://scenes/dialogue/audio_stream_clicker.tscn" id="3_wr7tg"]
+[ext_resource type="PackedScene" uid="uid://c6htjydhqvuuy" path="res://scenes/dialogue/audio_stream_selector.tscn" id="5_aueb5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -145,6 +146,8 @@ size_flags_vertical = 8
 theme_override_constants/separation = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
+
+[node name="AudioStreamPlayer" parent="Balloon/Responses/ResponsesMenu" instance=ExtResource("5_aueb5")]
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
