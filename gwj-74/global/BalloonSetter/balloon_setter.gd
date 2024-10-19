@@ -10,6 +10,6 @@ func _ready() -> void:
 
 func set_balloon(is_color_screen : bool) -> void:
 	if is_color_screen:
-		DialogueManager.DialogueSettings.set_setting(&"balloon_path", color_screen_balloon_path)
+		DialogueManager.DialogueSettings.set_setting(&"balloon_path", color_screen_balloon_path, false)
 	else:
-		DialogueManager.DialogueSettings.set_setting(&"balloon_path", normal_balloon_path)
+		DialogueManager.DialogueSettings.set_setting(&"balloon_path", normal_balloon_path, false)

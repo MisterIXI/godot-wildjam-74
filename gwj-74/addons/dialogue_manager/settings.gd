@@ -64,10 +64,11 @@ static func prepare() -> void:
 	ProjectSettings.save()
 
 
-static func set_setting(key: String, value) -> void:
+static func set_setting(key: String, value, workaround_to_save: bool = true) -> void:
 	ProjectSettings.set_setting("dialogue_manager/general/%s" % key, value)
 	ProjectSettings.set_initial_value("dialogue_manager/general/%s" % key, DEFAULT_SETTINGS[key])
-	ProjectSettings.save()
+	if workaround_to_save:
+		ProjectSettings.save()
 
 
 static func get_setting(key: String, default):
