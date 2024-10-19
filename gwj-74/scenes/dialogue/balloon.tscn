@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnf35hipcoe38"]
+[gd_scene load_steps=10 format=3 uid="uid://bnf35hipcoe38"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="PackedScene" uid="uid://djuo13dsshjbu" path="res://scenes/dialogue/audio_stream_clicker.tscn" id="3_wr7tg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -120,6 +121,8 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 seconds_per_step = 0.03
+
+[node name="AudioStreamClicker" parent="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" instance=ExtResource("3_wr7tg")]
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
