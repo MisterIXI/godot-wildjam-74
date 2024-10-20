@@ -13,3 +13,11 @@ func _on_ui_flags_changed():
 		key_train.visible = true
 	else:
 		key_train.visible = false
+	if GameState.has_toilette_key and not GameState.toilette_key_used:
+		key_toilette.visible = true
+	else:
+		key_toilette.visible = false
+	if GameState.has_ticked:
+		ticket.visible = true
+	else:
+		ticket.visible = false

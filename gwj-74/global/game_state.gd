@@ -20,7 +20,18 @@ var train_key_broken: bool = false:
 	set(value): 
 		train_key_broken = value
 		ui_flags_changed.emit()
-
+var has_toilette_key: bool = false:
+	set(value): 
+		has_toilette_key = value
+		ui_flags_changed.emit()
+var toilette_key_used: bool = false:
+	set(value): 
+		toilette_key_used = value
+		ui_flags_changed.emit()
+var has_ticked : bool = false:
+	set(value): 
+		has_ticked = value
+		ui_flags_changed.emit()
 # Cutscenes
 var is_awake: bool = false
 var clerk_appear_happened: bool = false
