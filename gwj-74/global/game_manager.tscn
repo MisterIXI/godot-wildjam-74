@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq5qadansppfc"]
+[gd_scene load_steps=4 format=3 uid="uid://cq5qadansppfc"]
 
 [ext_resource type="Script" path="res://global/game_manager.gd" id="1_aam0i"]
 
-[node name="GameManager" type="Node"]
+[sub_resource type="Gradient" id="Gradient_a02gv"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_snb4v"]
+gradient = SubResource("Gradient_a02gv")
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("black_tex")]
 script = ExtResource("1_aam0i")
+black_tex = NodePath("CanvasLayer/BlackTexture")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackTexture" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_snb4v")

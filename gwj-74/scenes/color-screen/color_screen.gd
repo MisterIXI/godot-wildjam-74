@@ -31,6 +31,9 @@ func _ready() -> void:
 		background.visible = true
 		await get_tree().create_timer(1).timeout
 		start_dialog("intro")
+	else:
+		await get_tree().create_timer(0.5).timeout
+		GameManager.activate_train_wakeup()
 
 
 func _on_intro_color_changed(value: bool) -> void:

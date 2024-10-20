@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=164 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -40,13 +40,11 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" uid="uid://baxwhk6gsbe" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
-[ext_resource type="Script" path="res://components/actionator/actionator.gd" id="36_ug12r"]
-[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="37_kkc5p"]
+[ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Script" path="res://scenes/objects/ghosts.gd" id="37_n660h"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
-[ext_resource type="PackedScene" uid="uid://bsjopoxcff2h7" path="res://scenes/objects/ghost.tscn" id="39_3uofa"]
+[ext_resource type="PackedScene" path="res://scenes/objects/ghost.tscn" id="39_3uofa"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 [ext_resource type="Texture2D" uid="uid://bkg7ni7m30jgh" path="res://assets/images/objects/office_chair.png" id="40_tvq3o"]
@@ -170,10 +168,13 @@ size = Vector2(23, 156.5)
 size = Vector2(3262.5, 388)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irqu4"]
-size = Vector2(113, 146)
+size = Vector2(436, 222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgp7x"]
 size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcgtq"]
+size = Vector2(20, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8twan"]
 size = Vector2(1546, 58)
@@ -1147,7 +1148,7 @@ position = Vector2(1962, -383)
 [node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
 position = Vector2(1266.5, -369)
 
-[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside", "train_wakeup_actionator")]
 script = ExtResource("3_co6w8")
 train_area = NodePath("TrainArea")
 train_outside = NodePath("TrainOutside")
@@ -1160,6 +1161,7 @@ train_door_back = NodePath("TrainOutside/Train-entrances-back")
 train_door_back_static_body = NodePath("../Collider/Train-entrances-back-collider")
 train_door_inside_collider = NodePath("Train-inside/WagonConnector/CollisionShape2D")
 train_door_inside = NodePath("Train-inside/WagonConnector/OpenDoor")
+train_wakeup_actionator = NodePath("TrainArea/Wakeup_Actionator")
 
 [node name="TrainOutside" type="Sprite2D" parent="Train"]
 position = Vector2(-6, 361)
@@ -1739,14 +1741,15 @@ position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
 
 [node name="Wakeup_Actionator" type="Area2D" parent="Train/TrainArea"]
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "beginning"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
-position = Vector2(600, 336)
+position = Vector2(550, 358)
 shape = SubResource("RectangleShape2D_irqu4")
+disabled = true
 
 [node name="Interactable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
 position = Vector2(-8, 384)
@@ -1755,11 +1758,18 @@ dialogue_start = "train_door"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Interactable"]
 shape = SubResource("RectangleShape2D_hgp7x")
 
+[node name="TrainOperatorDoorInteractable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
+position = Vector2(-1467, 381)
+dialogue_start = "train_operator_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/TrainOperatorDoorInteractable"]
+shape = SubResource("RectangleShape2D_dcgtq")
+
 [node name="Outside_Actionator" type="Area2D" parent="Train"]
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "outside"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/Outside_Actionator"]
 position = Vector2(784, 155)
@@ -1899,10 +1909,10 @@ intensity_range = Vector2(0.12, 0.15)
 
 [node name="OfficeEntranceActionator" type="Area2D" parent="Counter/CounterInside"]
 position = Vector2(272, -456)
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "inside_office"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeEntranceActionator"]
 position = Vector2(-44, -8)
@@ -1910,12 +1920,12 @@ shape = SubResource("RectangleShape2D_7lhaw")
 
 [node name="OfficeExitActionator" type="Area2D" parent="Counter/CounterInside"]
 position = Vector2(160, -584)
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 only_on_game_state_name = Array[String](["has_train_key", "newspaper_read"])
 only_on_game_state_value = Array[bool]([true, true])
 dialogue_string = "office_exit"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeExitActionator"]
 position = Vector2(69.25, 136)
@@ -2671,6 +2681,7 @@ texture = ExtResource("10_khwxr")
 script = ExtResource("44_iuttk")
 offset_range = Vector2(10, 15)
 intensity_range = Vector2(0.12, 0.15)
+
 [node name="JanitorSafeInteractable" parent="Hallway/Inside/Janitor" instance=ExtResource("45_qpcjt")]
 position = Vector2(830, -1126)
 dialogue_start = "padlocked_safe"

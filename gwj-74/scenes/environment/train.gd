@@ -15,6 +15,7 @@ class_name Train
 @export_range(0, 2) var animation_duration : float = 0.3
 @export_range(0, 2) var door_animation_duration : float = 0.3
 
+@export var train_wakeup_actionator: Actionator = null
 
 var door_front_open : bool = true
 var door_back_open : bool = true
