@@ -36,3 +36,10 @@ func set_visibility(value: bool, item: CanvasItem, tween: Tween, duration: float
 		tween.tween_property(item, "modulate:a", 0, duration)
 		tween.tween_callback(item.hide)
 	return tween
+
+
+func switch_lights(lights_on : Array, lights_off : Array) -> void:
+	for light in lights_on:
+		light.visible = true
+	for light in lights_off:
+		light.visible = false
