@@ -70,6 +70,7 @@ func _ready() -> void:
 func get_menu_items() -> Array:
 	var items: Array = []
 	for child in get_children():
+		if child is AudioStreamSelector: continue
 		if not child.visible: continue
 		if "Disallowed" in child.name: continue
 		items.append(child)
