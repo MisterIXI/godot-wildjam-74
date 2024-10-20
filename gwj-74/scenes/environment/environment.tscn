@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=166 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://bw5fn7iss1mgg" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -40,11 +40,11 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" uid="uid://baxwhk6gsbe" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="PackedScene" uid="uid://cds3rbcr6oguh" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Script" path="res://scenes/objects/ghosts.gd" id="37_n660h"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
-[ext_resource type="PackedScene" uid="uid://bsjopoxcff2h7" path="res://scenes/objects/ghost.tscn" id="39_3uofa"]
+[ext_resource type="PackedScene" path="res://scenes/objects/ghost.tscn" id="39_3uofa"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 [ext_resource type="Texture2D" uid="uid://bkg7ni7m30jgh" path="res://assets/images/objects/office_chair.png" id="40_tvq3o"]
@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://3rnlba4wayo" path="res://assets/images/objects/toilet_mirror.png" id="58_gd6if"]
 [ext_resource type="Texture2D" uid="uid://bl0sulkyn5k01" path="res://assets/images/objects/toilet.png" id="59_5vya1"]
 [ext_resource type="Texture2D" uid="uid://f8a7slqv8rop" path="res://assets/images/objects/toilet_door.png" id="60_1de0t"]
+[ext_resource type="PackedScene" uid="uid://dkwq6cws8n33t" path="res://scenes/components/interaction_blocker.tscn" id="63_mc4et"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
 background_mode = 3
@@ -167,10 +168,13 @@ size = Vector2(23, 156.5)
 size = Vector2(3262.5, 388)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irqu4"]
-size = Vector2(113, 146)
+size = Vector2(436, 222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgp7x"]
 size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcgtq"]
+size = Vector2(20, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8twan"]
 size = Vector2(1546, 58)
@@ -270,24 +274,6 @@ size = Vector2(151, 5.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndrbl"]
 size = Vector2(9, 119)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mdr2"]
-size = Vector2(68, 139)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0ao2"]
-size = Vector2(1304.5, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_khrjx"]
-size = Vector2(1435, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxssp"]
-size = Vector2(17, 127)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wcsw"]
-size = Vector2(21, 159)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i24ae"]
-size = Vector2(143, 30)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8y4f"]
 atlas = ExtResource("53_vnr7p")
 region = Rect2(512, 0, 512, 1024)
@@ -326,6 +312,26 @@ animations = [{
 "name": &"side",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mdr2"]
+size = Vector2(68, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0ao2"]
+size = Vector2(1304.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khrjx"]
+size = Vector2(1435, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxssp"]
+size = Vector2(17, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wcsw"]
+size = Vector2(21, 159)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i24ae"]
+size = Vector2(143, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jfs0"]
+size = Vector2(14, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqrs8"]
 size = Vector2(10, 79)
@@ -369,6 +375,11 @@ size = Vector2(20, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5u2r"]
 size = Vector2(20, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3r01"]
+size = Vector2(49, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ncj"]
+size = Vector2(468, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dwpi"]
 size = Vector2(301, 268)
@@ -1153,7 +1164,7 @@ position = Vector2(1962, -383)
 [node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
 position = Vector2(1266.5, -369)
 
-[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside", "train_wakeup_actionator")]
 script = ExtResource("3_co6w8")
 train_area = NodePath("TrainArea")
 train_outside = NodePath("TrainOutside")
@@ -1166,6 +1177,7 @@ train_door_back = NodePath("TrainOutside/Train-entrances-back")
 train_door_back_static_body = NodePath("../Collider/Train-entrances-back-collider")
 train_door_inside_collider = NodePath("Train-inside/WagonConnector/CollisionShape2D")
 train_door_inside = NodePath("Train-inside/WagonConnector/OpenDoor")
+train_wakeup_actionator = NodePath("TrainArea/Wakeup_Actionator")
 
 [node name="TrainOutside" type="Sprite2D" parent="Train"]
 position = Vector2(-6, 361)
@@ -1392,6 +1404,7 @@ scale = Vector2(0.0752635, 0.0879061)
 texture = ExtResource("10_khwxr")
 
 [node name="Train-inside" type="Sprite2D" parent="Train"]
+visible = false
 position = Vector2(-376, 501)
 texture = ExtResource("6_jssr1")
 
@@ -1751,8 +1764,9 @@ dialogue_string = "beginning"
 dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
-position = Vector2(600, 336)
+position = Vector2(550, 358)
 shape = SubResource("RectangleShape2D_irqu4")
+disabled = true
 
 [node name="Interactable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
 position = Vector2(-8, 384)
@@ -1760,6 +1774,13 @@ dialogue_start = "train_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Interactable"]
 shape = SubResource("RectangleShape2D_hgp7x")
+
+[node name="TrainOperatorDoorInteractable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
+position = Vector2(-1467, 381)
+dialogue_start = "train_operator_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/TrainOperatorDoorInteractable"]
+shape = SubResource("RectangleShape2D_dcgtq")
 
 [node name="Outside_Actionator" type="Area2D" parent="Train"]
 script = ExtResource("53_o4ipn")
@@ -2015,7 +2036,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(2869, -2)
 shape = SubResource("RectangleShape2D_qedsc")
 
-[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy")]
+[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "toilette_door_interactable", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy", "toilette_interactionbox", "toilette_ghost")]
 script = ExtResource("38_p4fao")
 area_inside = NodePath("AreaInside")
 hallway_inside = NodePath("Inside")
@@ -2033,15 +2054,18 @@ toilette_area = NodePath("Inside/Toilette/ToiletteArea")
 toilette_inside = NodePath("Inside/Toilette")
 toilette_lights_inside = [NodePath("Inside/Toilette/PointLight2D")]
 toilette_door_collider = NodePath("Inside/Toilette/toiletteDoorCollider/CollisionShape2D")
-toilette_door = NodePath("Inside/Hallway/BaseHallway/ToiletFloor4")
+toilette_door = [NodePath("Inside/Toilette/Floor/ToiletFloor4"), NodePath("Inside/Hallway/BaseHallway/ToiletFloor4")]
 stall_door = NodePath("Inside/Toilette/Items/ToiletDoor")
 stall_door_collider = NodePath("Inside/Toilette/Items/Stalldoor/CollisionShape2D")
+toilette_door_interactable = NodePath("Inside/Toilette/ToiletteDoorInteractbale")
 stall_walls = [NodePath("Inside/Toilette/Items/ColorRect"), NodePath("Inside/Toilette/Items/ColorRect2"), NodePath("Inside/Toilette/Items/ColorRect3"), NodePath("Inside/Toilette/Items/ColorRect4"), NodePath("Inside/Toilette/Items/ColorRect5"), NodePath("Inside/Toilette/Items/ColorRect6")]
 stall_area = NodePath("Inside/Toilette/Items/StallArea")
 ghost = NodePath("Inside/Hallway/ExtensionHallway/ghost")
 exit_door = NodePath("Outside/Hallway-exit")
 exit_door_collider = NodePath("Outside/HallwayExitCollider/CollisionShape2D")
 hallway_copy = NodePath("Inside/HallwayCopy")
+toilette_interactionbox = NodePath("Inside/Toilette/Interactable")
+toilette_ghost = NodePath("Inside/Toilette/toiletteghost")
 
 [node name="Outside" type="Node2D" parent="Hallway"]
 
@@ -2058,6 +2082,7 @@ shape = SubResource("RectangleShape2D_vhbgo")
 disabled = true
 
 [node name="Hallway-exit" type="Sprite2D" parent="Hallway/Outside"]
+visible = false
 position = Vector2(3473, -473.745)
 scale = Vector2(1, 1.0102)
 texture = ExtResource("38_emwp0")
@@ -2069,6 +2094,7 @@ position = Vector2(3473, -388.875)
 shape = SubResource("RectangleShape2D_tnjw0")
 
 [node name="Inside" type="Node2D" parent="Hallway"]
+visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside"]
 offset_left = -53.0
@@ -2173,7 +2199,7 @@ texture = ExtResource("56_tw3ym")
 offset_left = -375.0
 offset_top = -512.0
 offset_right = 525.0
-offset_bottom = 501.0
+offset_bottom = 551.0
 color = Color(0, 0, 0, 1)
 
 [node name="ExtensionHallway" type="Node2D" parent="Hallway/Inside/Hallway"]
@@ -2298,6 +2324,13 @@ position = Vector2(2438.64, -1061.48)
 scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
+[node name="ghost" type="AnimatedSprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
+visible = false
+position = Vector2(1706, -962)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_65xch")
+animation = &"front"
+
 [node name="Actionator" type="Area2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
 script = ExtResource("53_o4ipn")
 only_use_once = true
@@ -2332,13 +2365,15 @@ shape = SubResource("RectangleShape2D_4wcsw")
 position = Vector2(1135.5, -865)
 shape = SubResource("RectangleShape2D_i24ae")
 
-[node name="ghost" type="AnimatedSprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1706, -962)
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_65xch")
-animation = &"front"
-
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
+
+[node name="ToiletteDoorInteractbale" parent="Hallway/Inside/Toilette" instance=ExtResource("45_qpcjt")]
+position = Vector2(1188, -534)
+dialogue_start = "toilet_door"
+
+[node name="ToiletteDoorInteractableCollider" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteDoorInteractbale"]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_8jfs0")
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Toilette"]
 offset_left = -53.0
@@ -2552,6 +2587,7 @@ offset_bottom = -591.0
 color = Color(0.208088, 0.208088, 0.208088, 1)
 
 [node name="ColorRect6" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+visible = false
 offset_left = 1605.0
 offset_top = -920.0
 offset_right = 1888.0
@@ -2651,6 +2687,37 @@ shape = SubResource("RectangleShape2D_o5u2r")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Actionator"]
 position = Vector2(-24, -56)
 shape = SubResource("RectangleShape2D_o5u2r")
+[node name="Interactable" parent="Hallway/Inside/Toilette" instance=ExtResource("45_qpcjt")]
+dialogue_start = "toilet_stall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Interactable"]
+position = Vector2(1520, -573)
+shape = SubResource("RectangleShape2D_r3r01")
+
+[node name="InteractionBlocker" parent="Hallway/Inside/Toilette" instance=ExtResource("63_mc4et")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/InteractionBlocker"]
+position = Vector2(1430, -386)
+shape = SubResource("RectangleShape2D_p1ncj")
+
+[node name="toiletteghost" type="AnimatedSprite2D" parent="Hallway/Inside/Toilette"]
+visible = false
+z_index = 4096
+z_as_relative = false
+position = Vector2(807, -523)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_65xch")
+animation = &"side"
+
+[node name="Node2D" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
+position = Vector2(2225, -190)
+
+[node name="Node2D2" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
+position = Vector2(3565, -160)
+
+[node name="Node2D4" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
+position = Vector2(-15, -275)
+scale = Vector2(1, 1)
 
 [node name="Janitor" type="Node2D" parent="Hallway/Inside"]
 visible = false
@@ -2991,6 +3058,16 @@ offset_right = 4800.0
 offset_bottom = 570.0
 color = Color(0.164063, 0.0499321, 0.0199728, 0.25098)
 metadata/_edit_lock_ = true
+
+[node name="DesertedSubway" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_y3658")
+volume_db = -20.0
+pitch_scale = 0.5
+autoplay = true
+bus = &"SFX"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1520, -531)
 
 [editable path="Train/Train-inside/ghost2"]
 [editable path="Train/Train-inside/ghost3"]

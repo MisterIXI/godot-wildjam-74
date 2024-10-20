@@ -176,7 +176,8 @@ Oh, no! This is bad...
 ~ train_operator_door
 set ghost_turn = true
 Ghost: [speed=0.5][shake rate=20.0 level=5 connected=1]...L..E..A..V..E...[/shake]
-#do game_manager.train_blackout()
+# blackout with teleport to start pos
+do GameManager.train_blackout()
 Huh?
 Damn, I must've dozed off...
 	...Where is everybody else?
@@ -187,6 +188,7 @@ set act_2 = true
 => END
 
 ~ train_leave
+# only do this is act 2 is active
 #do game_manager.train_door_close_outside()
 What?
 #do game_manager.train_leave()
@@ -203,13 +205,15 @@ Man, I think I'm losing my mind...
 
 
 ~ toilet_door
-if !has_toilet_key:
+if !has_toilette_key:
 	It's the door to the toilet.
 	do locked_door.play()
 	Damn, it's locked.
 else:
 	do unlock_door.play()
 	Well, here we go...
+	do GameManager.remove_toilette_door()
+	set toilette_key_used = true
 => END
 
 ~ janitor_closet
@@ -282,6 +286,25 @@ do environment.hallway.set_toilette_door(false)
 
 ~ left_stall
 It's closed!
+=> END
+
+~ toilet_stall
+do environment.hallway.kill_toilette_interactionbox()
+do environment.hallway.set_stall_door(true)
+do wait(1)
+do player.move_to(Vector2(1520,-665))
+do player.wait_for_player()
+do player.turn(Vector2.DOWN)
+do environment.hallway.set_stall_door(false)
+
+do environment.hallway.toilette_ghost_animation()
+
+do environment.hallway.set_stall_door(true)
+do environment.hallway.set_toilette_door(true)
+do player.move_to(Vector2(1520,-531))
+do player.turn(Vector2.DOWN)
+do player.wait_for_player()
+do environment.hallway.set_hallway_extension(true)
 => END
 
 ~ dead_end

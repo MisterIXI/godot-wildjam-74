@@ -10,6 +10,8 @@ var direction: Vector2
 var idle_timer = 0.0
 var start_speed = 0.0
 
+var start_position: Vector2 = Vector2.ZERO
+
 var zippo_1: AudioStream = preload("res://assets/sounds/zippo_1.wav")
 var zippo_2: AudioStream = preload("res://assets/sounds/zippo_2.wav")
 var zippo_3: AudioStream = preload("res://assets/sounds/zippo_3.wav")
@@ -28,6 +30,7 @@ var controlled_target: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	start_position = global_position
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 	start_speed = speed
@@ -64,22 +67,24 @@ func _physics_process(_delta: float) -> void:
 
 	# Handle character direction
 	animated_sprite.speed_scale = speed / 200
-	if direction.x < 0:
-		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = true
-		interaction_ray_cast.rotation = 0.5 * PI
-	elif direction.x > 0:
-		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = 1.5 * PI
-	elif direction.y > 0:
-		animated_sprite.play("forward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = 0
-	elif direction.y < 0:
-		animated_sprite.play("backward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = PI
+	if abs(direction.x) > abs(direction.y):
+		if direction.x < 0:
+			animated_sprite.play("sideward-walk")
+			animated_sprite.flip_h = true
+			interaction_ray_cast.rotation = 0.5 * PI
+		elif direction.x > 0:
+			animated_sprite.play("sideward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = 1.5 * PI
+	else:
+		if direction.y > 0:
+			animated_sprite.play("forward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = 0
+		elif direction.y < 0:
+			animated_sprite.play("backward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = PI
 
 
 	# Handle character movement
@@ -181,3 +186,13 @@ func turn(dir: Vector2) -> void:
 		animated_sprite.play("backward-walk")
 		animated_sprite.stop()
 		animated_sprite.frame = 0
+
+
+func teleport_to(target_pos: Vector2):
+	pass
+	var camera : Camera2D = get_node("Camera2D")
+	var dist = global_position - camera.get_screen_center_position()
+	camera.position -= dist
+	global_position = target_pos
+	camera.reset_smoothing()
+	camera.position = Vector2.ZERO
