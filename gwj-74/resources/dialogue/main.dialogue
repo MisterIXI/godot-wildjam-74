@@ -208,7 +208,7 @@ I think it came from in there.
 => END
 
 ~ toilet_door
-if !has_toilet_key:
+if !has_toilette_key:
 	It's the door to the toilet.
 	#do locked_sfx.play()
 	Damn, it's locked.
@@ -216,6 +216,8 @@ else:
 	unlock door
 	#do unlock_sfx.play()
 	Well, here we go...
+	do GameManager.remove_toilette_door()
+	set toilette_key_used = true
 => END
 
 ~ janitor_closet

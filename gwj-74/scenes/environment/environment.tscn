@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=165 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -330,6 +330,9 @@ animations = [{
 "name": &"side",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jfs0"]
+size = Vector2(14, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqrs8"]
 size = Vector2(10, 79)
@@ -2019,7 +2022,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(2869, -2)
 shape = SubResource("RectangleShape2D_qedsc")
 
-[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy")]
+[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "toilette_door_interactable", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy")]
 script = ExtResource("38_p4fao")
 area_inside = NodePath("AreaInside")
 hallway_inside = NodePath("Inside")
@@ -2040,6 +2043,7 @@ toilette_door_collider = NodePath("Inside/Toilette/toiletteDoorCollider/Collisio
 toilette_door = NodePath("Inside/Hallway/BaseHallway/ToiletFloor4")
 stall_door = NodePath("Inside/Toilette/Items/ToiletDoor")
 stall_door_collider = NodePath("Inside/Toilette/Items/Stalldoor/CollisionShape2D")
+toilette_door_interactable = NodePath("Inside/Toilette/ToiletteDoorInteractbale")
 stall_walls = [NodePath("Inside/Toilette/Items/ColorRect"), NodePath("Inside/Toilette/Items/ColorRect2"), NodePath("Inside/Toilette/Items/ColorRect3"), NodePath("Inside/Toilette/Items/ColorRect4"), NodePath("Inside/Toilette/Items/ColorRect5"), NodePath("Inside/Toilette/Items/ColorRect6")]
 stall_area = NodePath("Inside/Toilette/Items/StallArea")
 ghost = NodePath("Inside/Hallway/ExtensionHallway/ghost")
@@ -2343,7 +2347,14 @@ sprite_frames = SubResource("SpriteFrames_65xch")
 animation = &"front"
 
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
-visible = false
+
+[node name="ToiletteDoorInteractbale" parent="Hallway/Inside/Toilette" instance=ExtResource("45_qpcjt")]
+position = Vector2(1188, -534)
+dialogue_start = "toilet_door"
+
+[node name="ToiletteDoorInteractableCollider" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteDoorInteractbale"]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_8jfs0")
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Toilette"]
 offset_left = -53.0

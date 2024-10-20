@@ -39,6 +39,7 @@ var _tween_janitor_outside : Tween = null
 @export var toilette_door : Node2D = null
 @export var stall_door : Node2D = null
 @export var stall_door_collider : CollisionShape2D = null
+@export var toilette_door_interactable : Interactable = null
 @export var stall_walls : Array[CanvasItem] = []
 @export var stall_area : Area2D = null
 var toilette_door_open : bool = false

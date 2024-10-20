@@ -34,3 +34,7 @@ func train_blackout():
 
 func activate_train_wakeup():
 	main.environment.train.train_wakeup_actionator.get_child(0).set_deferred("disabled", false)
+
+func remove_toilette_door():
+	main.environment.hallway.toilette_door_interactable.queue_free()
+	main.environment.hallway.set_toilette_door(true)
