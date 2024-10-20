@@ -10,6 +10,9 @@ var clock_checked: bool = false
 var clock_spinning: bool = false
 var met_vending_machine: bool = false
 var newspaper_read: bool = false
+var current_padlock_code: String = "6813"
+var padlock_code : String = "1758"
+var safe_open: bool = false
 
 # Items 
 var has_train_key: bool = false:
