@@ -10,6 +10,8 @@ class_name Counter
 @export var counter_door_collider : CollisionShape2D = null
 @export_range(0, 2) var animation_duration : float = 0.3
 
+@export var counter_outside_interactable: Interactable = null
+@export var counter_outside_dialogue_collider: CollisionShape2D = null
 
 @export var man_flicker_pause_range : Vector2 = Vector2(3, 5)
 @export var man_flicker_count_range : Vector2i = Vector2i(1, 3)
@@ -75,7 +77,7 @@ func set_door(open : bool) -> void:
 func show_man(active : bool) -> void:
 	counter_man.visible = active
 	man_active = active
-
+	counter_outside_dialogue_collider.set_deferred("disabled", !active)
 	if active:
 		_man_flicker()
 	elif _tween_man:
