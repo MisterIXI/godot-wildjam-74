@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=97 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://bw5fn7iss1mgg" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="PackedScene" uid="uid://cds3rbcr6oguh" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cbls43lg83b2d" path="res://assets/images/objects/office_drawer.png" id="42_fnal0"]
 [ext_resource type="Texture2D" uid="uid://6h60wdvx5d7x" path="res://assets/images/objects/calendar.png" id="43_76o2b"]
 [ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="43_y3658"]
+[ext_resource type="Script" path="res://components/flicker/flicker.gd" id="44_iuttk"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
 background_mode = 3
@@ -153,6 +154,12 @@ size = Vector2(3262.5, 388)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_502dn"]
 load_path = "res://.godot/imported/full_round_light.png-d66a5b1f3ca8510c6c3423ad59cea976.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8scb"]
+size = Vector2(74, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eputf"]
+size = Vector2(244, 91)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub4kw"]
 size = Vector2(102.5, 42)
 
@@ -161,6 +168,18 @@ size = Vector2(349.5, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_720fm"]
 size = Vector2(52.25, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo7m"]
+size = Vector2(47, 435)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7whrp"]
+size = Vector2(466, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbrw7"]
+size = Vector2(34, 297.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6ay5"]
+size = Vector2(97.5, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_do4ga"]
 size = Vector2(929, 575)
@@ -235,7 +254,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -1462,13 +1480,14 @@ train = NodePath("../..")
 position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
 
-[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "counter_door_collider")]
+[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider")]
 script = ExtResource("7_15l0w")
 counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
 counter_outside = NodePath("Counter-outside")
 counter_inside = NodePath("CounterInside")
 lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D"), NodePath("../Objects/FluorescentTubes")]
+lights_inside = [NodePath("CounterInside/PointLight2D")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
@@ -1494,6 +1513,7 @@ energy = 0.54
 texture = SubResource("CompressedTexture2D_502dn")
 
 [node name="CounterInside" type="Node2D" parent="Counter"]
+visible = false
 
 [node name="Background" type="ColorRect" parent="Counter/CounterInside"]
 offset_left = -1215.0
@@ -1507,12 +1527,6 @@ position = Vector2(88, -640)
 scale = Vector2(0.2034, 0.2034)
 texture = ExtResource("39_t27qc")
 
-[node name="OfficeChair" type="Sprite2D" parent="Counter/CounterInside/Office"]
-texture = ExtResource("40_tvq3o")
-
-[node name="OfficeDesk" type="Sprite2D" parent="Counter/CounterInside/Office"]
-texture = ExtResource("41_dh3sk")
-
 [node name="OfficeDrawer" type="Sprite2D" parent="Counter/CounterInside/Office"]
 texture = ExtResource("42_fnal0")
 
@@ -1520,6 +1534,44 @@ texture = ExtResource("42_fnal0")
 position = Vector2(160.03, -772.835)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("43_76o2b")
+
+[node name="OfficeChair" type="StaticBody2D" parent="Counter/CounterInside"]
+z_index = 500
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeChair"]
+position = Vector2(10, -520)
+shape = SubResource("RectangleShape2D_i8scb")
+
+[node name="OfficeChair" type="Sprite2D" parent="Counter/CounterInside/OfficeChair"]
+position = Vector2(61, -618)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("40_tvq3o")
+
+[node name="OfficeDesk2" type="StaticBody2D" parent="Counter/CounterInside"]
+z_index = 500
+z_as_relative = false
+
+[node name="OfficeDesk" type="Sprite2D" parent="Counter/CounterInside/OfficeDesk2"]
+position = Vector2(61, -618)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("41_dh3sk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeDesk2"]
+position = Vector2(-5, -461.5)
+shape = SubResource("RectangleShape2D_eputf")
+
+[node name="PointLight2D" type="PointLight2D" parent="Counter/CounterInside"]
+position = Vector2(113.5, -609.5)
+scale = Vector2(1.47852, 1.01367)
+color = Color(0.375053, 0.929829, 0.934474, 1)
+energy = 0.2
+texture = ExtResource("10_khwxr")
+
+[node name="Flicker" type="Node" parent="Counter/CounterInside/PointLight2D"]
+script = ExtResource("44_iuttk")
+offset_range = Vector2(10, 15)
+intensity_range = Vector2(0.12, 0.15)
 
 [node name="CounterOutside" type="StaticBody2D" parent="Counter"]
 
@@ -1534,6 +1586,24 @@ shape = SubResource("RectangleShape2D_1c5aw")
 [node name="CounterCollider2" type="CollisionShape2D" parent="Counter/CounterOutside"]
 position = Vector2(200.125, -396)
 shape = SubResource("RectangleShape2D_720fm")
+
+[node name="CounterInside2" type="StaticBody2D" parent="Counter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside2"]
+position = Vector2(-151.5, -635.5)
+shape = SubResource("RectangleShape2D_7uo7m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Counter/CounterInside2"]
+position = Vector2(105, -699)
+shape = SubResource("RectangleShape2D_7whrp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Counter/CounterInside2"]
+position = Vector2(355, -564.75)
+shape = SubResource("RectangleShape2D_vbrw7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Counter/CounterInside2"]
+position = Vector2(289.25, -653.25)
+shape = SubResource("RectangleShape2D_f6ay5")
 
 [node name="CounterArea" type="Area2D" parent="Counter"]
 
