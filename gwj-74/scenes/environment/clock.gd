@@ -25,8 +25,10 @@ func update_clock() -> void:
 	minute_hand.rotation_degrees = minute_angle
 	hour_hand.rotation_degrees = hour_angle
 
-func _physics_process(_delta):
-	# minute += _delta * 6
+func _process(_delta):
+	var time = Time.get_time_dict_from_system()
+	if time:
+		set_time(time["hour"], time["minute"])
 	update_clock()
 
 func get_time() -> String:
