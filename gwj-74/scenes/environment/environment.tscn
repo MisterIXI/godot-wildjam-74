@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=166 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -41,8 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
 [ext_resource type="PackedScene" uid="uid://baxwhk6gsbe" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
-[ext_resource type="Script" path="res://components/actionator/actionator.gd" id="36_ug12r"]
-[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="37_kkc5p"]
 [ext_resource type="Script" path="res://scenes/objects/ghosts.gd" id="37_n660h"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
@@ -336,6 +334,10 @@ size = Vector2(10, 79)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38wnb"]
 size = Vector2(466, 386)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lthcb"]
+a = Vector2(283.421, 20.6177)
+b = Vector2(-266.377, 20.6177)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1gdo"]
 size = Vector2(8, 156)
 
@@ -362,6 +364,12 @@ size = Vector2(412, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqy8j"]
 size = Vector2(53, 337.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fujg1"]
+size = Vector2(20, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5u2r"]
+size = Vector2(20, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dwpi"]
 size = Vector2(301, 268)
@@ -1739,10 +1747,10 @@ position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
 
 [node name="Wakeup_Actionator" type="Area2D" parent="Train/TrainArea"]
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "beginning"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
 position = Vector2(600, 336)
@@ -1756,10 +1764,10 @@ dialogue_start = "train_door"
 shape = SubResource("RectangleShape2D_hgp7x")
 
 [node name="Outside_Actionator" type="Area2D" parent="Train"]
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "outside"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/Outside_Actionator"]
 position = Vector2(784, 155)
@@ -1899,10 +1907,10 @@ intensity_range = Vector2(0.12, 0.15)
 
 [node name="OfficeEntranceActionator" type="Area2D" parent="Counter/CounterInside"]
 position = Vector2(272, -456)
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 dialogue_string = "inside_office"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeEntranceActionator"]
 position = Vector2(-44, -8)
@@ -1910,12 +1918,12 @@ shape = SubResource("RectangleShape2D_7lhaw")
 
 [node name="OfficeExitActionator" type="Area2D" parent="Counter/CounterInside"]
 position = Vector2(160, -584)
-script = ExtResource("36_ug12r")
+script = ExtResource("53_o4ipn")
 only_use_once = true
 only_on_game_state_name = Array[String](["has_train_key", "newspaper_read"])
 only_on_game_state_value = Array[bool]([true, true])
 dialogue_string = "office_exit"
-dialogue_resource = ExtResource("37_kkc5p")
+dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeExitActionator"]
 position = Vector2(69.25, 136)
@@ -2333,7 +2341,6 @@ sprite_frames = SubResource("SpriteFrames_65xch")
 animation = &"front"
 
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
-visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Toilette"]
 offset_left = -53.0
@@ -2504,6 +2511,13 @@ position = Vector2(1382.76, -643)
 scale = Vector2(0.145508, 0.145508)
 texture = ExtResource("60_1de0t")
 
+[node name="Interactable" parent="Hallway/Inside/Toilette/Items/ToiletDoor2" instance=ExtResource("45_qpcjt")]
+dialogue_start = "left_stall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/ToiletDoor2/Interactable"]
+position = Vector2(8.5218, 350.496)
+shape = SubResource("SegmentShape2D_lthcb")
+
 [node name="ColorRect" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
 offset_left = 1421.0
 offset_top = -700.0
@@ -2606,6 +2620,40 @@ script = ExtResource("44_iuttk")
 offset_range = Vector2(10, 15)
 intensity_range = Vector2(0.12, 0.15)
 
+[node name="NewspaperMarker" type="Marker2D" parent="Hallway/Inside/Toilette"]
+position = Vector2(1440, -472)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hallway/Inside/Toilette/NewspaperMarker"]
+modulate = Color(0.527344, 0.527344, 0.527344, 1)
+position = Vector2(0, -13.89)
+rotation = -0.120428
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("15_xrcdc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hallway/Inside/Toilette/NewspaperMarker"]
+modulate = Color(0.734375, 0.516357, 0.516357, 1)
+rotation = 0.47822
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("16_pla76")
+
+[node name="Actionator" type="Area2D" parent="Hallway/Inside/Toilette"]
+position = Vector2(1232, -528)
+script = ExtResource("53_o4ipn")
+dialogue_string = "inside_toilet"
+dialogue_resource = ExtResource("54_ah8l2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Actionator"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_fujg1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Actionator"]
+position = Vector2(-24, 56)
+shape = SubResource("RectangleShape2D_o5u2r")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Actionator"]
+position = Vector2(-24, -56)
+shape = SubResource("RectangleShape2D_o5u2r")
+
 [node name="Janitor" type="Node2D" parent="Hallway/Inside"]
 visible = false
 
@@ -2671,6 +2719,7 @@ texture = ExtResource("10_khwxr")
 script = ExtResource("44_iuttk")
 offset_range = Vector2(10, 15)
 intensity_range = Vector2(0.12, 0.15)
+
 [node name="JanitorSafeInteractable" parent="Hallway/Inside/Janitor" instance=ExtResource("45_qpcjt")]
 position = Vector2(830, -1126)
 dialogue_start = "padlocked_safe"

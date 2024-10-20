@@ -167,7 +167,7 @@ else:
 => END
 
 ~ train_door_close
-#do player.turn(Vector2.RIGHT)
+do player.turn(Vector2.RIGHT)
 Oh, no! This is bad...
 => END
 
@@ -264,9 +264,13 @@ They really were in a hurry to close this station, huh?
 	And it stinks like death in here.
 do wait(0.5)
 Man, what am I even doing here? [wait=0.5] This whole situation is completely fucked.
+do player.turn(Vector2.DOWN)
+do wait(1)
+do player.turn(Vector2.UP)
 I can't find the exit and there's noone here. What should I do?
+do player.turn(Vector2.RIGHT)
 ...[wait=1]What's this?
-#do player.move_to(newspaper_marker.global.position)
+do player.move_to(environment.newspaper_marker.global_position)
 ...[wait=1]It's another newspaper clipping.
 "49 dead after freak accident in Glenwich Station
 	Yesterday a part of Glenwich Station collapsed and got completely blocked by debris trapping all 44 passengers and 5 members of the staff.
@@ -274,9 +278,14 @@ The situation worsened further when a broken pipe of the city's freshwater syste
 After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
 This article is from October 1992...
 #do creepy_sfx.play()
+do player.turn(Vector2.LEFT)
 Oh no, what is happening now?
 	I need to hide quickly!
-#do ghost_cutscene
+do environment.hallway.set_toilette_door(false)
+=> END
+
+~ left_stall
+It's closed!
 => END
 
 ~ dead_end
