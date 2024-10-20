@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dock1auvs4io1"]
+[gd_scene load_steps=8 format=3 uid="uid://dock1auvs4io1"]
 
 [ext_resource type="Script" path="res://scenes/objects/padlock.gd" id="1_t8rpm"]
 [ext_resource type="Texture2D" uid="uid://cwaunwdl12401" path="res://assets/images/objects/Padlock_Closed.png" id="2_if77p"]
 [ext_resource type="Texture2D" uid="uid://ytt5u8hyvrmy" path="res://assets/images/objects/Padlock_Open.png" id="3_c4125"]
 [ext_resource type="Script" path="res://scenes/objects/encoder_wheel.gd" id="4_l3sax"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_35o3u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yinlk"]
 
@@ -11,47 +13,54 @@
 font_size = 47
 font_color = Color(0, 0, 0, 1)
 
-[node name="Padlock" type="Node2D" node_paths=PackedStringArray("wheel1", "wheel2", "wheel3", "wheel4", "padlock_closed", "padlock_open")]
+[node name="Padlock" type="Node2D" node_paths=PackedStringArray("wheel1", "wheel2", "wheel3", "wheel4", "padlock_closed", "padlock_open", "canvas")]
 script = ExtResource("1_t8rpm")
 wheel1 = NodePath("CanvasLayer/VBoxContainer/EncoderWheel1")
 wheel2 = NodePath("CanvasLayer/VBoxContainer/EncoderWheel2")
 wheel3 = NodePath("CanvasLayer/VBoxContainer/EncoderWheel3")
 wheel4 = NodePath("CanvasLayer/VBoxContainer/EncoderWheel4")
-padlock_closed = NodePath("CanvasLayer/Padlock_Closed")
-padlock_open = NodePath("CanvasLayer/Padlock_Open")
+padlock_closed = NodePath("CanvasLayer/PadlockClosed")
+padlock_open = NodePath("CanvasLayer/PadlockOpen")
+canvas = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Padlock_Closed" type="TextureRect" parent="CanvasLayer"]
+[node name="BackgroundPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_35o3u")
+
+[node name="PadlockClosed" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -317.0
-offset_right = -273.0
-offset_bottom = -277.0
+offset_left = -182.0
+offset_top = -253.0
+offset_right = 151.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(15.4406, 15.4406)
 texture = ExtResource("2_if77p")
 expand_mode = 1
 
-[node name="Padlock_Open" type="TextureRect" parent="CanvasLayer"]
+[node name="PadlockOpen" type="TextureRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -317.0
-offset_right = -273.0
-offset_bottom = -277.0
+offset_left = -182.0
+offset_top = -253.0
+offset_right = 151.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(15.4406, 15.4406)
 texture = ExtResource("3_c4125")
 expand_mode = 1
 
@@ -64,10 +73,10 @@ anchor_bottom = 0.5
 offset_left = -36.0
 offset_top = 77.0
 offset_right = 143.0
-offset_bottom = 263.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 1
 
 [node name="EncoderWheel1" type="Panel" parent="CanvasLayer/VBoxContainer" node_paths=PackedStringArray("label1", "label2", "label3")]
 layout_mode = 2
@@ -261,6 +270,7 @@ label_settings = SubResource("LabelSettings_dt8x8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="gui_input" from="CanvasLayer/BackgroundPanel" to="." method="_on_background_panel_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/VBoxContainer/EncoderWheel1" to="CanvasLayer/VBoxContainer/EncoderWheel1" method="_on_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/VBoxContainer/EncoderWheel2" to="CanvasLayer/VBoxContainer/EncoderWheel2" method="_on_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/VBoxContainer/EncoderWheel3" to="CanvasLayer/VBoxContainer/EncoderWheel3" method="_on_gui_input"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw42ltjwpckk8"]
 
 [ext_resource type="Script" path="res://scenes/ui/item_ui.gd" id="1_a4sl4"]
-[ext_resource type="Texture2D" uid="uid://br3rn7frnb8b4" path="res://assets/images/objects/Key_Toilette.png" id="1_f54hm"]
+[ext_resource type="Texture2D" uid="uid://br3rn7frnb8b4" path="res://assets/images/objects/Key_toilette.png" id="1_f54hm"]
 [ext_resource type="Texture2D" uid="uid://yb4n6t6jl1u4" path="res://assets/images/objects/Key_Train.png" id="2_gtxk0"]
 [ext_resource type="Texture2D" uid="uid://s4a8xdpnwj3q" path="res://assets/images/objects/Ticket.png" id="4_vhuhx"]
 
@@ -17,12 +17,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -694.0
+offset_left = -465.0
 offset_top = -110.0
 offset_right = -30.0
 offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 alignment = 2
 
 [node name="ToiletteKey" type="TextureRect" parent="HBoxContainer"]
