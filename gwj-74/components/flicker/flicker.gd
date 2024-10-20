@@ -7,7 +7,7 @@ class_name Flicker
 @export var count_range : Vector2i = Vector2i(1, 3)
 @export var intensity_range : Vector2 = Vector2(0.2, 0.5)
 
-@onready var flicker_sfx: AudioStreamPlayer2D = $"../flickerSFX"
+var flicker_sfx: AudioStreamPlayer2D
 
 
 var _parent : PointLight2D
@@ -17,6 +17,10 @@ var _tween : Tween
 
 func _ready() -> void:
 	_parent = get_parent()
+	for sibling in _parent.get_children():
+		if sibling is AudioStreamPlayer2D and sibling.name == "flickerSFX":
+			flicker_sfx = sibling
+			break
 	_start_energy = _parent.energy
 	flicker()
 
