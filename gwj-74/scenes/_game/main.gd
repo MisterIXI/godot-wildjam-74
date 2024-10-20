@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Main
 @onready var deserted_subway_sfx: AudioStreamPlayer = %DesertedSubway
 @onready var environment: xXxEnvironmentxXx = %Environment
 @onready var player: Player = %player

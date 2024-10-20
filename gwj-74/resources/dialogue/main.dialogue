@@ -72,11 +72,11 @@ if !ghost_met:
 => END
 
 ~ clerk_cutscene
-if ghost_met and wrapped_around and clerk_appear_happened:
-	#do game_manager.clerk_appear()
-	Oh, there's someone in there!
-		I better talk to them! Maybe they know how I can get home.
-	set clerk_appear_happened = true
+#if ghost_met and wrapped_around:
+do GameManager.clerk_appear()
+Oh, there's someone in there!
+	I better talk to them! Maybe they know how I can get home.
+set clerk_appear_happened = true
 => END
 
 ~ clerk
@@ -91,7 +91,8 @@ Where do I leave this station then?
 Clerk?: [speed=0.6]Leave... Exit...?
 [shake rate=20.0 level=5 connected=1]Maybe you should just sit down over there and wait. I’ll lock everything up here soon.[/shake]
 What are you-
-#do game_manager.clerk_disappear()
+do GameManager.clerk_disappear()
+do GameManager.unlock_counter_door()
 #do unlock_sfx.play()
 The door unlocked... Maybe I should enter and ask him again?
 => END
