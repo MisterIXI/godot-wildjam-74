@@ -2629,23 +2629,22 @@ position = Vector2(1430, -386)
 shape = SubResource("RectangleShape2D_p1ncj")
 
 [node name="toiletteghost" type="AnimatedSprite2D" parent="Hallway/Inside/Toilette"]
+z_index = 4096
+z_as_relative = false
 position = Vector2(807, -523)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_65xch")
 animation = &"side"
 
 [node name="Node2D" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
-position = Vector2(2260, 150)
+position = Vector2(2225, -190)
 
 [node name="Node2D2" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
-position = Vector2(3840, 175)
+position = Vector2(3565, -160)
 
 [node name="Node2D4" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
-position = Vector2(2260, 205)
+position = Vector2(-15, -275)
 scale = Vector2(1, 1)
-
-[node name="Node2D3" type="Node2D" parent="Hallway/Inside/Toilette/toiletteghost"]
-position = Vector2(-10, 210)
 
 [node name="Janitor" type="Node2D" parent="Hallway/Inside"]
 visible = false
