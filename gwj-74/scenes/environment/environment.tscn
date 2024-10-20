@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=152 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -61,6 +61,14 @@
 [ext_resource type="Texture2D" uid="uid://7x6sfyfuwrbh" path="res://assets/images/objects/door-janitor.png" id="49_nvq31"]
 [ext_resource type="Texture2D" uid="uid://ckfe4m0alxwuo" path="res://assets/images/objects/janitor_desk.png" id="49_tsgcd"]
 [ext_resource type="Texture2D" uid="uid://dmec2i6h8ia4f" path="res://assets/images/backgrounds/hallway_floor.png" id="50_044we"]
+[ext_resource type="Script" path="res://components/actionator/actionator.gd" id="53_o4ipn"]
+[ext_resource type="Texture2D" uid="uid://djfppkbe4awq5" path="res://assets/images/ghost/ghost.png" id="53_vnr7p"]
+[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="54_ah8l2"]
+[ext_resource type="Texture2D" uid="uid://dargidjpwq8qr" path="res://assets/images/backgrounds/toilet_floor.png" id="56_tw3ym"]
+[ext_resource type="Texture2D" uid="uid://td4jdmsir2rm" path="res://assets/images/backgrounds/toilet_wall.png" id="57_hcdxi"]
+[ext_resource type="Texture2D" uid="uid://3rnlba4wayo" path="res://assets/images/objects/toilet_mirror.png" id="58_gd6if"]
+[ext_resource type="Texture2D" uid="uid://bl0sulkyn5k01" path="res://assets/images/objects/toilet.png" id="59_5vya1"]
+[ext_resource type="Texture2D" uid="uid://f8a7slqv8rop" path="res://assets/images/objects/toilet_door.png" id="60_1de0t"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
 background_mode = 3
@@ -110,13 +118,13 @@ size = Vector2(5498.5, 50)
 size = Vector2(5833.5, 42.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cru76"]
-size = Vector2(753.745, 42.5)
+size = Vector2(736.745, 42.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_medp3"]
-size = Vector2(2264, 42.5)
+size = Vector2(2230, 13.236)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46xkg"]
-size = Vector2(3530.5, 42.5)
+size = Vector2(3514, 29.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl22c"]
 size = Vector2(100.5, 21.5)
@@ -235,11 +243,17 @@ size = Vector2(97.5, 61.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_do4ga"]
 size = Vector2(929, 575)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifasf"]
+size = Vector2(177.913, 1256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qedsc"]
+size = Vector2(176, 1254)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhbgo"]
-size = Vector2(84.97, 42.5)
+size = Vector2(117, 42.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnjw0"]
-size = Vector2(84.9595, 42.5)
+size = Vector2(118, 28.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7xul"]
 size = Vector2(274, 356)
@@ -248,16 +262,19 @@ size = Vector2(274, 356)
 size = Vector2(36, 119)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bir"]
-size = Vector2(10, 298)
+size = Vector2(10, 279)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ngmp"]
 size = Vector2(89.5, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r5i8"]
-size = Vector2(216, 5.5)
+size = Vector2(151, 5.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndrbl"]
 size = Vector2(9, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mdr2"]
+size = Vector2(68, 139)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0ao2"]
 size = Vector2(1304.5, 20)
@@ -274,14 +291,80 @@ size = Vector2(21, 159)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i24ae"]
 size = Vector2(143, 30)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8y4f"]
+atlas = ExtResource("53_vnr7p")
+region = Rect2(512, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcv21"]
+atlas = ExtResource("53_vnr7p")
+region = Rect2(0, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvoe1"]
+atlas = ExtResource("53_vnr7p")
+region = Rect2(1024, 0, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65xch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8y4f")
+}],
+"loop": false,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcv21")
+}],
+"loop": false,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvoe1")
+}],
+"loop": false,
+"name": &"side",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqrs8"]
-size = Vector2(10, 59)
+size = Vector2(10, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38wnb"]
-size = Vector2(341, 328)
+size = Vector2(466, 386)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1gdo"]
+size = Vector2(8, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb0x7"]
+size = Vector2(180, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3ut"]
+size = Vector2(47, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yttvo"]
+size = Vector2(37.5, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iia82"]
+size = Vector2(50, 36.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adfl8"]
+size = Vector2(75.5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4te6l"]
+size = Vector2(148.5, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3i0p"]
+size = Vector2(412, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqy8j"]
+size = Vector2(53, 337.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dwpi"]
-size = Vector2(301, 283.5)
+size = Vector2(301, 268)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksslo"]
 size = Vector2(35.5, 301)
@@ -301,17 +384,20 @@ size = Vector2(96.5, 56.625)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oolqk"]
 size = Vector2(104.5, 67.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63ql4"]
+size = Vector2(53, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5vdn"]
+size = Vector2(19.5, 485)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdfvg"]
+size = Vector2(10, 364)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt3ht"]
-size = Vector2(1856, 810)
+size = Vector2(5680, 796)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w8kq"]
 size = Vector2(40, 663)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifasf"]
-size = Vector2(177.913, 1256)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qedsc"]
-size = Vector2(176, 1254)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5w8xh"]
 font_size = 33
@@ -989,15 +1075,15 @@ position = Vector2(-3092.25, -395.75)
 shape = SubResource("RectangleShape2D_amooh")
 
 [node name="WallRight1" type="CollisionShape2D" parent="Collider/WallCollider"]
-position = Vector2(705.127, -396)
+position = Vector2(696.627, -396)
 shape = SubResource("RectangleShape2D_cru76")
 
 [node name="WallRight2" type="CollisionShape2D" parent="Collider/WallCollider"]
-position = Vector2(2299, -396.014)
+position = Vector2(2299, -381.382)
 shape = SubResource("RectangleShape2D_medp3")
 
 [node name="WallRight3" type="CollisionShape2D" parent="Collider/WallCollider"]
-position = Vector2(5280.75, -396)
+position = Vector2(5289, -389.375)
 shape = SubResource("RectangleShape2D_46xkg")
 
 [node name="Train-entrances-front-collider" type="StaticBody2D" parent="Collider"]
@@ -1880,21 +1966,76 @@ shape = SubResource("RectangleShape2D_f6ay5")
 position = Vector2(-3.5, -705.5)
 shape = SubResource("RectangleShape2D_do4ga")
 
-[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "janitor_area", "janitor_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_door_collider")]
+[node name="Walls" type="Node2D" parent="." node_paths=PackedStringArray("wall_left", "wall_right")]
+script = ExtResource("3_3nthg")
+wall_left = NodePath("StationWallLeft")
+wall_right = NodePath("StationWallRight")
+
+[node name="StationWallLeft" type="StaticBody2D" parent="Walls"]
+visible = false
+position = Vector2(-1043, 0)
+
+[node name="StationWallLeftSprite" type="Sprite2D" parent="Walls/StationWallLeft"]
+position = Vector2(-2784, 0)
+texture = ExtResource("3_lcb08")
+
+[node name="Background" type="ColorRect" parent="Walls/StationWallLeft/StationWallLeftSprite"]
+offset_left = -1138.0
+offset_top = -630.0
+offset_right = -174.0
+offset_bottom = 628.0
+color = Color(0, 0, 0, 1)
+
+[node name="StationWallLeftCollider" type="CollisionShape2D" parent="Walls/StationWallLeft"]
+position = Vector2(-2872.04, -1.52588e-05)
+shape = SubResource("RectangleShape2D_ifasf")
+
+[node name="StationWallRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(1043, 0)
+
+[node name="Station-wall-tile" type="Sprite2D" parent="Walls/StationWallRight"]
+position = Vector2(2784, 0)
+texture = ExtResource("3_lcb08")
+flip_h = true
+
+[node name="Background" type="ColorRect" parent="Walls/StationWallRight/Station-wall-tile"]
+offset_left = 173.0
+offset_top = -632.0
+offset_right = 1137.0
+offset_bottom = 626.0
+color = Color(0, 0, 0, 1)
+
+[node name="StationWallRight" type="CollisionShape2D" parent="Walls/StationWallRight"]
+position = Vector2(2869, -2)
+shape = SubResource("RectangleShape2D_qedsc")
+
+[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy")]
 script = ExtResource("38_p4fao")
 area_inside = NodePath("AreaInside")
 hallway_inside = NodePath("Inside")
 hallway_outside = NodePath("Outside")
 entrance_door = NodePath("Outside/Hallway-entrance")
 entrance_door_collider = NodePath("Outside/HallwayEntranceCollider/CollisionShape2D")
+lights_outside = [NodePath("../Objects/FluorescentTubes"), NodePath("../Objects/VendingMachine")]
 janitor_area = NodePath("Inside/Janitor/JanitorArea")
 janitor_inside = NodePath("Inside/Janitor")
+janitor_lights_inside = [NodePath("Inside/Janitor/PointLight2D")]
 hallway_base = NodePath("Inside/Hallway/BaseHallway")
 hallway_extension = NodePath("Inside/Hallway/ExtensionHallway")
 hallway_extension_collider = NodePath("Inside/Hallway/ExtensionHallway/ExtensionDoor/CollisionShape2D")
 toilette_area = NodePath("Inside/Toilette/ToiletteArea")
 toilette_inside = NodePath("Inside/Toilette")
+toilette_lights_inside = [NodePath("Inside/Toilette/PointLight2D")]
 toilette_door_collider = NodePath("Inside/Toilette/toiletteDoorCollider/CollisionShape2D")
+toilette_door = NodePath("Inside/Hallway/BaseHallway/ToiletFloor4")
+stall_door = NodePath("Inside/Toilette/Items/ToiletDoor")
+stall_door_collider = NodePath("Inside/Toilette/Items/Stalldoor/CollisionShape2D")
+stall_walls = [NodePath("Inside/Toilette/Items/ColorRect"), NodePath("Inside/Toilette/Items/ColorRect2"), NodePath("Inside/Toilette/Items/ColorRect3"), NodePath("Inside/Toilette/Items/ColorRect4"), NodePath("Inside/Toilette/Items/ColorRect5"), NodePath("Inside/Toilette/Items/ColorRect6")]
+stall_area = NodePath("Inside/Toilette/Items/StallArea")
+ghost = NodePath("Inside/Hallway/ExtensionHallway/ghost")
+exit_door = NodePath("Outside/Hallway-exit")
+exit_door_collider = NodePath("Outside/HallwayExitCollider/CollisionShape2D")
+hallway_copy = NodePath("Inside/HallwayCopy")
 
 [node name="Outside" type="Node2D" parent="Hallway"]
 
@@ -1906,7 +2047,7 @@ texture = ExtResource("38_emwp0")
 [node name="HallwayEntranceCollider" type="StaticBody2D" parent="Hallway/Outside"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Outside/HallwayEntranceCollider"]
-position = Vector2(1124.52, -395.995)
+position = Vector2(1124.5, -395.995)
 shape = SubResource("RectangleShape2D_vhbgo")
 disabled = true
 
@@ -1918,17 +2059,16 @@ texture = ExtResource("38_emwp0")
 [node name="HallwayExitCollider" type="StaticBody2D" parent="Hallway/Outside"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Outside/HallwayExitCollider"]
-position = Vector2(3472.98, -396)
+position = Vector2(3473, -388.875)
 shape = SubResource("RectangleShape2D_tnjw0")
 
 [node name="Inside" type="Node2D" parent="Hallway"]
-visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside"]
 offset_left = -53.0
 offset_top = -2986.0
-offset_right = 4456.0
-offset_bottom = 146.002
+offset_right = 5633.0
+offset_bottom = 146.0
 color = Color(0, 0, 0, 1)
 
 [node name="Hallway" type="Node2D" parent="Hallway/Inside"]
@@ -1991,7 +2131,7 @@ position = Vector2(808, -790.5)
 shape = SubResource("RectangleShape2D_rlt0o")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/Hallway/BaseHallway/BaseHallwayCollider"]
-position = Vector2(1189, -701)
+position = Vector2(1189, -710.5)
 shape = SubResource("RectangleShape2D_s8bir")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Hallway/Inside/Hallway/BaseHallway/BaseHallwayCollider"]
@@ -1999,7 +2139,7 @@ position = Vector2(1019.75, -855.5)
 shape = SubResource("RectangleShape2D_8ngmp")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Hallway/Inside/Hallway/BaseHallway/BaseHallwayCollider"]
-position = Vector2(782, -852.25)
+position = Vector2(749.5, -852.25)
 shape = SubResource("RectangleShape2D_8r5i8")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Hallway/Inside/Hallway/BaseHallway/BaseHallwayCollider"]
@@ -2007,12 +2147,30 @@ position = Vector2(1188.5, -433.5)
 shape = SubResource("RectangleShape2D_ndrbl")
 
 [node name="Door-janitor" type="Sprite2D" parent="Hallway/Inside/Hallway/BaseHallway"]
-position = Vector2(930, -927.42)
+position = Vector2(903, -927.42)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("49_nvq31")
 
+[node name="ColorRect" type="ColorRect" parent="Hallway/Inside/Hallway/BaseHallway"]
+offset_left = 1184.0
+offset_top = -571.0
+offset_right = 1194.0
+offset_bottom = -492.0
+color = Color(0.431, 0.145, 0.176, 1)
+
+[node name="ToiletFloor4" type="Sprite2D" parent="Hallway/Inside/Hallway/BaseHallway"]
+position = Vector2(1224.5, -531)
+scale = Vector2(0.0791015, 0.0761718)
+texture = ExtResource("56_tw3ym")
+
+[node name="ColorRect2" type="ColorRect" parent="Hallway/Inside/Hallway/BaseHallway/ToiletFloor4"]
+offset_left = -375.0
+offset_top = -512.0
+offset_right = 525.0
+offset_bottom = 501.0
+color = Color(0, 0, 0, 1)
+
 [node name="ExtensionHallway" type="Node2D" parent="Hallway/Inside/Hallway"]
-visible = false
 
 [node name="HallwayFloor4" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
 position = Vector2(1124, -909)
@@ -2020,8 +2178,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall2" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1123.9, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1123.9, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor5" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2030,8 +2188,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall3" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1243.56, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1243.56, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor6" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2040,8 +2198,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall4" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1363.13, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1363.13, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor7" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2050,8 +2208,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall5" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1482.53, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1482.53, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor8" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2060,8 +2218,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall6" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1602.07, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1602.07, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor9" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2070,8 +2228,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall7" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1721.64, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1721.64, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor10" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2080,8 +2238,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall8" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1840.9, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1840.9, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor11" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2090,8 +2248,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall9" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(1960.56, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(1960.56, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor12" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2100,8 +2258,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall10" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(2080.13, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(2080.13, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor13" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2110,8 +2268,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall11" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(2199.53, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(2199.53, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor14" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2120,8 +2278,8 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall12" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(2319.07, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(2319.07, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
 
 [node name="HallwayFloor15" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
@@ -2130,9 +2288,19 @@ scale = Vector2(0.116699, 0.116699)
 texture = ExtResource("50_044we")
 
 [node name="HallwayWall13" type="Sprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
-position = Vector2(2438.64, -1033)
-scale = Vector2(0.117, 0.125883)
+position = Vector2(2438.64, -1061.48)
+scale = Vector2(0.117, 0.181)
 texture = ExtResource("47_aiofw")
+
+[node name="Actionator" type="Area2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
+script = ExtResource("53_o4ipn")
+only_use_once = true
+dialogue_string = "dead_end"
+dialogue_resource = ExtResource("54_ah8l2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Hallway/ExtensionHallway/Actionator"]
+position = Vector2(2085, -909)
+shape = SubResource("RectangleShape2D_2mdr2")
 
 [node name="ExtensionHallwayCollider" type="StaticBody2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
 
@@ -2158,6 +2326,12 @@ shape = SubResource("RectangleShape2D_4wcsw")
 position = Vector2(1135.5, -865)
 shape = SubResource("RectangleShape2D_i24ae")
 
+[node name="ghost" type="AnimatedSprite2D" parent="Hallway/Inside/Hallway/ExtensionHallway"]
+position = Vector2(1706, -962)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_65xch")
+animation = &"front"
+
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
 visible = false
 
@@ -2171,21 +2345,266 @@ color = Color(0, 0, 0, 1)
 [node name="toiletteDoorCollider" type="StaticBody2D" parent="Hallway/Inside/Toilette"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/toiletteDoorCollider"]
-position = Vector2(1189, -522.5)
+position = Vector2(1189, -532.5)
 shape = SubResource("RectangleShape2D_jqrs8")
-
-[node name="ColorRect" type="ColorRect" parent="Hallway/Inside/Toilette"]
-offset_left = 1185.0
-offset_top = -680.0
-offset_right = 1477.0
-offset_bottom = -406.0
-color = Color(0.411747, 0, 0.232131, 1)
 
 [node name="ToiletteArea" type="Area2D" parent="Hallway/Inside/Toilette"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteArea"]
-position = Vector2(1364.5, -546)
+position = Vector2(1429, -575)
 shape = SubResource("RectangleShape2D_38wnb")
+
+[node name="Floor" type="Node2D" parent="Hallway/Inside/Toilette"]
+position = Vector2(-1174, 451)
+scale = Vector2(2, 2)
+
+[node name="ToiletFloor4" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1200, -491)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ColorRect2" type="ColorRect" parent="Hallway/Inside/Toilette/Floor/ToiletFloor4"]
+offset_left = -375.0
+offset_top = -512.0
+offset_right = 525.0
+offset_bottom = 501.0
+color = Color(0, 0, 0, 1)
+
+[node name="ToiletFloor" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1205, -481)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor2" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1205, -440)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor3" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1205, -522)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor5" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1204.96, -562.52)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor6" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1246.01, -481)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor7" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1246.01, -440)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor8" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1246.01, -522)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor10" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1246.01, -562.52)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor11" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1287.01, -481)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor12" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1287.01, -440)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor13" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1287.01, -522)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor15" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1287.01, -562.52)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor16" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1328.07, -481)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor17" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1328.07, -440)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor18" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1328.07, -522)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor20" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1328.07, -562.52)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor21" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1369.06, -481)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor22" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1369.06, -440)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor23" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1369.06, -522)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletFloor25" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1369.06, -562.52)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("56_tw3ym")
+
+[node name="ToiletWall" type="Sprite2D" parent="Hallway/Inside/Toilette/Floor"]
+position = Vector2(1287.01, -622.23)
+scale = Vector2(0.200176, 0.0766992)
+texture = ExtResource("57_hcdxi")
+
+[node name="Walls" type="Node2D" parent="Hallway/Inside/Toilette"]
+
+[node name="Items" type="Node2D" parent="Hallway/Inside/Toilette"]
+
+[node name="ToiletMirror" type="Sprite2D" parent="Hallway/Inside/Toilette/Items"]
+position = Vector2(1248, -796)
+scale = Vector2(0.172851, 0.172851)
+texture = ExtResource("58_gd6if")
+
+[node name="Toilet" type="Sprite2D" parent="Hallway/Inside/Toilette/Items"]
+position = Vector2(1520.92, -741)
+scale = Vector2(0.15332, 0.15332)
+texture = ExtResource("59_5vya1")
+
+[node name="ToiletDoor" type="Sprite2D" parent="Hallway/Inside/Toilette/Items"]
+position = Vector2(1520.92, -643)
+scale = Vector2(0.145508, 0.145508)
+texture = ExtResource("60_1de0t")
+
+[node name="Toilet2" type="Sprite2D" parent="Hallway/Inside/Toilette/Items"]
+position = Vector2(1382.76, -741)
+scale = Vector2(0.15332, 0.15332)
+texture = ExtResource("59_5vya1")
+
+[node name="ToiletDoor2" type="Sprite2D" parent="Hallway/Inside/Toilette/Items"]
+position = Vector2(1382.76, -643)
+scale = Vector2(0.145508, 0.145508)
+texture = ExtResource("60_1de0t")
+
+[node name="ColorRect" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1421.0
+offset_top = -700.0
+offset_right = 1483.0
+offset_bottom = -569.0
+color = Color(0.208088, 0.208088, 0.208088, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1558.0
+offset_top = -700.0
+offset_right = 1606.0
+offset_bottom = -569.0
+color = Color(0.208088, 0.208088, 0.208088, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1297.51
+offset_top = -700.0
+offset_right = 1345.51
+offset_bottom = -569.0
+color = Color(0.208088, 0.208088, 0.208088, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1298.0
+offset_top = -874.0
+offset_right = 1308.0
+offset_bottom = -591.0
+color = Color(0.208088, 0.208088, 0.208088, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1447.0
+offset_top = -874.0
+offset_right = 1457.0
+offset_bottom = -591.0
+color = Color(0.208088, 0.208088, 0.208088, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Hallway/Inside/Toilette/Items"]
+offset_left = 1605.0
+offset_top = -920.0
+offset_right = 1888.0
+offset_bottom = -565.0
+color = Color(0, 0, 0, 1)
+
+[node name="Stall" type="StaticBody2D" parent="Hallway/Inside/Toilette/Items"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1303, -648)
+shape = SubResource("RectangleShape2D_f1gdo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1453, -647)
+shape = SubResource("RectangleShape2D_f1gdo")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1393, -576)
+shape = SubResource("RectangleShape2D_wb0x7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1581.5, -577)
+shape = SubResource("RectangleShape2D_lh3ut")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1248.25, -705.75)
+shape = SubResource("RectangleShape2D_yttvo")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stall"]
+position = Vector2(1521, -707.125)
+shape = SubResource("RectangleShape2D_iia82")
+
+[node name="Stalldoor" type="StaticBody2D" parent="Hallway/Inside/Toilette/Items"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/Stalldoor"]
+position = Vector2(1520.75, -576.5)
+shape = SubResource("RectangleShape2D_adfl8")
+
+[node name="StallArea" type="Area2D" parent="Hallway/Inside/Toilette/Items"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/Items/StallArea"]
+position = Vector2(1527.75, -653)
+shape = SubResource("RectangleShape2D_4te6l")
+
+[node name="ToiletteCollider" type="StaticBody2D" parent="Hallway/Inside/Toilette"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteCollider"]
+position = Vector2(1400, -720)
+shape = SubResource("RectangleShape2D_f3i0p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteCollider"]
+position = Vector2(1632, -556.75)
+shape = SubResource("RectangleShape2D_wqy8j")
+
+[node name="PointLight2D" type="PointLight2D" parent="Hallway/Inside/Toilette"]
+position = Vector2(1393, -611.5)
+scale = Vector2(1.32812, 1.1582)
+color = Color(0.375053, 0.929829, 0.934474, 1)
+energy = 0.2
+texture = ExtResource("10_khwxr")
+
+[node name="Flicker" type="Node" parent="Hallway/Inside/Toilette/PointLight2D"]
+script = ExtResource("44_iuttk")
+offset_range = Vector2(10, 15)
+intensity_range = Vector2(0.12, 0.15)
 
 [node name="Janitor" type="Node2D" parent="Hallway/Inside"]
 visible = false
@@ -2193,7 +2612,7 @@ visible = false
 [node name="JanitorArea" type="Area2D" parent="Hallway/Inside/Janitor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/Janitor/JanitorArea"]
-position = Vector2(824.5, -991.25)
+position = Vector2(824.5, -999)
 shape = SubResource("RectangleShape2D_4dwpi")
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Janitor"]
@@ -2241,10 +2660,213 @@ shape = SubResource("RectangleShape2D_berme")
 position = Vector2(923.25, -1079.25)
 shape = SubResource("RectangleShape2D_oolqk")
 
+[node name="PointLight2D" type="PointLight2D" parent="Hallway/Inside/Janitor"]
+position = Vector2(817.5, -1054)
+scale = Vector2(1.08789, 1.03125)
+color = Color(0.375053, 0.929829, 0.934474, 1)
+energy = 0.2
+texture = ExtResource("10_khwxr")
+
+[node name="Flicker" type="Node" parent="Hallway/Inside/Janitor/PointLight2D"]
+script = ExtResource("44_iuttk")
+offset_range = Vector2(10, 15)
+intensity_range = Vector2(0.12, 0.15)
+[node name="JanitorSafeInteractable" parent="Hallway/Inside/Janitor" instance=ExtResource("45_qpcjt")]
+position = Vector2(830, -1126)
+dialogue_start = "padlocked_safe"
+
+[node name="JanitorSafeCollision" type="CollisionShape2D" parent="Hallway/Inside/Janitor/JanitorSafeInteractable"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_63ql4")
+
+[node name="HallwayCopy" type="Node2D" parent="Hallway/Inside"]
+position = Vector2(2348.5, 0)
+
+[node name="BaseHallway" type="Node2D" parent="Hallway/Inside/HallwayCopy"]
+
+[node name="HallwayFloor" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+position = Vector2(1124, -433)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayFloor2" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+position = Vector2(1124, -552)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayFloor3" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+position = Vector2(1124, -671)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayFloor4" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+position = Vector2(1124, -790)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall2" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+position = Vector2(1123.9, -942.325)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="BaseHallwayCollider" type="StaticBody2D" parent="Hallway/Inside/HallwayCopy/BaseHallway"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/BaseHallway/BaseHallwayCollider"]
+position = Vector2(1055.25, -617.5)
+shape = SubResource("RectangleShape2D_s5vdn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/BaseHallway/BaseHallwayCollider"]
+position = Vector2(1189, -668)
+shape = SubResource("RectangleShape2D_pdfvg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/BaseHallway/BaseHallwayCollider"]
+position = Vector2(1188.5, -433.5)
+shape = SubResource("RectangleShape2D_ndrbl")
+
+[node name="ExtensionHallway" type="Node2D" parent="Hallway/Inside/HallwayCopy"]
+
+[node name="HallwayFloor4" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1124, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall2" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1123.9, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor5" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1243.56, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall3" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1243.56, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor6" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1363.13, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall4" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1363.13, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor7" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1482.53, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall5" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1482.53, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor8" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1602.07, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall6" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1602.07, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor9" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1721.64, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall7" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1721.64, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor10" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1841, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall8" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1840.9, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor11" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1960.56, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall9" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(1960.56, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor12" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2080.13, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall10" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2080.13, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor13" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2199.53, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall11" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2199.53, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor14" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2319.07, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall12" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2319.07, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="HallwayFloor15" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2438.64, -909)
+scale = Vector2(0.116699, 0.116699)
+texture = ExtResource("50_044we")
+
+[node name="HallwayWall13" type="Sprite2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+position = Vector2(2438.64, -1061.48)
+scale = Vector2(0.117, 0.181)
+texture = ExtResource("47_aiofw")
+
+[node name="ExtensionHallwayCollider" type="StaticBody2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway/ExtensionHallwayCollider"]
+position = Vector2(1845.75, -839)
+shape = SubResource("RectangleShape2D_v0ao2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway/ExtensionHallwayCollider"]
+position = Vector2(1781.5, -978)
+shape = SubResource("RectangleShape2D_khrjx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway/ExtensionHallwayCollider"]
+position = Vector2(1055.5, -923.5)
+shape = SubResource("RectangleShape2D_dxssp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hallway/Inside/HallwayCopy/ExtensionHallway/ExtensionHallwayCollider"]
+position = Vector2(2509.5, -908.5)
+shape = SubResource("RectangleShape2D_4wcsw")
+
 [node name="AreaInside" type="Area2D" parent="Hallway"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/AreaInside"]
-position = Vector2(1591, -779)
+position = Vector2(3503, -784)
 shape = SubResource("RectangleShape2D_lt3ht")
 
 [node name="Teleporter" type="Node2D" parent="." node_paths=PackedStringArray("threshold_left", "threshold_right")]
@@ -2265,50 +2887,8 @@ position = Vector2(4176, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Threshhold_right"]
 shape = SubResource("RectangleShape2D_2w8kq")
 
-[node name="Walls" type="Node2D" parent="." node_paths=PackedStringArray("wall_left", "wall_right")]
-script = ExtResource("3_3nthg")
-wall_left = NodePath("StationWallLeft")
-wall_right = NodePath("StationWallRight")
-
-[node name="StationWallLeft" type="StaticBody2D" parent="Walls"]
-visible = false
-position = Vector2(-1043, 0)
-
-[node name="StationWallLeftSprite" type="Sprite2D" parent="Walls/StationWallLeft"]
-position = Vector2(-2784, 0)
-texture = ExtResource("3_lcb08")
-
-[node name="Background" type="ColorRect" parent="Walls/StationWallLeft/StationWallLeftSprite"]
-offset_left = -1138.0
-offset_top = -630.0
-offset_right = -174.0
-offset_bottom = 628.0
-color = Color(0, 0, 0, 1)
-
-[node name="StationWallLeftCollider" type="CollisionShape2D" parent="Walls/StationWallLeft"]
-position = Vector2(-2872.04, -1.52588e-05)
-shape = SubResource("RectangleShape2D_ifasf")
-
-[node name="StationWallRight" type="StaticBody2D" parent="Walls"]
-position = Vector2(1043, 0)
-
-[node name="Station-wall-tile" type="Sprite2D" parent="Walls/StationWallRight"]
-position = Vector2(2784, 0)
-texture = ExtResource("3_lcb08")
-flip_h = true
-
-[node name="Background" type="ColorRect" parent="Walls/StationWallRight/Station-wall-tile"]
-offset_left = 173.0
-offset_top = -632.0
-offset_right = 1137.0
-offset_bottom = 626.0
-color = Color(0, 0, 0, 1)
-
-[node name="StationWallRight" type="CollisionShape2D" parent="Walls/StationWallRight"]
-position = Vector2(2869, -2)
-shape = SubResource("RectangleShape2D_qedsc")
-
 [node name="Debug Lines" type="Node2D" parent="."]
+visible = false
 
 [node name="InvisibleOnReady" parent="Debug Lines" instance=ExtResource("39_yhbdv")]
 

@@ -235,8 +235,8 @@ if !safe_open:
 		"Hey Frank, next time you forget the combination to the key safe, you can buy me a grape soda. Maybe that’ll jog your memory. -Dave"
 	- Check the padlock
 		It's a four digit padlock.
-		#do padlock.start()
-		if padlock_code == 1758:
+		do GameManager.main.padlock.dialogue_trigger()
+		if current_padlock_code == padlock_code:
 			#do padlock_sfx.play()
 			It's open!
 			set safe_open = true
@@ -244,11 +244,11 @@ if !safe_open:
 			That wasn't it...
 	- Do nothing
 else:
-	if !has_toilet_key:
+	if !has_toilette_key:
 		Ok, let's see...
 			Here's another key. It seems to be for the toilets.
 		#do key_grab_sfx.play()
-		set has_toilet_key = true
+		set has_toilette_key = true
 		Okay, now let's check the toilets.
 	else:
 		Now it's empty.

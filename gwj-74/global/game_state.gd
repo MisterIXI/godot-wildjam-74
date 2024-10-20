@@ -11,7 +11,10 @@ var clock_checked: bool = false
 var clock_spinning: bool = false
 var met_vending_machine: bool = false
 var newspaper_read: bool = false
-var ghost_turn: bool = true
+var ghost_turn: bool = false
+var current_padlock_code: String = "6813"
+var padlock_code : String = "1758"
+var safe_open: bool = false
 
 # Items 
 var has_train_key: bool = false:
@@ -22,7 +25,18 @@ var train_key_broken: bool = false:
 	set(value): 
 		train_key_broken = value
 		ui_flags_changed.emit()
-
+var has_toilette_key: bool = false:
+	set(value): 
+		has_toilette_key = value
+		ui_flags_changed.emit()
+var toilette_key_used: bool = false:
+	set(value): 
+		toilette_key_used = value
+		ui_flags_changed.emit()
+var has_ticked : bool = false:
+	set(value): 
+		has_ticked = value
+		ui_flags_changed.emit()
 # Cutscenes
 var is_awake: bool = false
 var clerk_appear_happened: bool = false

@@ -36,10 +36,25 @@ var _tween_janitor_outside : Tween = null
 @export var toilette_lights_inside : Array[Node2D] = []
 @export var toilette_lights_outside : Array[Node2D] = []
 @export var toilette_door_collider : CollisionShape2D = null
+@export var toilette_door : Node2D = null
+@export var stall_door : Node2D = null
+@export var stall_door_collider : CollisionShape2D = null
+@export var stall_walls : Array[CanvasItem] = []
+@export var stall_area : Area2D = null
 var toilette_door_open : bool = false
+var stall_door_open : bool = false
+var _tween_toilette_door : Tween = null
+var _tween_stall : Tween = null
 var _tween_toilette_inside : Tween = null
 var _tween_toilette_outside : Tween = null
-#todo turn of lights
+
+@export_group("Animation")
+@export var ghost : AnimatedSprite2D = null
+@export var exit_door : Node2D = null
+@export var exit_door_collider : CollisionShape2D = null
+@export var hallway_copy : Node2D = null
+var _tween_ghost : Tween = null
+var exit_door_open : bool = false
 
 func _ready() -> void:
 	# Hallway Inside and Outside
@@ -71,7 +86,14 @@ func _ready() -> void:
 	CustomTweener.switch_lights(toilette_lights_outside, toilette_lights_inside)
 	for body in toilette_area.get_overlapping_bodies():
 		_on_toilette_area_body_entered(body)
-	set_toilette_door(true)
+	set_toilette_door(false)
+	set_stall_door(false)
+	stall_area.body_entered.connect(_on_stall_area_body_entered)
+	stall_area.body_exited.connect(_on_stall_area_body_exited)
+
+	# Animation
+	ghost.visible = false
+	ghost.modulate.a = 0
 
 # Hallway Inside and Outside
 func _on_area_inside_body_entered(body: Node) -> void:
@@ -90,6 +112,7 @@ func _on_area_inside_body_exited(body: Node) -> void:
 	CustomTweener.switch_lights(lights_inside, lights_outside)
 func set_door(open : bool) -> void:
 	entrance_door_collider.disabled = open
+	entrance_door.visible = open
 	door_open = open
 
 # Janitor
@@ -133,5 +156,72 @@ func _on_toilette_area_body_exited(body: Node) -> void:
 	_tween_toilette_inside = tween_array[1]
 	CustomTweener.switch_lights(toilette_lights_outside, toilette_lights_inside)
 func set_toilette_door(open : bool) -> void:
+	if toilette_door:
+		_tween_toilette_door = CustomTweener.set_visibility(open, toilette_door, _tween_toilette_door, animation_duration)
 	toilette_door_collider.disabled = open
 	toilette_door_open = open
+
+
+func set_stall_door(open : bool) -> void:
+	_tween_stall = CustomTweener.set_visibility(not open, stall_door, _tween_stall, animation_duration)
+	stall_door_collider.disabled = open
+	stall_door_open = open
+func _on_stall_area_body_entered(body: Node) -> void:
+	if not body.is_in_group("player"):
+		return
+	for wall in stall_walls:
+		wall.z_as_relative = false
+		wall.z_index = 500
+	stall_door.z_as_relative = false
+	stall_door.z_index = 500
+func _on_stall_area_body_exited(body: Node) -> void:
+	if not body.is_in_group("player"):
+		return
+	for wall in stall_walls:
+		wall.z_as_relative = true
+		wall.z_index = 0
+	stall_door.z_as_relative = true
+	stall_door.z_index = 0
+
+
+# animation
+func ghost_appear() -> void:
+	ghost.visible = true
+	ghost.play("front")
+	_tween_ghost = CustomTweener.set_visibility(true, ghost, _tween_ghost, 2)
+	await _tween_ghost.finished
+
+
+func ghost_disappear() -> void:
+	_tween_ghost = CustomTweener.set_visibility(false, ghost, _tween_ghost, 2)
+	await _tween_ghost.finished
+
+
+func ghost_approach_player() -> void:
+	ghost.play("side")
+	if _tween_ghost:
+		_tween_ghost.kill()
+	_tween_ghost = create_tween()
+	_tween_ghost.tween_property(ghost, "position:x", 1971, 3)
+	await _tween_ghost.finished
+	await get_tree().create_timer(1).timeout
+
+
+func switch_hall(to_right_hall : bool) -> void:
+	var player = GameManager.main.player
+	var camera : Camera2D = player.get_node("Camera2D")
+	var dist = player.global_position - camera.get_screen_center_position()
+	camera.position -= dist
+
+	if to_right_hall:
+		player.global_position += hallway_copy.global_position - hallway_base.global_position
+	else:
+		player.global_position += hallway_base.global_position - hallway_copy.global_position
+
+	camera.reset_smoothing()
+	camera.position = Vector2.ZERO
+
+	set_door(not to_right_hall)
+	exit_door_collider.disabled = to_right_hall
+	exit_door.visible = to_right_hall
+	exit_door_open = to_right_hall
