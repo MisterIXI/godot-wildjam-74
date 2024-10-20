@@ -322,7 +322,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -1722,6 +1721,7 @@ position = Vector2(3472.98, -396)
 shape = SubResource("RectangleShape2D_tnjw0")
 
 [node name="Inside" type="Node2D" parent="Hallway"]
+visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside"]
 offset_left = -53.0
