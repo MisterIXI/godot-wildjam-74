@@ -459,7 +459,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -1391,6 +1390,7 @@ scale = Vector2(0.0752635, 0.0879061)
 texture = ExtResource("10_khwxr")
 
 [node name="Train-inside" type="Sprite2D" parent="Train"]
+visible = false
 position = Vector2(-376, 501)
 texture = ExtResource("6_jssr1")
 
@@ -2071,6 +2071,7 @@ position = Vector2(3473, -388.875)
 shape = SubResource("RectangleShape2D_tnjw0")
 
 [node name="Inside" type="Node2D" parent="Hallway"]
+visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside"]
 offset_left = -53.0
@@ -2342,6 +2343,7 @@ position = Vector2(1135.5, -865)
 shape = SubResource("RectangleShape2D_i24ae")
 
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
+visible = false
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Toilette"]
 offset_left = -53.0
@@ -2629,6 +2631,7 @@ position = Vector2(1430, -386)
 shape = SubResource("RectangleShape2D_p1ncj")
 
 [node name="toiletteghost" type="AnimatedSprite2D" parent="Hallway/Inside/Toilette"]
+visible = false
 z_index = 4096
 z_as_relative = false
 position = Vector2(807, -523)

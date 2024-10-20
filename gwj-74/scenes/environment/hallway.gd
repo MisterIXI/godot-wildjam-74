@@ -66,7 +66,7 @@ func _ready() -> void:
 	CustomTweener.switch_lights(lights_outside, lights_inside)
 	for body in area_inside.get_overlapping_bodies():
 		_on_area_inside_body_entered(body)
-	set_door(true)
+	set_door(false)
 
 	# Janitor
 	janitor_area.body_entered.connect(_on_janitor_area_body_entered)
@@ -88,7 +88,7 @@ func _ready() -> void:
 	CustomTweener.switch_lights(toilette_lights_outside, toilette_lights_inside)
 	for body in toilette_area.get_overlapping_bodies():
 		_on_toilette_area_body_entered(body)
-	set_toilette_door(true)
+	set_toilette_door(false)
 	set_stall_door(false)
 	stall_area.body_entered.connect(_on_stall_area_body_entered)
 	stall_area.body_exited.connect(_on_stall_area_body_exited)
