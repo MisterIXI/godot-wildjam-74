@@ -64,22 +64,24 @@ func _physics_process(_delta: float) -> void:
 
 	# Handle character direction
 	animated_sprite.speed_scale = speed / 200
-	if direction.x < 0:
-		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = true
-		interaction_ray_cast.rotation = 0.5 * PI
-	elif direction.x > 0:
-		animated_sprite.play("sideward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = 1.5 * PI
-	elif direction.y > 0:
-		animated_sprite.play("forward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = 0
-	elif direction.y < 0:
-		animated_sprite.play("backward-walk")
-		animated_sprite.flip_h = false
-		interaction_ray_cast.rotation = PI
+	if abs(direction.x) > abs(direction.y):
+		if direction.x < 0:
+			animated_sprite.play("sideward-walk")
+			animated_sprite.flip_h = true
+			interaction_ray_cast.rotation = 0.5 * PI
+		elif direction.x > 0:
+			animated_sprite.play("sideward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = 1.5 * PI
+	else:
+		if direction.y > 0:
+			animated_sprite.play("forward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = 0
+		elif direction.y < 0:
+			animated_sprite.play("backward-walk")
+			animated_sprite.flip_h = false
+			interaction_ray_cast.rotation = PI
 
 
 	# Handle character movement
