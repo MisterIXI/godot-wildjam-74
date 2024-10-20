@@ -279,6 +279,25 @@ Oh no, what is happening now?
 #do ghost_cutscene
 => END
 
+~ toilet_stall
+do environment.hallway.kill_toilette_interactionbox()
+do environment.hallway.set_stall_door(true)
+do wait(1)
+do player.move_to(Vector2(1520,-665))
+do player.wait_for_player()
+do player.turn(Vector2.DOWN)
+do environment.hallway.set_stall_door(false)
+
+do environment.hallway.toilette_ghost_animation()
+
+do environment.hallway.set_stall_door(true)
+do environment.hallway.set_toilette_door(true)
+do player.move_to(Vector2(1520,-531))
+do player.turn(Vector2.DOWN)
+do player.wait_for_player()
+do environment.hallway.set_hallway_extension(true)
+=> END
+
 ~ dead_end
 It's a dead end...
     What now?
