@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=140 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -43,8 +43,10 @@
 [ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Script" path="res://components/actionator/actionator.gd" id="36_ug12r"]
 [ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="37_kkc5p"]
+[ext_resource type="Script" path="res://scenes/objects/ghosts.gd" id="37_n660h"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
+[ext_resource type="PackedScene" uid="uid://bsjopoxcff2h7" path="res://scenes/objects/ghost.tscn" id="39_3uofa"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
 [ext_resource type="Texture2D" uid="uid://bkg7ni7m30jgh" path="res://assets/images/objects/office_chair.png" id="40_tvq3o"]
@@ -161,6 +163,9 @@ size = Vector2(3262.5, 388)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irqu4"]
 size = Vector2(113, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgp7x"]
+size = Vector2(20, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8twan"]
 size = Vector2(1546, 58)
@@ -1295,7 +1300,6 @@ scale = Vector2(0.0752635, 0.0879061)
 texture = ExtResource("10_khwxr")
 
 [node name="Train-inside" type="Sprite2D" parent="Train"]
-visible = false
 position = Vector2(-376, 501)
 texture = ExtResource("6_jssr1")
 
@@ -1584,6 +1588,64 @@ texture = ExtResource("10_khwxr")
 [node name="InsideDoorCloser" parent="Train/Train-inside" node_paths=PackedStringArray("train") instance=ExtResource("35_p633o")]
 train = NodePath("../..")
 
+[node name="ghost2" parent="Train/Train-inside" instance=ExtResource("39_3uofa")]
+modulate = Color(0.960938, 0.653137, 0.653137, 1)
+position = Vector2(-856, -197)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("37_n660h")
+
+[node name="Interactable" parent="Train/Train-inside/ghost2" index="1"]
+dialogue_start = "ghosts"
+
+[node name="ghost3" parent="Train/Train-inside" instance=ExtResource("39_3uofa")]
+modulate = Color(0.960938, 0.653137, 0.653137, 1)
+position = Vector2(-712, -197)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("37_n660h")
+
+[node name="Ghost" parent="Train/Train-inside/ghost3" index="0"]
+frame = 2
+
+[node name="Interactable" parent="Train/Train-inside/ghost3" index="1"]
+dialogue_start = "ghosts"
+
+[node name="ghost4" parent="Train/Train-inside" instance=ExtResource("39_3uofa")]
+modulate = Color(0.653137, 0.82387, 0.960938, 1)
+position = Vector2(-560, -197)
+scale = Vector2(0.85, 0.85)
+script = ExtResource("37_n660h")
+
+[node name="Ghost" parent="Train/Train-inside/ghost4" index="0"]
+flip_h = true
+frame = 2
+
+[node name="Interactable" parent="Train/Train-inside/ghost4" index="1"]
+dialogue_start = "ghosts"
+
+[node name="ghost5" parent="Train/Train-inside" instance=ExtResource("39_3uofa")]
+modulate = Color(0.960938, 0.934486, 0.653137, 1)
+z_index = 1
+position = Vector2(-656, 2.99999)
+scale = Vector2(0.85, 0.85)
+script = ExtResource("37_n660h")
+
+[node name="Ghost" parent="Train/Train-inside/ghost5" index="0"]
+flip_h = true
+frame = 1
+
+[node name="Interactable" parent="Train/Train-inside/ghost5" index="1"]
+dialogue_start = "ghosts"
+
+[node name="ghost6" parent="Train/Train-inside" instance=ExtResource("39_3uofa")]
+modulate = Color(0.807037, 0.960938, 0.653137, 1)
+z_index = 2
+position = Vector2(-936, 3)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("37_n660h")
+
+[node name="Interactable" parent="Train/Train-inside/ghost6" index="1"]
+dialogue_start = "ghosts"
+
 [node name="TrainArea" type="Area2D" parent="Train"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea"]
@@ -1599,6 +1661,13 @@ dialogue_resource = ExtResource("37_kkc5p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
 position = Vector2(600, 336)
 shape = SubResource("RectangleShape2D_irqu4")
+
+[node name="Interactable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
+position = Vector2(-8, 384)
+dialogue_start = "train_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Interactable"]
+shape = SubResource("RectangleShape2D_hgp7x")
 
 [node name="Outside_Actionator" type="Area2D" parent="Train"]
 script = ExtResource("36_ug12r")
@@ -1653,6 +1722,7 @@ energy = 0.54
 texture = SubResource("CompressedTexture2D_502dn")
 
 [node name="CounterInside" type="Node2D" parent="Counter"]
+visible = false
 
 [node name="Background" type="ColorRect" parent="Counter/CounterInside"]
 offset_left = -1215.0
@@ -2301,3 +2371,9 @@ volume_db = -20.0
 pitch_scale = 0.5
 autoplay = true
 bus = &"SFX"
+
+[editable path="Train/Train-inside/ghost2"]
+[editable path="Train/Train-inside/ghost3"]
+[editable path="Train/Train-inside/ghost4"]
+[editable path="Train/Train-inside/ghost5"]
+[editable path="Train/Train-inside/ghost6"]

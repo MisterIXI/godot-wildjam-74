@@ -166,14 +166,13 @@ else:
 % Okay...
 => END
 
-<<<<<<< HEAD
 ~ train_door_close
 #do game_manager.train_door_close_inside()
 Oh, no! This is bad...
 => END
 
 ~ train_operator_door
-#do game_manager.train_ghost_appear()
+set ghost_turn = true
 Ghost: [speed=0.5][shake rate=20.0 level=5 connected=1]...L..E..A..V..E...[/shake]
 #do game_manager.train_blackout()
 Huh?

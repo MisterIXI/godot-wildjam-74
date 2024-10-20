@@ -4,12 +4,14 @@ var test_checked: bool = false
 
 var wrapped_around: bool = false
 var ghost_met: bool = false
+var act_2: bool = false
 
 # Environment
 var clock_checked: bool = false
 var clock_spinning: bool = false
 var met_vending_machine: bool = false
 var newspaper_read: bool = false
+var ghost_turn: bool = true
 
 # Items 
 var has_train_key: bool = false:
