@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=102 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -151,6 +151,18 @@ size = Vector2(23, 156.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dct7d"]
 size = Vector2(3262.5, 388)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_no2ux"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_py6bo"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f1qv5"]
+gradient = SubResource("Gradient_py6bo")
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(1, 0.162393)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_502dn"]
 load_path = "res://.godot/imported/full_round_light.png-d66a5b1f3ca8510c6c3423ad59cea976.ctex"
@@ -1484,7 +1496,7 @@ train = NodePath("../..")
 position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
 
-[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider", "counter_outside_interactable", "counter_outside_dialogue_collider")]
+[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider", "counter_outside_interactable", "counter_outside_dialogue_collider", "counter_outside_door_floor_light")]
 script = ExtResource("7_15l0w")
 counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
@@ -1495,6 +1507,14 @@ lights_inside = [NodePath("CounterInside/PointLight2D")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
 counter_outside_interactable = NodePath("CounterOutside/Interactable")
 counter_outside_dialogue_collider = NodePath("CounterOutside/Interactable/CollisionShape2D")
+counter_outside_door_floor_light = NodePath("Door-floor-light")
+
+[node name="Door-floor-light" type="Sprite2D" parent="Counter"]
+visible = false
+material = SubResource("CanvasItemMaterial_no2ux")
+position = Vector2(277, -341)
+scale = Vector2(1.1492, 1.1492)
+texture = SubResource("GradientTexture2D_f1qv5")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
 position = Vector2(70, -480)

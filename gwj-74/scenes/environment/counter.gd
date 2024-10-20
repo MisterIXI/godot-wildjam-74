@@ -12,6 +12,7 @@ class_name Counter
 
 @export var counter_outside_interactable: Interactable = null
 @export var counter_outside_dialogue_collider: CollisionShape2D = null
+@export var counter_outside_door_floor_light: Sprite2D = null
 
 @export var man_flicker_pause_range : Vector2 = Vector2(3, 5)
 @export var man_flicker_count_range : Vector2i = Vector2i(1, 3)
@@ -72,7 +73,7 @@ func _on_body_exited(body: Node) -> void:
 func set_door(open : bool) -> void:
 	counter_door_collider.disabled = open
 	door_open = open
-
+	counter_outside_door_floor_light.set_deferred("visible", open)
 
 func show_man(active : bool) -> void:
 	counter_man.visible = active
