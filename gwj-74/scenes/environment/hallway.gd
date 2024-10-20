@@ -36,7 +36,15 @@ var _tween_janitor_outside : Tween = null
 @export var toilette_lights_inside : Array[Node2D] = []
 @export var toilette_lights_outside : Array[Node2D] = []
 @export var toilette_door_collider : CollisionShape2D = null
+@export var toilette_door : Node2D = null
+@export var stall_door : Node2D = null
+@export var stall_door_collider : CollisionShape2D = null
+@export var stall_walls : Array[CanvasItem] = []
+@export var stall_area : Area2D = null
 var toilette_door_open : bool = false
+var stall_door_open : bool = false
+var _tween_toilette_door : Tween = null
+var _tween_stall : Tween = null
 var _tween_toilette_inside : Tween = null
 var _tween_toilette_outside : Tween = null
 
@@ -78,7 +86,10 @@ func _ready() -> void:
 	CustomTweener.switch_lights(toilette_lights_outside, toilette_lights_inside)
 	for body in toilette_area.get_overlapping_bodies():
 		_on_toilette_area_body_entered(body)
-	set_toilette_door(true)
+	set_toilette_door(false)
+	set_stall_door(false)
+	stall_area.body_entered.connect(_on_stall_area_body_entered)
+	stall_area.body_exited.connect(_on_stall_area_body_exited)
 
 	# Animation
 	ghost.visible = false
@@ -145,8 +156,32 @@ func _on_toilette_area_body_exited(body: Node) -> void:
 	_tween_toilette_inside = tween_array[1]
 	CustomTweener.switch_lights(toilette_lights_outside, toilette_lights_inside)
 func set_toilette_door(open : bool) -> void:
+	if toilette_door:
+		_tween_toilette_door = CustomTweener.set_visibility(open, toilette_door, _tween_toilette_door, animation_duration)
 	toilette_door_collider.disabled = open
 	toilette_door_open = open
+
+
+func set_stall_door(open : bool) -> void:
+	_tween_stall = CustomTweener.set_visibility(not open, stall_door, _tween_stall, animation_duration)
+	stall_door_collider.disabled = open
+	stall_door_open = open
+func _on_stall_area_body_entered(body: Node) -> void:
+	if not body.is_in_group("player"):
+		return
+	for wall in stall_walls:
+		wall.z_as_relative = false
+		wall.z_index = 500
+	stall_door.z_as_relative = false
+	stall_door.z_index = 500
+func _on_stall_area_body_exited(body: Node) -> void:
+	if not body.is_in_group("player"):
+		return
+	for wall in stall_walls:
+		wall.z_as_relative = true
+		wall.z_index = 0
+	stall_door.z_as_relative = true
+	stall_door.z_index = 0
 
 
 # animation
