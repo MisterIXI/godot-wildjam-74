@@ -22,6 +22,7 @@ GameState="*res://global/game_state.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 CustomTweener="*res://global/CustomTweener/custom_tweener.tscn"
 BalloonSetter="*res://global/BalloonSetter/balloon_setter.tscn"
+GameManager="*res://global/game_manager.tscn"
 
 [dialogic]
 
