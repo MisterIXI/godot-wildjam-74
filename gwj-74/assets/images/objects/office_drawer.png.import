@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br3rn7frnb8b4"
-path="res://.godot/imported/Key_toilette.png-1d682ee2db200b739f9589ec2f1f93d7.ctex"
+uid="uid://cbls43lg83b2d"
+path="res://.godot/imported/office_drawer.png-f7ebe38e9ad8279141ea957d48000016.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/Key_toilette.png"
-dest_files=["res://.godot/imported/Key_toilette.png-1d682ee2db200b739f9589ec2f1f93d7.ctex"]
+source_file="res://assets/images/objects/office_drawer.png"
+dest_files=["res://.godot/imported/office_drawer.png-f7ebe38e9ad8279141ea957d48000016.ctex"]
 
 [params]
 

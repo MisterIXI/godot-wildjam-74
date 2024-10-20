@@ -271,7 +271,7 @@ do player.move_to(newspaper_marker.global.position)
 The situation worsened further when a broken pipe of the city's freshwater system quickly filled the station with water.
 After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
 This article is from October 1992.
-[speed=0.6]...[wait=0.5]So that's what happened here.
+[speed=0.6]...[wait=0.5]So that's what happened here...
 
 
 

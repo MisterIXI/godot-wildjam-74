@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=90 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://bw5fn7iss1mgg" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -40,10 +40,15 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" uid="uid://cds3rbcr6oguh" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
+[ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
 [ext_resource type="PackedScene" uid="uid://xh85kuw0qkw7" path="res://components/invisible_on_ready/invisible_on_ready.tscn" id="39_yhbdv"]
+[ext_resource type="Texture2D" uid="uid://bkg7ni7m30jgh" path="res://assets/images/objects/office_chair.png" id="40_tvq3o"]
+[ext_resource type="Texture2D" uid="uid://dx5xuesmu3473" path="res://assets/images/objects/office_desk.png" id="41_dh3sk"]
+[ext_resource type="Texture2D" uid="uid://cbls43lg83b2d" path="res://assets/images/objects/office_drawer.png" id="42_fnal0"]
+[ext_resource type="Texture2D" uid="uid://6h60wdvx5d7x" path="res://assets/images/objects/calendar.png" id="43_76o2b"]
 [ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="43_y3658"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
@@ -230,6 +235,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
+visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -1488,7 +1494,6 @@ energy = 0.54
 texture = SubResource("CompressedTexture2D_502dn")
 
 [node name="CounterInside" type="Node2D" parent="Counter"]
-visible = false
 
 [node name="Background" type="ColorRect" parent="Counter/CounterInside"]
 offset_left = -1215.0
@@ -1497,12 +1502,24 @@ offset_right = 1220.0
 offset_bottom = 84.0
 color = Color(0, 0, 0, 1)
 
-[node name="CounterInsidePlaceholder" type="ColorRect" parent="Counter/CounterInside"]
-offset_left = -469.0
-offset_top = -996.0
-offset_right = 462.0
-offset_bottom = -419.0
-color = Color(0.549954, 0.234167, 0.87071, 1)
+[node name="Office" type="Sprite2D" parent="Counter/CounterInside"]
+position = Vector2(88, -640)
+scale = Vector2(0.2034, 0.2034)
+texture = ExtResource("39_t27qc")
+
+[node name="OfficeChair" type="Sprite2D" parent="Counter/CounterInside/Office"]
+texture = ExtResource("40_tvq3o")
+
+[node name="OfficeDesk" type="Sprite2D" parent="Counter/CounterInside/Office"]
+texture = ExtResource("41_dh3sk")
+
+[node name="OfficeDrawer" type="Sprite2D" parent="Counter/CounterInside/Office"]
+texture = ExtResource("42_fnal0")
+
+[node name="Calendar" type="Sprite2D" parent="Counter/CounterInside"]
+position = Vector2(160.03, -772.835)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("43_76o2b")
 
 [node name="CounterOutside" type="StaticBody2D" parent="Counter"]
 
