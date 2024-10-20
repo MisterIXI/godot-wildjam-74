@@ -271,9 +271,28 @@ I can't find the exit and there's noone here. What should I do?
 	Yesterday a part of Glenwich Station collapsed and got completely blocked by debris trapping all 44 passengers and 5 members of the staff.
 The situation worsened further when a broken pipe of the city's freshwater system quickly filled the station with water.
 After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
-This article is from October 1992.
-[speed=0.6]...[wait=0.5]So that's what happened here...
+This article is from October 1992...
+#do creepy_sfx.play()
+Oh no, what is happening now?
+	I need to hide quickly!
+#do ghost_cutscene
+=> END
 
+~ dead_end
+It's a dead end...
+	What now?
+#do ghost appears
+Oh my goodness! Please leave me alone!
+#do ghost approaches and disappears
+Please! Nooo...
+	...?
+Th- they gave me a ticket?
+=> END
+
+~ train_arrival
+It's the train!!
+	Please just leave this place already!
+=> END
 
 ~ cutscene_tester
 
