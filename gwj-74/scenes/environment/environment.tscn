@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://v4u4a6ajuxci" path="res://assets/images/decals/1_stain.png" id="9_1v85k"]
 [ext_resource type="Script" path="res://scenes/environment/teleporter.gd" id="9_4hld4"]
 [ext_resource type="Texture2D" uid="uid://wkgipuebdcib" path="res://assets/images/lights/half_light.png" id="9_skdwr"]
-[ext_resource type="PackedScene" uid="uid://qfoxvsaqkndc" path="res://scenes/environment/clock.tscn" id="10_860w5"]
+[ext_resource type="PackedScene" uid="uid://naw07f3cfks" path="res://scenes/environment/clock.tscn" id="10_860w5"]
 [ext_resource type="Texture2D" uid="uid://boos58ij56xnt" path="res://assets/images/decals/2_stain.png" id="10_b2dm3"]
 [ext_resource type="Texture2D" uid="uid://b5pcmur4vr4rc" path="res://assets/images/lights/full_round_light.png" id="10_khwxr"]
 [ext_resource type="Texture2D" uid="uid://dvww153msr0re" path="res://assets/images/decals/3_stain.png" id="11_ae0lp"]
@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" uid="uid://cds3rbcr6oguh" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://7x6sfyfuwrbh" path="res://assets/images/objects/door-janitor.png" id="49_nvq31"]
 [ext_resource type="Texture2D" uid="uid://ckfe4m0alxwuo" path="res://assets/images/objects/janitor_desk.png" id="49_tsgcd"]
 [ext_resource type="Texture2D" uid="uid://dmec2i6h8ia4f" path="res://assets/images/backgrounds/hallway_floor.png" id="50_044we"]
+[ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="45_s1a6d"]
 
 [sub_resource type="Environment" id="Environment_r0l3c"]
 background_mode = 3
@@ -173,6 +174,9 @@ size = Vector2(349.5, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_720fm"]
 size = Vector2(52.25, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl1d5"]
+size = Vector2(349, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo7m"]
 size = Vector2(47, 435)
@@ -1549,7 +1553,7 @@ train = NodePath("../..")
 position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
 
-[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider")]
+[node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider", "counter_outside_interactable", "counter_outside_dialogue_collider")]
 script = ExtResource("7_15l0w")
 counter_area = NodePath("CounterArea")
 counter_man = NodePath("Counter-outside/Counter-outside-on")
@@ -1558,6 +1562,8 @@ counter_inside = NodePath("CounterInside")
 lights_outside = [NodePath("Counter-outside/Counter-outside-on/PointLight2D"), NodePath("Counter-outside/PointLight2D"), NodePath("../Objects/FluorescentTubes")]
 lights_inside = [NodePath("CounterInside/PointLight2D")]
 counter_door_collider = NodePath("CounterOutside/CounterDoorCollider")
+counter_outside_interactable = NodePath("CounterOutside/Interactable")
+counter_outside_dialogue_collider = NodePath("CounterOutside/Interactable/CollisionShape2D")
 
 [node name="Counter-outside" type="Sprite2D" parent="Counter"]
 position = Vector2(70, -480)
@@ -1655,6 +1661,13 @@ shape = SubResource("RectangleShape2D_1c5aw")
 [node name="CounterCollider2" type="CollisionShape2D" parent="Counter/CounterOutside"]
 position = Vector2(200.125, -396)
 shape = SubResource("RectangleShape2D_720fm")
+
+[node name="Interactable" parent="Counter/CounterOutside" instance=ExtResource("45_s1a6d")]
+dialogue_start = "clerk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterOutside/Interactable"]
+position = Vector2(-0.5, -382.5)
+shape = SubResource("RectangleShape2D_yl1d5")
 
 [node name="CounterInside2" type="StaticBody2D" parent="Counter"]
 
