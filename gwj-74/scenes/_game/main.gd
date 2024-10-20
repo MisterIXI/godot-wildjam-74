@@ -11,6 +11,7 @@ class_name Main
 @onready var environment: xXxEnvironmentxXx = %Environment
 @onready var player: Player = %player
 @onready var padlock: Padlock = %Padlock
+@onready var color_screen: ColorScreen = %ColorScreen
 
 func set_dialogue_auto_skip(value : bool) -> void:
 	DialogueManager.auto_skip = value

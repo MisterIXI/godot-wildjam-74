@@ -23,5 +23,6 @@ do wait(1)
 [center]Only months later, you find a peculiar little piece of paper in the inside pocket of your shirt.
 #do show texture
 [center]The End
+do wait(1000000)
 => END
 

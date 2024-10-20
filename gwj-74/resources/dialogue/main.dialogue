@@ -190,8 +190,14 @@ set act_2 = true
 ~ train_leave
 # only do this is act 2 is active
 #do game_manager.train_door_close_outside()
+do environment.train.set_door(false, 1)
 What?
 #do game_manager.train_leave()
+do environment.train.depart()
+do wait(0.5)
+do player.move_to(Vector2(-3500,0), 450)
+do environment.walls.set_wall_left(true)
+do player.wait_for_player()
 set train_left = true
 Wait!! [wait=1]Don't leave me here!
 Where did they go?

@@ -102,4 +102,4 @@ func depart() -> void:
 
 func reset_position() -> void:
 	global_position = _train_start_position
-	set_door(true, 0)
+	set_door(true, 1)

@@ -5,6 +5,7 @@ var test_checked: bool = false
 var wrapped_around: bool = false
 var ghost_met: bool = false
 var act_2: bool = false
+var train_left: bool = false
 
 # Environment
 var clock_checked: bool = false
