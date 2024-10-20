@@ -29,7 +29,8 @@ func flicker() -> void:
 	_tween = get_tree().create_tween()
 	var _count = randi_range(count_range.x, count_range.y)
 	for i in range(_count):
-		_tween.tween_callback(flicker_sfx.play)
+		if flicker_sfx:
+			_tween.tween_callback(flicker_sfx.play)
 		_tween.tween_property(_parent, "energy", randf_range(intensity_range.x, intensity_range.y), randf_range(duration_range.x, duration_range.y))
 		_tween.tween_property(_parent, "energy", _start_energy, randf_range(duration_range.x, duration_range.y))
 	_tween.tween_callback(flicker)
