@@ -241,8 +241,10 @@ func toilette_ghost_animation() -> void:
 		target_positions.append(child.global_position)
 	for pos in target_positions:
 		_move_toilette_ghost(pos)
-		_toilette_ghost_look_around(1)
-
+		await _tween_ghost.finished
+		for i in range(3):
+			_toilette_ghost_look_around(i)
+			await get_tree().create_timer(1).timeout
 	toilette_ghost.visible = false
 
 
@@ -266,17 +268,22 @@ func _move_toilette_ghost(pos : Vector2) -> void:
 	else:
 		toilette_ghost.play("front")
 		toilette_ghost.flip_h = false
-	await _tween_ghost.finished
+	
 
 
 func _toilette_ghost_look_around(time) -> void:
-	toilette_ghost.flip_h = false
-	toilette_ghost.play("front")
-	await get_tree().create_timer(time).timeout
-	toilette_ghost.play("side")
-	await get_tree().create_timer(time).timeout
-	toilette_ghost.play("back")
-	await get_tree().create_timer(time).timeout
-	toilette_ghost.flip_h = true
-	toilette_ghost.play("side")
-	await get_tree().create_timer(time).timeout
+	match time:
+			1:
+				toilette_ghost.flip_h = false
+				toilette_ghost.play("front")
+			0:
+				toilette_ghost.flip_h = true
+				toilette_ghost.play("side")
+			3:
+				toilette_ghost.flip_h = false
+				toilette_ghost.play("back")
+			2:
+				toilette_ghost.flip_h = false
+				toilette_ghost.play("side")
+			_:
+				pass

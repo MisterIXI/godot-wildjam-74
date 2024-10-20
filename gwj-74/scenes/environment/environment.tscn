@@ -2629,7 +2629,6 @@ position = Vector2(1430, -386)
 shape = SubResource("RectangleShape2D_p1ncj")
 
 [node name="toiletteghost" type="AnimatedSprite2D" parent="Hallway/Inside/Toilette"]
-visible = false
 position = Vector2(807, -523)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_65xch")
