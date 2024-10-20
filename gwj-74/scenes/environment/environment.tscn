@@ -169,10 +169,13 @@ size = Vector2(23, 156.5)
 size = Vector2(3262.5, 388)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irqu4"]
-size = Vector2(113, 146)
+size = Vector2(436, 222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgp7x"]
 size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcgtq"]
+size = Vector2(20, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8twan"]
 size = Vector2(1546, 58)
@@ -328,6 +331,8 @@ size = Vector2(21, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i24ae"]
 size = Vector2(143, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jfs0"]
+size = Vector2(14, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqrs8"]
 size = Vector2(10, 79)
@@ -1151,7 +1156,7 @@ position = Vector2(1962, -383)
 [node name="Trashcan4" parent="Objects" instance=ExtResource("33_q6j4v")]
 position = Vector2(1266.5, -369)
 
-[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside")]
+[node name="Train" type="Node2D" parent="." node_paths=PackedStringArray("train_area", "train_outside", "train_inside", "lights_outside", "lights_inside", "train_door_front", "train_door_front_static_body", "train_door_back", "train_door_back_static_body", "train_door_inside_collider", "train_door_inside", "train_wakeup_actionator")]
 script = ExtResource("3_co6w8")
 train_area = NodePath("TrainArea")
 train_outside = NodePath("TrainOutside")
@@ -1164,6 +1169,7 @@ train_door_back = NodePath("TrainOutside/Train-entrances-back")
 train_door_back_static_body = NodePath("../Collider/Train-entrances-back-collider")
 train_door_inside_collider = NodePath("Train-inside/WagonConnector/CollisionShape2D")
 train_door_inside = NodePath("Train-inside/WagonConnector/OpenDoor")
+train_wakeup_actionator = NodePath("TrainArea/Wakeup_Actionator")
 
 [node name="TrainOutside" type="Sprite2D" parent="Train"]
 position = Vector2(-6, 361)
@@ -1750,8 +1756,9 @@ dialogue_string = "beginning"
 dialogue_resource = ExtResource("54_ah8l2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
-position = Vector2(600, 336)
+position = Vector2(550, 358)
 shape = SubResource("RectangleShape2D_irqu4")
+disabled = true
 
 [node name="Interactable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
 position = Vector2(-8, 384)
@@ -1759,6 +1766,13 @@ dialogue_start = "train_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Interactable"]
 shape = SubResource("RectangleShape2D_hgp7x")
+
+[node name="TrainOperatorDoorInteractable" parent="Train/TrainArea" instance=ExtResource("45_qpcjt")]
+position = Vector2(-1467, 381)
+dialogue_start = "train_operator_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/TrainOperatorDoorInteractable"]
+shape = SubResource("RectangleShape2D_dcgtq")
 
 [node name="Outside_Actionator" type="Area2D" parent="Train"]
 script = ExtResource("53_o4ipn")
@@ -2014,7 +2028,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(2869, -2)
 shape = SubResource("RectangleShape2D_qedsc")
 
-[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy", "toilette_interactionbox", "toilette_ghost")]
+[node name="Hallway" type="Node2D" parent="." node_paths=PackedStringArray("area_inside", "hallway_inside", "hallway_outside", "entrance_door", "entrance_door_collider", "lights_outside", "janitor_area", "janitor_inside", "janitor_lights_inside", "hallway_base", "hallway_extension", "hallway_extension_collider", "toilette_area", "toilette_inside", "toilette_lights_inside", "toilette_door_collider", "toilette_door", "stall_door", "stall_door_collider", "toilette_door_interactable", "stall_walls", "stall_area", "ghost", "exit_door", "exit_door_collider", "hallway_copy", "toilette_interactionbox", "toilette_ghost")]
 script = ExtResource("38_p4fao")
 area_inside = NodePath("AreaInside")
 hallway_inside = NodePath("Inside")
@@ -2035,6 +2049,7 @@ toilette_door_collider = NodePath("Inside/Toilette/toiletteDoorCollider/Collisio
 toilette_door = [NodePath("Inside/Toilette/Floor/ToiletFloor4"), NodePath("Inside/Hallway/BaseHallway/ToiletFloor4")]
 stall_door = NodePath("Inside/Toilette/Items/ToiletDoor")
 stall_door_collider = NodePath("Inside/Toilette/Items/Stalldoor/CollisionShape2D")
+toilette_door_interactable = NodePath("Inside/Toilette/ToiletteDoorInteractbale")
 stall_walls = [NodePath("Inside/Toilette/Items/ColorRect"), NodePath("Inside/Toilette/Items/ColorRect2"), NodePath("Inside/Toilette/Items/ColorRect3"), NodePath("Inside/Toilette/Items/ColorRect4"), NodePath("Inside/Toilette/Items/ColorRect5"), NodePath("Inside/Toilette/Items/ColorRect6")]
 stall_area = NodePath("Inside/Toilette/Items/StallArea")
 ghost = NodePath("Inside/Hallway/ExtensionHallway/ghost")
@@ -2343,7 +2358,14 @@ position = Vector2(1135.5, -865)
 shape = SubResource("RectangleShape2D_i24ae")
 
 [node name="Toilette" type="Node2D" parent="Hallway/Inside"]
-visible = false
+
+[node name="ToiletteDoorInteractbale" parent="Hallway/Inside/Toilette" instance=ExtResource("45_qpcjt")]
+position = Vector2(1188, -534)
+dialogue_start = "toilet_door"
+
+[node name="ToiletteDoorInteractableCollider" type="CollisionShape2D" parent="Hallway/Inside/Toilette/ToiletteDoorInteractbale"]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_8jfs0")
 
 [node name="background" type="ColorRect" parent="Hallway/Inside/Toilette"]
 offset_left = -53.0
