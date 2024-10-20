@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnf35hipcoe38"]
 
 [ext_resource type="Script" path="res://scenes/dialogue/balloon.gd" id="1_36de5"]
-[ext_resource type="StyleBox" uid="uid://i471giespijg" path="res://resources/dialogue/balloon_panel.tres" id="2_a4ufl"]
+[ext_resource type="StyleBox" path="res://resources/dialogue/balloon_panel.tres" id="2_a4ufl"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="PackedScene" uid="uid://djuo13dsshjbu" path="res://scenes/dialogue/audio_stream_clicker.tscn" id="3_wr7tg"]
 [ext_resource type="FontFile" uid="uid://bqquq2bcpiyhh" path="res://assets/fonts/PatrickHand-Regular.ttf" id="4_h5opf"]
-[ext_resource type="PackedScene" uid="uid://c6htjydhqvuuy" path="res://scenes/dialogue/audio_stream_selector.tscn" id="5_aueb5"]
-[ext_resource type="PackedScene" uid="uid://cxd8osmssw1m5" path="res://scenes/dialogue/audio_stream_hover.tscn" id="6_te8pv"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue/audio_stream_selector.tscn" id="5_aueb5"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue/audio_stream_hover.tscn" id="6_te8pv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)

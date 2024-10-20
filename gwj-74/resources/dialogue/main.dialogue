@@ -17,6 +17,7 @@ if !is_awake:
 		...Where is everybody else?
 	Is this the terminal station?
 	set is_awake = true
+=> END
 
 ~ outside
 if !was_outside:
@@ -65,10 +66,12 @@ set met_vending_machine = true
 ~ ghost
 if !ghost_met:
 	Uhh, hello?
-	Can you tell me where we are? When this train is leaving the station?
+	Can you tell me where we are? When is this train is leaving the station?
 	#do ghost_sfx.play()
 	Umm, okay?... It's okay, I'll look for somebody else.
 	set ghost_met = true
+else:
+	... Nevermind.
 => END
 
 ~ clerk_cutscene

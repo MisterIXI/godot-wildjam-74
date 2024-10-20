@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=132 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -41,6 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
 [ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="Script" path="res://components/actionator/actionator.gd" id="36_ug12r"]
+[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="37_kkc5p"]
 [ext_resource type="Texture2D" uid="uid://dyegx0pv476ub" path="res://assets/images/backgrounds/toilette-door.png" id="38_emwp0"]
 [ext_resource type="Script" path="res://scenes/environment/hallway.gd" id="38_p4fao"]
 [ext_resource type="Texture2D" uid="uid://ddd5rpyd4dcrl" path="res://assets/images/backgrounds/office.png" id="39_t27qc"]
@@ -156,6 +158,12 @@ size = Vector2(23, 156.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dct7d"]
 size = Vector2(3262.5, 388)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irqu4"]
+size = Vector2(113, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8twan"]
+size = Vector2(1546, 58)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_no2ux"]
 blend_mode = 1
@@ -1049,11 +1057,11 @@ position = Vector2(-6, 361)
 texture = ExtResource("5_6epiq")
 
 [node name="Train-entrances-front" type="Sprite2D" parent="Train/TrainOutside"]
+visible = false
 position = Vector2(0, -1)
 texture = ExtResource("4_mstmm")
 
 [node name="Train-entrances-back" type="Sprite2D" parent="Train/TrainOutside"]
-visible = false
 position = Vector2(-1, 0)
 texture = ExtResource("3_rfcum")
 
@@ -1563,6 +1571,26 @@ train = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea"]
 position = Vector2(-4.25, 435)
 shape = SubResource("RectangleShape2D_dct7d")
+
+[node name="Wakeup_Actionator" type="Area2D" parent="Train/TrainArea"]
+script = ExtResource("36_ug12r")
+only_use_once = true
+dialogue_string = "beginning"
+dialogue_resource = ExtResource("37_kkc5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/TrainArea/Wakeup_Actionator"]
+position = Vector2(600, 336)
+shape = SubResource("RectangleShape2D_irqu4")
+
+[node name="Outside_Actionator" type="Area2D" parent="Train"]
+script = ExtResource("36_ug12r")
+only_use_once = true
+dialogue_string = "outside"
+dialogue_resource = ExtResource("37_kkc5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Train/Outside_Actionator"]
+position = Vector2(784, 155)
+shape = SubResource("RectangleShape2D_8twan")
 
 [node name="Counter" type="Node2D" parent="." node_paths=PackedStringArray("counter_area", "counter_man", "counter_outside", "counter_inside", "lights_outside", "lights_inside", "counter_door_collider", "counter_outside_interactable", "counter_outside_dialogue_collider", "counter_outside_door_floor_light")]
 script = ExtResource("7_15l0w")

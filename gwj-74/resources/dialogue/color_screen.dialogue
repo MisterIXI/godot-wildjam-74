@@ -10,6 +10,17 @@ do! set_color(3, true)
 
 ~ outro
 [center]As you sit down, the train doors promptly close and the train finally leaves the station.
-do! set_color(3, false)
 [center]Still startled from the events at Glenwich Station you listen to the rattling of the rails and try to reflect on what happened.
+do! set_color(3, false)
+[center]After a while, as your breathing steadies and you slowly feel the presence of the haunted place fading, your eyes grow heavy once again and you fall into a deep but peaceful unconsciousness.
+[center]As you awake, you find yourself at your hometown station. [wait=1]You have finally escaped!
+do wait(2)
+[center]Day after day, you search the internet and local libraries for stories on Glenwich Station, but to no avail.
+[center]No one has ever heard of this station, nor do they have a clue where it could've been.
+[center]Slowly you accept that the whole story had to be nothing but a bad dream.
+do wait(1)
+[center]Only months later, you find a peculiar little piece of paper in the inside pocket of your shirt.
+#do show texture
+[center]The End
+=> END
 
