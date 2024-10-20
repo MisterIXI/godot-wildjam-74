@@ -167,7 +167,7 @@ else:
 => END
 
 ~ train_door_close
-#do game_manager.train_door_close_inside()
+#do player.turn(Vector2.RIGHT)
 Oh, no! This is bad...
 => END
 

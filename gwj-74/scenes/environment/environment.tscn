@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cxjtlmlg0kxb" path="res://scenes/objects/vending_machine.tscn" id="31_c5q8h"]
 [ext_resource type="PackedScene" uid="uid://c1h0ywy8tik5u" path="res://scenes/objects/bench.tscn" id="32_8yww6"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="33_q6j4v"]
-[ext_resource type="PackedScene" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
+[ext_resource type="PackedScene" uid="uid://baxwhk6gsbe" path="res://scenes/environment/inside_door_closer.tscn" id="35_p633o"]
 [ext_resource type="Script" path="res://components/actionator/actionator.gd" id="36_ug12r"]
 [ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="37_kkc5p"]
 [ext_resource type="Script" path="res://scenes/objects/ghosts.gd" id="37_n660h"]

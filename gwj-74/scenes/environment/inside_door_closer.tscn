@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cds3rbcr6oguh"]
+[gd_scene load_steps=4 format=3 uid="uid://baxwhk6gsbe"]
 
 [ext_resource type="Script" path="res://scenes/environment/inside_door_closer.gd" id="1_vtfbh"]
+[ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="2_ohplv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cubms"]
 size = Vector2(111, 150.5)
 
-[node name="InsideDoorCloser" type="Area2D" node_paths=PackedStringArray("train")]
+[node name="InsideDoorCloser" type="Area2D"]
 script = ExtResource("1_vtfbh")
-train = NodePath("")
+dialogue_resource = ExtResource("2_ohplv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(216.5, -115.25)
