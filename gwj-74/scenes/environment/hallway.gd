@@ -39,7 +39,14 @@ var _tween_janitor_outside : Tween = null
 var toilette_door_open : bool = false
 var _tween_toilette_inside : Tween = null
 var _tween_toilette_outside : Tween = null
-#todo turn of lights
+
+@export_group("Animation")
+@export var ghost : AnimatedSprite2D = null
+@export var exit_door : Node2D = null
+@export var exit_door_collider : CollisionShape2D = null
+@export var hallway_copy : Node2D = null
+var _tween_ghost : Tween = null
+var exit_door_open : bool = false
 
 func _ready() -> void:
 	# Hallway Inside and Outside
@@ -73,6 +80,10 @@ func _ready() -> void:
 		_on_toilette_area_body_entered(body)
 	set_toilette_door(true)
 
+	# Animation
+	ghost.visible = false
+	ghost.modulate.a = 0
+
 # Hallway Inside and Outside
 func _on_area_inside_body_entered(body: Node) -> void:
 	if not body.is_in_group("player"):
@@ -90,6 +101,7 @@ func _on_area_inside_body_exited(body: Node) -> void:
 	CustomTweener.switch_lights(lights_inside, lights_outside)
 func set_door(open : bool) -> void:
 	entrance_door_collider.disabled = open
+	entrance_door.visible = open
 	door_open = open
 
 # Janitor
@@ -135,3 +147,46 @@ func _on_toilette_area_body_exited(body: Node) -> void:
 func set_toilette_door(open : bool) -> void:
 	toilette_door_collider.disabled = open
 	toilette_door_open = open
+
+
+# animation
+func ghost_appear() -> void:
+	ghost.visible = true
+	ghost.play("front")
+	_tween_ghost = CustomTweener.set_visibility(true, ghost, _tween_ghost, 2)
+	await _tween_ghost.finished
+
+
+func ghost_disappear() -> void:
+	_tween_ghost = CustomTweener.set_visibility(false, ghost, _tween_ghost, 2)
+	await _tween_ghost.finished
+
+
+func ghost_approach_player() -> void:
+	ghost.play("side")
+	if _tween_ghost:
+		_tween_ghost.kill()
+	_tween_ghost = create_tween()
+	_tween_ghost.tween_property(ghost, "position:x", 1971, 3)
+	await _tween_ghost.finished
+	await get_tree().create_timer(1).timeout
+
+
+func switch_hall(to_right_hall : bool) -> void:
+	var player = GameManager.main.player
+	var camera : Camera2D = player.get_node("Camera2D")
+	var dist = player.global_position - camera.get_screen_center_position()
+	camera.position -= dist
+
+	if to_right_hall:
+		player.global_position += hallway_copy.global_position - hallway_base.global_position
+	else:
+		player.global_position += hallway_base.global_position - hallway_copy.global_position
+
+	camera.reset_smoothing()
+	camera.position = Vector2.ZERO
+
+	set_door(not to_right_hall)
+	exit_door_collider.disabled = to_right_hall
+	exit_door.visible = to_right_hall
+	exit_door_open = to_right_hall

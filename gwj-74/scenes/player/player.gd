@@ -158,3 +158,26 @@ func start_smoking() -> void:
 	animated_sprite.play("start-idle")
 	animated_sprite.flip_h = false
 	idle_timer = idle_offset + 1
+
+
+func turn(dir: Vector2) -> void:
+	if dir.x < 0:
+		animated_sprite.flip_h = true
+		animated_sprite.play("sideward-walk")
+		animated_sprite.stop()
+		animated_sprite.frame = 0
+	elif dir.x > 0:
+		animated_sprite.flip_h = false
+		animated_sprite.play("sideward-walk")
+		animated_sprite.stop()
+		animated_sprite.frame = 0
+	elif dir.y > 0:
+		animated_sprite.flip_h = false
+		animated_sprite.play("forward-walk")
+		animated_sprite.stop()
+		animated_sprite.frame = 0
+	elif dir.y < 0:
+		animated_sprite.flip_h = false
+		animated_sprite.play("backward-walk")
+		animated_sprite.stop()
+		animated_sprite.frame = 0
