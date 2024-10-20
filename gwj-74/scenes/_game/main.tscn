@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=14 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="Script" path="res://scenes/_game/main.gd" id="1_nnq32"]
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" path="res://components/actionator/actionator.gd" id="9_g40xn"]
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
 [ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="10_dkuxk"]
-[ext_resource type="PackedScene" path="res://scenes/ui/item_ui.tscn" id="11_20pgh"]
+[ext_resource type="PackedScene" uid="uid://cw42ltjwpckk8" path="res://scenes/ui/item_ui.tscn" id="11_20pgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arprl"]
+size = Vector2(553, 217)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxcwo"]
 size = Vector2(75, 238)
@@ -40,6 +43,21 @@ position = Vector2(2319, -82)
 
 [node name="Testbox" parent="Game/YSort" instance=ExtResource("5_tpanc")]
 position = Vector2(-364, -239)
+
+[node name="Actionators" type="Node2D" parent="Game"]
+
+[node name="ClerkAppearAction" type="Area2D" parent="Game/Actionators"]
+position = Vector2(0, -348)
+script = ExtResource("9_g40xn")
+only_use_once = true
+only_on_game_state_name = Array[String](["ghost_met", "wrapped_around"])
+only_on_game_state_value = Array[bool]([true, true])
+dialogue_string = "clerk_cutscene"
+dialogue_resource = ExtResource("10_dkuxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Actionators/ClerkAppearAction"]
+position = Vector2(4.5, 98.5)
+shape = SubResource("RectangleShape2D_arprl")
 
 [node name="ColorScreen" parent="." node_paths=PackedStringArray("game") instance=ExtResource("6_1xhdv")]
 game = NodePath("../Game")
