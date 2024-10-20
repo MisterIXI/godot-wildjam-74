@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbgdr3g22ejqs"]
+[gd_scene load_steps=21 format=3 uid="uid://cbgdr3g22ejqs"]
 
 [ext_resource type="Script" path="res://scenes/_game/main.gd" id="1_nnq32"]
 [ext_resource type="PackedScene" uid="uid://b064xt5h1jw3g" path="res://scenes/_debug/oli/debug_menu.tscn" id="1_pv4gp"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://d2abl68q2umsk" path="res://scenes/objects/trashcan.tscn" id="9_iux46"]
 [ext_resource type="Resource" uid="uid://x460mdfmgeia" path="res://resources/dialogue/main.dialogue" id="10_dkuxk"]
 [ext_resource type="PackedScene" uid="uid://cw42ltjwpckk8" path="res://scenes/ui/item_ui.tscn" id="11_20pgh"]
+[ext_resource type="AudioStream" uid="uid://dmuyj4mptnwsx" path="res://assets/sounds/creepy_atmosphere.wav" id="13_54fhq"]
+[ext_resource type="AudioStream" uid="uid://cpuk2e3ywh247" path="res://assets/sounds/creepy_ghost.wav" id="14_ocdbd"]
+[ext_resource type="AudioStream" uid="uid://d0xnvt5dwg5rt" path="res://assets/sounds/creepy_sound.wav" id="15_lsdls"]
+[ext_resource type="AudioStream" uid="uid://dpmhnmc1j5tdt" path="res://assets/sounds/locked_door.wav" id="16_q43t7"]
+[ext_resource type="AudioStream" uid="uid://bsjwo52qwuwbb" path="res://assets/sounds/unlock_door.wav" id="17_1vaxo"]
+[ext_resource type="AudioStream" uid="uid://tvpu0dkoqu53" path="res://assets/sounds/key_rattle.wav" id="18_1hvwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arprl"]
 size = Vector2(553, 217)
@@ -84,5 +90,23 @@ volume_db = -20.0
 pitch_scale = 0.5
 autoplay = true
 bus = &"SFX"
+
+[node name="CreepyAtmosphere" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_54fhq")
+
+[node name="CreepyGhost" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_ocdbd")
+
+[node name="CreepySound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_lsdls")
+
+[node name="LockedDoor" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_q43t7")
+
+[node name="UnlockDoor" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("17_1vaxo")
+
+[node name="KeyRattle" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("18_1hvwu")
 
 [node name="ItemUI" parent="." instance=ExtResource("11_20pgh")]

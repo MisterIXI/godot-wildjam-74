@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=165 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -51,7 +51,6 @@
 [ext_resource type="Texture2D" uid="uid://dx5xuesmu3473" path="res://assets/images/objects/office_desk.png" id="41_dh3sk"]
 [ext_resource type="Texture2D" uid="uid://cbls43lg83b2d" path="res://assets/images/objects/office_drawer.png" id="42_fnal0"]
 [ext_resource type="Texture2D" uid="uid://6h60wdvx5d7x" path="res://assets/images/objects/calendar.png" id="43_76o2b"]
-[ext_resource type="AudioStream" uid="uid://bw7s8p2m24qte" path="res://assets/sounds/deserted_subway.wav" id="43_y3658"]
 [ext_resource type="Script" path="res://components/flicker/flicker.gd" id="44_iuttk"]
 [ext_resource type="PackedScene" uid="uid://6l5oml43sq0d" path="res://scenes/components/interactable.tscn" id="45_qpcjt"]
 [ext_resource type="Texture2D" uid="uid://cuxo4rvexd2fx" path="res://assets/images/backgrounds/hallway_wall.png" id="47_aiofw"]
@@ -462,7 +461,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
-visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -2993,13 +2991,6 @@ offset_right = 4800.0
 offset_bottom = 570.0
 color = Color(0.164063, 0.0499321, 0.0199728, 0.25098)
 metadata/_edit_lock_ = true
-
-[node name="DesertedSubway" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("43_y3658")
-volume_db = -20.0
-pitch_scale = 0.5
-autoplay = true
-bus = &"SFX"
 
 [editable path="Train/Train-inside/ghost2"]
 [editable path="Train/Train-inside/ghost3"]

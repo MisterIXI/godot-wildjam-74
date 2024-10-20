@@ -67,7 +67,8 @@ set met_vending_machine = true
 if !ghost_met:
 	Uhh, hello?
 	Can you tell me where we are? When is this train is leaving the station?
-	#do ghost_sfx.play()
+	do creepy_ghost.play()
+	do wait(3)
 	Umm, okay?... It's okay, I'll look for somebody else.
 	set ghost_met = true
 else:
@@ -96,7 +97,7 @@ Clerk?: [speed=0.6]Leave... Exit...?
 What are you-
 do GameManager.clerk_disappear()
 do GameManager.unlock_counter_door()
-#do unlock_sfx.play()
+do unlock_door.play()
 The door unlocked... Maybe I should enter and ask him again?
 => END
 
@@ -128,6 +129,7 @@ if !has_train_key:
 	Wait! There is a key in one of the drawers.
 	Let's see... it has a tag with a train symbol attached to it.
 		I'll take it just in case.
+	do key_rattle.play()
 	set has_train_key = true
 else:
 	Just a regular old office cabinet. Reminds me of work...
@@ -142,17 +144,17 @@ if has_train_key and newspaper_read:
 ~ train_door
 if has_train_key and !train_key_broken:
 	Yes! The key fits!
-	#do unlock_sfx.play()
+	do unlock_door.play()
 	#do key_break_sfx.play()
 	do environment.train.set_door_inside(true)
 	set train_key_broken = true
 	Fuck, it broke off!
 	Well, at least the door is open...
 elif has_train_key and train_key_broken:
-	#do locked_sfx.play()
+	do locked_door.play()
 	Damn it! It doesn't move an inch and the broken key is stuck.
 else:
-	#do locked_sfx.play()
+	do locked_door.play()
 	It's locked.
 => END
 
@@ -160,7 +162,7 @@ else:
 % Um, hello?
 % Do you speak english?
 % Excuse me, can you tell me-
-#do ghost_sfx.play()
+do creepy_ghost.play()
 % Uh, right...
 % ...
 % Okay...
@@ -199,20 +201,14 @@ Okay, this ominous looking hole was definitely not here before,[wait=0.5] right?
 Man, I think I'm losing my mind...
 => END
 
-~ toilet_sound
-#do creepy_sfx.play()
-What was that?
-I think it came from in there.
-=> END
 
 ~ toilet_door
 if !has_toilet_key:
 	It's the door to the toilet.
-	#do locked_sfx.play()
+	do locked_door.play()
 	Damn, it's locked.
 else:
-	unlock door
-	#do unlock_sfx.play()
+	do unlock_door.play()
 	Well, here we go...
 => END
 
@@ -237,7 +233,6 @@ if !safe_open:
 		It's a four digit padlock.
 		do GameManager.main.padlock.dialogue_trigger()
 		if current_padlock_code == padlock_code:
-			#do padlock_sfx.play()
 			It's open!
 			set safe_open = true
 		else:
@@ -247,7 +242,7 @@ else:
 	if !has_toilette_key:
 		Ok, let's see...
 			Here's another key. It seems to be for the toilets.
-		#do key_grab_sfx.play()
+		do key_rattle.play()
 		set has_toilette_key = true
 		Okay, now let's check the toilets.
 	else:
@@ -277,8 +272,9 @@ do player.move_to(environment.newspaper_marker.global_position)
 The situation worsened further when a broken pipe of the city's freshwater system quickly filled the station with water.
 After the several hours lasting rescue attempts of the firefighters and police officers, all victims of this tragedy were pronounced dead on the scene."
 This article is from October 1992...
-#do creepy_sfx.play()
+do creepy_sound.play()
 do player.turn(Vector2.LEFT)
+do wait(1.5)
 Oh no, what is happening now?
 	I need to hide quickly!
 do environment.hallway.set_toilette_door(false)
