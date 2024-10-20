@@ -103,8 +103,6 @@ The door unlocked... Maybe I should enter and ask him again?
 ~ inside_office
 ...Hello?
 Where did he go?
-#do lightswitch_sfx.play()
-The lightswitch doesn't work...
 => END
 
 ~ calendar
@@ -124,14 +122,15 @@ I really need to get out of here!
 set newspaper_read = true
 => END
 
-~ key_hanger
+~ office_cabinet
 if !has_train_key:
-	It's a key hanger, but there is only one key here.
+	It's an old fashioned office cabinet, doesn't seem to be to that interesting.
+	Wait! There is a key in one of the drawers.
 	Let's see... it has a tag with a train symbol attached to it.
 		I'll take it just in case.
 	set has_train_key = true
 else:
-	Just a regular old key hanger. There are no keys left.
+	Just a regular old office cabinet. Reminds me of work...
 => END
 
 ~ office_exit
@@ -283,13 +282,19 @@ Oh no, what is happening now?
 
 ~ dead_end
 It's a dead end...
-	What now?
-#do ghost appears
+    What now?
+do environment.hallway.ghost_appear()
+do player.turn(Vector2(-1,0))
 Oh my goodness! Please leave me alone!
-#do ghost approaches and disappears
+do environment.hallway.ghost_approach_player()
 Please! Nooo...
-	...?
+do environment.hallway.ghost_disappear()
+...?
+set has_ticked = true
+do environment.train.reset_position()
 Th- they gave me a ticket?
+do environment.hallway.switch_hall(true)
+do environment.walls.set_wall_right(true)
 => END
 
 ~ train_arrival

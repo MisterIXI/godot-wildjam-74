@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://5y3y8neopnpa"]
+[gd_scene load_steps=137 format=3 uid="uid://5y3y8neopnpa"]
 
 [ext_resource type="Script" path="res://scenes/environment/environment.gd" id="1_fo1js"]
 [ext_resource type="Texture2D" uid="uid://btramk5skiu08" path="res://assets/images/backgrounds/station-base-tile.png" id="1_xfqj8"]
@@ -180,11 +180,28 @@ fill_to = Vector2(1, 0.162393)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_502dn"]
 load_path = "res://.godot/imported/full_round_light.png-d66a5b1f3ca8510c6c3423ad59cea976.ctex"
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2qu2j"]
+a = Vector2(-235.988, 0)
+b = Vector2(235.988, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ioicy"]
+a = Vector2(-218.454, -28.7725)
+b = Vector2(217.909, -28.7725)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8scb"]
 size = Vector2(74, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eputf"]
 size = Vector2(244, 91)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1vk6"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lhaw"]
+size = Vector2(216, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mng3t"]
+size = Vector2(218.5, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub4kw"]
 size = Vector2(102.5, 42)
@@ -346,6 +363,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Shading"]
+visible = false
 color = Color(0.144531, 0.144531, 0.144531, 1)
 
 [node name="StationParallax" type="Parallax2D" parent="."]
@@ -1635,7 +1653,6 @@ energy = 0.54
 texture = SubResource("CompressedTexture2D_502dn")
 
 [node name="CounterInside" type="Node2D" parent="Counter"]
-visible = false
 
 [node name="Background" type="ColorRect" parent="Counter/CounterInside"]
 offset_left = -1215.0
@@ -1652,10 +1669,25 @@ texture = ExtResource("39_t27qc")
 [node name="OfficeDrawer" type="Sprite2D" parent="Counter/CounterInside/Office"]
 texture = ExtResource("42_fnal0")
 
+[node name="Interactable" parent="Counter/CounterInside/Office/OfficeDrawer" instance=ExtResource("45_qpcjt")]
+position = Vector2(983.284, -117.994)
+dialogue_start = "office_cabinet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/Office/OfficeDrawer/Interactable"]
+position = Vector2(0, 78.6627)
+shape = SubResource("SegmentShape2D_2qu2j")
+
 [node name="Calendar" type="Sprite2D" parent="Counter/CounterInside"]
 position = Vector2(160.03, -772.835)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("43_76o2b")
+
+[node name="Interactable" parent="Counter/CounterInside/Calendar" instance=ExtResource("45_qpcjt")]
+dialogue_start = "calendar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/Calendar/Interactable"]
+position = Vector2(-0.272716, 553.046)
+shape = SubResource("SegmentShape2D_ioicy")
 
 [node name="OfficeChair" type="StaticBody2D" parent="Counter/CounterInside"]
 z_index = 500
@@ -1683,6 +1715,20 @@ texture = ExtResource("41_dh3sk")
 position = Vector2(-5, -461.5)
 shape = SubResource("RectangleShape2D_eputf")
 
+[node name="1Newspaper" type="Sprite2D" parent="Counter/CounterInside/OfficeDesk2"]
+modulate = Color(0.644531, 0.644531, 0.644531, 1)
+position = Vector2(72, -512)
+rotation = 3.71057
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("14_47ih5")
+
+[node name="Interactable" parent="Counter/CounterInside/OfficeDesk2" instance=ExtResource("45_qpcjt")]
+position = Vector2(72, -512)
+dialogue_start = "newspaper"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeDesk2/Interactable"]
+shape = SubResource("CircleShape2D_f1vk6")
+
 [node name="PointLight2D" type="PointLight2D" parent="Counter/CounterInside"]
 position = Vector2(113.5, -609.5)
 scale = Vector2(1.47852, 1.01367)
@@ -1694,6 +1740,30 @@ texture = ExtResource("10_khwxr")
 script = ExtResource("44_iuttk")
 offset_range = Vector2(10, 15)
 intensity_range = Vector2(0.12, 0.15)
+
+[node name="OfficeEntranceActionator" type="Area2D" parent="Counter/CounterInside"]
+position = Vector2(272, -456)
+script = ExtResource("36_ug12r")
+only_use_once = true
+dialogue_string = "inside_office"
+dialogue_resource = ExtResource("37_kkc5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeEntranceActionator"]
+position = Vector2(-44, -8)
+shape = SubResource("RectangleShape2D_7lhaw")
+
+[node name="OfficeExitActionator" type="Area2D" parent="Counter/CounterInside"]
+position = Vector2(160, -584)
+script = ExtResource("36_ug12r")
+only_use_once = true
+only_on_game_state_name = Array[String](["has_train_key", "newspaper_read"])
+only_on_game_state_value = Array[bool]([true, true])
+dialogue_string = "office_exit"
+dialogue_resource = ExtResource("37_kkc5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/CounterInside/OfficeExitActionator"]
+position = Vector2(69.25, 136)
+shape = SubResource("RectangleShape2D_mng3t")
 
 [node name="CounterOutside" type="StaticBody2D" parent="Counter"]
 
